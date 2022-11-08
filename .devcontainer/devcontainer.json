@@ -1,0 +1,42 @@
+{
+  "name": "lightningtalk",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "dev",
+  "workspaceFolder": "/app",
+  "extensions": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "ms-python.python",
+    "kevinrose.vsc-python-indent",
+    "eamodio.gitlens",
+    "ritwickdey.liveserver",
+
+  ],
+  "settings": {
+    // remote-container
+    "remote.containers.copyGitConfig": false,
+    "remote.containers.gitCredentialHelperConfigLocation": "none",
+    // general
+    "editor.insertSpaces": true,
+    "editor.rulers": [90],
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "prettier.configPath": "./.prettierrc.json",
+    "prettier.prettierPath": "./node_modules/prettier",
+    // typescript / javascript
+    "[typescript]": {
+      "editor.codeActionsOnSave": ["source.fixAll.eslint"]
+    },
+    "[javascript]": {
+      "editor.codeActionsOnSave": ["source.fixAll.eslint"]
+    },
+    "typescript.tsdk": "./node_modules/typescript/lib",
+    "eslint.workingDirectories": [{ "mode": "auto" }],
+    // prisma
+    "[prisma]": {
+      "editor.defaultFormatter": "Prisma.prisma"
+    }
+  },
+  "postCreateCommand": "cd /app && pnpm install"
+}
