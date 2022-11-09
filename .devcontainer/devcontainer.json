@@ -1,5 +1,5 @@
 {
-  "name": "lightningtalk",
+  "name": "proto-type-poc",
   "dockerComposeFile": "docker-compose.yml",
   "service": "dev",
   "workspaceFolder": "/app",
@@ -10,7 +10,7 @@
     "kevinrose.vsc-python-indent",
     "eamodio.gitlens",
     "ritwickdey.liveserver",
-
+    "golang.go"
   ],
   "settings": {
     // remote-container
@@ -37,6 +37,5 @@
     "[prisma]": {
       "editor.defaultFormatter": "Prisma.prisma"
     }
-  },
-  "postCreateCommand": "cd /app && pnpm install"
+  }
 }
