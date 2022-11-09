@@ -12,6 +12,7 @@ services:
       - .env
     volumes:
       - app:/app
+      - /var/run/docker.sock:/var/run/docker.sock
     working_dir: /app
     command: /bin/sh
     tty: true
