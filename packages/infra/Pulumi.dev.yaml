@@ -1,0 +1,5 @@
+encryptionsalt: v1:8ERTHHUW39s=:v1:5DvxTt4NQYAXWUq1:lJIwrChHacx1YFEGCWrbYuXzUEGq1A==
+config:
+  gcp:project: 'prototype-infra'
+  gcp:region: us-central1
+  infra:nodesPerZone: '2'

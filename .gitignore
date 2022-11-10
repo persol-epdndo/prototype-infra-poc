@@ -1,1 +1,6 @@
 .devcontainer/git-credential-github-token
+.pnpm-store
+node_modules
+gcp-key.json
+packages/infra/.pulumi/*
+!packages/infra/.pulumi/stacks
