@@ -1,6 +1,6 @@
 FROM caddy:builder AS builder
 
-COPY ./ /tmp/caddy/
+COPY go.mod go.sum upstreams.go /tmp/caddy/
 
 RUN xcaddy build \
     --with prototype-infra.io/caddy=/tmp/caddy/
@@ -8,3 +8,4 @@ RUN xcaddy build \
 FROM caddy:latest
 
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
+COPY Caddyfile /etc/caddy/Caddyfile

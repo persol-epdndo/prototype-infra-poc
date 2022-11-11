@@ -1,5 +1,7 @@
-localhost {
-  reverse_proxy dynamic k8s_node {
-    filter_label xxx
+{$DOMAIN_NAMES} {
+  reverse_proxy {
+    dynamic k8s_node {
+      filter_label xxx
+    }
   }
 }

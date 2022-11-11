@@ -9,6 +9,8 @@ const cfg = new pulumi.Config()
 const nodesPerZone = cfg.getNumber('nodesPerZone')
 const zones = gcp.compute.getZones()
 
+const domainNames = 'sampleapp.poc.epdndo.com'
+
 const network = new gcp.compute.Network('network', {
   autoCreateSubnetworks: false,
 })
@@ -309,27 +311,24 @@ const caddy = new gcp.compute.Instance(
     },
     metadata: {
       'gce-container-declaration': `spec:
-    containers:
-    - image: ghcr.io/persol-epdndo/prototype-infra-poc/caddy:4
-      name: caddy
-      securityContext:
-        privileged: false
-      stdin: false
-      tty: false
-      volumeMounts:
-      - name: host-path-0
-        readOnly: true
-        mountPath: /etc/caddy/Caddyfile
-    volumes:
-    - name: host-path-0
-      hostPath:
-        path: /etc/caddy/Caddyfile
-    restartPolicy: Always
-  `,
+  containers:
+  - image: ghcr.io/persol-epdndo/prototype-infra-poc/caddy:7
+    name: caddy
+    env:
+    - name: DOMAIN_NAMES
+      value: ${domainNames}
+    securityContext:
+      privileged: false
+    stdin: false
+    tty: false
+    volumeMounts: []
+  volumes: []
+  restartPolicy: Always
+`,
       'google-logging-enabled': 'true',
       'google-monitoring-enabled': 'true',
     },
-    tags: ['http-server', 'https-server', 'allow-ssh'],
+    tags: ['allow-http', 'allow-https', 'allow-ssh'],
   },
   {
     deleteBeforeReplace: true,

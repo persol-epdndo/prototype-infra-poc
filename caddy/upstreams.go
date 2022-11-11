@@ -2,7 +2,6 @@ package upstreams
 
 import (
 	"net/http"
-	"strconv"
 
 	"github.com/caddyserver/caddy/v2"
 	"github.com/caddyserver/caddy/v2/caddyconfig/caddyfile"
@@ -39,7 +38,7 @@ func (u K8sNodeUpstreams) GetUpstreams(r *http.Request) ([]*reverseproxy.Upstrea
 	var upstreams []*reverseproxy.Upstream
 
 	upstreams = append(upstreams, &reverseproxy.Upstream{
-		Dial: "10.128.0.31:32080",
+		Dial: "10.128.0.3:32080",
 	})
 	return upstreams, nil
 }
@@ -52,24 +51,23 @@ func (u K8sNodeUpstreams) GetUpstreams(r *http.Request) ([]*reverseproxy.Upstrea
 func (u *K8sNodeUpstreams) UnmarshalCaddyfile(d *caddyfile.Dispenser) error {
 	for d.Next() {
 		args := d.RemainingArgs()
-		u.logger.Info("RemainingArgs: " + strconv.Itoa(len(args)))
 
 		if len(args) > 0 {
 			return d.ArgErr()
 		}
 
 		for d.NextBlock(0) {
-			u.logger.Info("first d.Val(): " + d.Val())
 			switch d.Val() {
 			case "filter_label":
 				if !d.NextArg() {
 					return d.ArgErr()
 				}
 				if u.FilterLabel != "" {
-					return d.Errf("srv filter label has already been specified")
+					return d.Errf("k8s_node filter label has already been specified")
 				}
-				u.logger.Info("next d.Val(): " + d.Val())
 				u.FilterLabel = d.Val()
+			default:
+				return d.Errf("unrecognized k8s_node option '%s'", d.Val())
 			}
 		}
 	}
