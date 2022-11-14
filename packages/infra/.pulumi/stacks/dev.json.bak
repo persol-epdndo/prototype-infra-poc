@@ -4,7 +4,7 @@
         "stack": "dev",
         "latest": {
             "manifest": {
-                "time": "2022-11-11T07:10:00.794372Z",
+                "time": "2022-11-14T13:39:41.2550364Z",
                 "magic": "a2c67a213a17dd9a1b5fb5260fa4842c1271d679913c41d577ab6ed80c1af4ab",
                 "version": "v3.46.0"
             },
@@ -68,10 +68,45 @@
                         "region": "us-central1",
                         "selfLink": "https://www.googleapis.com/compute/v1/projects/prototype-infra/regions/us-central1/addresses/caddy-ip-9b31202",
                         "subnetwork": "",
-                        "users": []
+                        "users": [
+                            "https://www.googleapis.com/compute/beta/projects/prototype-infra/zones/us-central1-a/instances/caddy-0dbfdcd"
+                        ]
                     },
                     "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
                     "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::83d3ce7f-c5dc-48fa-b7ca-c75bba669b7e"
+                },
+                {
+                    "urn": "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa",
+                    "custom": true,
+                    "id": "projects/prototype-infra/serviceAccounts/caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                    "type": "gcp:serviceAccount/account:Account",
+                    "inputs": {
+                        "__defaults": [
+                            "disabled"
+                        ],
+                        "accountId": "caddy-sa",
+                        "disabled": false,
+                        "displayName": "Caddy Service Account"
+                    },
+                    "outputs": {
+                        "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":300000000000}}",
+                        "accountId": "caddy-sa",
+                        "description": "",
+                        "disabled": false,
+                        "displayName": "Caddy Service Account",
+                        "email": "caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "id": "projects/prototype-infra/serviceAccounts/caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "member": "serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "name": "projects/prototype-infra/serviceAccounts/caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "project": "prototype-infra",
+                        "uniqueId": "102632363886866548967"
+                    },
+                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
+                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::83d3ce7f-c5dc-48fa-b7ca-c75bba669b7e",
+                    "propertyDependencies": {
+                        "accountId": null,
+                        "displayName": null
+                    }
                 },
                 {
                     "urn": "urn:pulumi:dev::infra::gcp:compute/network:Network::network",
@@ -106,6 +141,307 @@
                     "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::83d3ce7f-c5dc-48fa-b7ca-c75bba669b7e",
                     "propertyDependencies": {
                         "autoCreateSubnetworks": null
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:dev::infra::gcp:projects/iAMMember:IAMMember::caddy-sa-compute-viewer-iam-binding",
+                    "custom": true,
+                    "id": "prototype-infra/roles/compute.viewer/serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                    "type": "gcp:projects/iAMMember:IAMMember",
+                    "inputs": {
+                        "__defaults": [],
+                        "member": "serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "project": "prototype-infra",
+                        "role": "roles/compute.viewer"
+                    },
+                    "outputs": {
+                        "condition": null,
+                        "etag": "BwXtblt6JYU=",
+                        "id": "prototype-infra/roles/compute.viewer/serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "member": "serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "project": "prototype-infra",
+                        "role": "roles/compute.viewer"
+                    },
+                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
+                    "dependencies": [
+                        "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
+                    ],
+                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::83d3ce7f-c5dc-48fa-b7ca-c75bba669b7e",
+                    "propertyDependencies": {
+                        "member": [
+                            "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
+                        ],
+                        "project": null,
+                        "role": null
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:dev::infra::gcp:projects/iAMMember:IAMMember::caddy-sa-log-writer-iam-binding",
+                    "custom": true,
+                    "id": "prototype-infra/roles/logging.logWriter/serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                    "type": "gcp:projects/iAMMember:IAMMember",
+                    "inputs": {
+                        "__defaults": [],
+                        "member": "serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "project": "prototype-infra",
+                        "role": "roles/logging.logWriter"
+                    },
+                    "outputs": {
+                        "condition": null,
+                        "etag": "BwXtblt6JYU=",
+                        "id": "prototype-infra/roles/logging.logWriter/serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "member": "serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "project": "prototype-infra",
+                        "role": "roles/logging.logWriter"
+                    },
+                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
+                    "dependencies": [
+                        "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
+                    ],
+                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::83d3ce7f-c5dc-48fa-b7ca-c75bba669b7e",
+                    "propertyDependencies": {
+                        "member": [
+                            "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
+                        ],
+                        "project": null,
+                        "role": null
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:dev::infra::gcp:projects/iAMMember:IAMMember::caddy-sa-metric-writer-iam-binding",
+                    "custom": true,
+                    "id": "prototype-infra/roles/monitoring.metricWriter/serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                    "type": "gcp:projects/iAMMember:IAMMember",
+                    "inputs": {
+                        "__defaults": [],
+                        "member": "serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "project": "prototype-infra",
+                        "role": "roles/monitoring.metricWriter"
+                    },
+                    "outputs": {
+                        "condition": null,
+                        "etag": "BwXtblt6JYU=",
+                        "id": "prototype-infra/roles/monitoring.metricWriter/serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "member": "serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "project": "prototype-infra",
+                        "role": "roles/monitoring.metricWriter"
+                    },
+                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
+                    "dependencies": [
+                        "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
+                    ],
+                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::83d3ce7f-c5dc-48fa-b7ca-c75bba669b7e",
+                    "propertyDependencies": {
+                        "member": [
+                            "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
+                        ],
+                        "project": null,
+                        "role": null
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:dev::infra::gcp:projects/iAMMember:IAMMember::caddy-sa-monitoring-viewer-iam-binding",
+                    "custom": true,
+                    "id": "prototype-infra/roles/monitoring.viewer/serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                    "type": "gcp:projects/iAMMember:IAMMember",
+                    "inputs": {
+                        "__defaults": [],
+                        "member": "serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "project": "prototype-infra",
+                        "role": "roles/monitoring.viewer"
+                    },
+                    "outputs": {
+                        "condition": null,
+                        "etag": "BwXtblt6JYU=",
+                        "id": "prototype-infra/roles/monitoring.viewer/serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "member": "serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "project": "prototype-infra",
+                        "role": "roles/monitoring.viewer"
+                    },
+                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
+                    "dependencies": [
+                        "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
+                    ],
+                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::83d3ce7f-c5dc-48fa-b7ca-c75bba669b7e",
+                    "propertyDependencies": {
+                        "member": [
+                            "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
+                        ],
+                        "project": null,
+                        "role": null
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:dev::infra::gcp:compute/router:Router::nat-router",
+                    "custom": true,
+                    "id": "projects/prototype-infra/regions/us-central1/routers/nat-router-7fd33f6",
+                    "type": "gcp:compute/router:Router",
+                    "inputs": {
+                        "__defaults": [
+                            "name"
+                        ],
+                        "name": "nat-router-7fd33f6",
+                        "network": "projects/prototype-infra/global/networks/network-b04337a"
+                    },
+                    "outputs": {
+                        "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
+                        "bgp": null,
+                        "creationTimestamp": "2022-11-10T05:53:30.961-08:00",
+                        "description": "",
+                        "encryptedInterconnectRouter": false,
+                        "id": "projects/prototype-infra/regions/us-central1/routers/nat-router-7fd33f6",
+                        "name": "nat-router-7fd33f6",
+                        "network": "https://www.googleapis.com/compute/v1/projects/prototype-infra/global/networks/network-b04337a",
+                        "project": "prototype-infra",
+                        "region": "us-central1",
+                        "selfLink": "https://www.googleapis.com/compute/v1/projects/prototype-infra/regions/us-central1/routers/nat-router-7fd33f6"
+                    },
+                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
+                    "dependencies": [
+                        "urn:pulumi:dev::infra::gcp:compute/network:Network::network"
+                    ],
+                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::83d3ce7f-c5dc-48fa-b7ca-c75bba669b7e",
+                    "propertyDependencies": {
+                        "network": [
+                            "urn:pulumi:dev::infra::gcp:compute/network:Network::network"
+                        ]
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:dev::infra::gcp:compute/firewall:Firewall::node-allow-master-tcp8443-firewall",
+                    "custom": true,
+                    "id": "projects/prototype-infra/global/firewalls/node-allow-master-tcp8443-firewall-2d07ad6",
+                    "type": "gcp:compute/firewall:Firewall",
+                    "inputs": {
+                        "__defaults": [
+                            "name",
+                            "priority"
+                        ],
+                        "allows": [
+                            {
+                                "__defaults": [],
+                                "ports": [
+                                    "8443"
+                                ],
+                                "protocol": "tcp"
+                            }
+                        ],
+                        "direction": "INGRESS",
+                        "name": "node-allow-master-tcp8443-firewall-2d07ad6",
+                        "network": "network-b04337a",
+                        "priority": 1000,
+                        "sourceRanges": [
+                            "10.100.0.0/28"
+                        ],
+                        "targetTags": [
+                            "allow-master-tcp-8334"
+                        ]
+                    },
+                    "outputs": {
+                        "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000},\"schema_version\":\"1\"}",
+                        "allows": [
+                            {
+                                "ports": [
+                                    "8443"
+                                ],
+                                "protocol": "tcp"
+                            }
+                        ],
+                        "creationTimestamp": "2022-11-10T05:53:29.802-08:00",
+                        "denies": [],
+                        "description": "",
+                        "destinationRanges": [],
+                        "direction": "INGRESS",
+                        "disabled": false,
+                        "id": "projects/prototype-infra/global/firewalls/node-allow-master-tcp8443-firewall-2d07ad6",
+                        "logConfig": null,
+                        "name": "node-allow-master-tcp8443-firewall-2d07ad6",
+                        "network": "https://www.googleapis.com/compute/v1/projects/prototype-infra/global/networks/network-b04337a",
+                        "priority": 1000,
+                        "project": "prototype-infra",
+                        "selfLink": "https://www.googleapis.com/compute/v1/projects/prototype-infra/global/firewalls/node-allow-master-tcp8443-firewall-2d07ad6",
+                        "sourceRanges": [
+                            "10.100.0.0/28"
+                        ],
+                        "sourceServiceAccounts": [],
+                        "sourceTags": [],
+                        "targetServiceAccounts": [],
+                        "targetTags": [
+                            "allow-master-tcp-8334"
+                        ]
+                    },
+                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
+                    "dependencies": [
+                        "urn:pulumi:dev::infra::gcp:compute/network:Network::network"
+                    ],
+                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::83d3ce7f-c5dc-48fa-b7ca-c75bba669b7e",
+                    "propertyDependencies": {
+                        "allows": null,
+                        "direction": null,
+                        "network": [
+                            "urn:pulumi:dev::infra::gcp:compute/network:Network::network"
+                        ],
+                        "sourceRanges": null,
+                        "targetTags": null
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:dev::infra::gcp:compute/subnetwork:Subnetwork::subnet",
+                    "custom": true,
+                    "id": "projects/prototype-infra/regions/us-central1/subnetworks/subnet-e66b565",
+                    "type": "gcp:compute/subnetwork:Subnetwork",
+                    "inputs": {
+                        "__defaults": [
+                            "name"
+                        ],
+                        "ipCidrRange": "10.128.0.0/12",
+                        "name": "subnet-e66b565",
+                        "network": "projects/prototype-infra/global/networks/network-b04337a",
+                        "privateIpGoogleAccess": true
+                    },
+                    "outputs": {
+                        "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
+                        "creationTimestamp": "2022-11-10T05:53:31.943-08:00",
+                        "description": "",
+                        "externalIpv6Prefix": "",
+                        "gatewayAddress": "10.128.0.1",
+                        "id": "projects/prototype-infra/regions/us-central1/subnetworks/subnet-e66b565",
+                        "ipCidrRange": "10.128.0.0/12",
+                        "ipv6AccessType": "",
+                        "ipv6CidrRange": "",
+                        "logConfig": null,
+                        "name": "subnet-e66b565",
+                        "network": "https://www.googleapis.com/compute/v1/projects/prototype-infra/global/networks/network-b04337a",
+                        "privateIpGoogleAccess": true,
+                        "privateIpv6GoogleAccess": "DISABLE_GOOGLE_ACCESS",
+                        "project": "prototype-infra",
+                        "purpose": "PRIVATE",
+                        "region": "us-central1",
+                        "role": "",
+                        "secondaryIpRanges": [
+                            {
+                                "ipCidrRange": "10.152.0.0/20",
+                                "rangeName": "gke-cluster-512ef9c-services-f03640e1"
+                            },
+                            {
+                                "ipCidrRange": "10.148.0.0/14",
+                                "rangeName": "gke-cluster-512ef9c-pods-f03640e1"
+                            }
+                        ],
+                        "selfLink": "https://www.googleapis.com/compute/v1/projects/prototype-infra/regions/us-central1/subnetworks/subnet-e66b565",
+                        "stackType": "IPV4_ONLY"
+                    },
+                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
+                    "dependencies": [
+                        "urn:pulumi:dev::infra::gcp:compute/network:Network::network"
+                    ],
+                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::83d3ce7f-c5dc-48fa-b7ca-c75bba669b7e",
+                    "propertyDependencies": {
+                        "ipCidrRange": null,
+                        "network": [
+                            "urn:pulumi:dev::infra::gcp:compute/network:Network::network"
+                        ],
+                        "privateIpGoogleAccess": null
                     }
                 },
                 {
@@ -187,170 +523,6 @@
                     }
                 },
                 {
-                    "urn": "urn:pulumi:dev::infra::gcp:compute/subnetwork:Subnetwork::subnet",
-                    "custom": true,
-                    "id": "projects/prototype-infra/regions/us-central1/subnetworks/subnet-e66b565",
-                    "type": "gcp:compute/subnetwork:Subnetwork",
-                    "inputs": {
-                        "__defaults": [
-                            "name"
-                        ],
-                        "ipCidrRange": "10.128.0.0/12",
-                        "name": "subnet-e66b565",
-                        "network": "projects/prototype-infra/global/networks/network-b04337a",
-                        "privateIpGoogleAccess": true
-                    },
-                    "outputs": {
-                        "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
-                        "creationTimestamp": "2022-11-10T05:53:31.943-08:00",
-                        "description": "",
-                        "externalIpv6Prefix": "",
-                        "gatewayAddress": "10.128.0.1",
-                        "id": "projects/prototype-infra/regions/us-central1/subnetworks/subnet-e66b565",
-                        "ipCidrRange": "10.128.0.0/12",
-                        "ipv6AccessType": "",
-                        "ipv6CidrRange": "",
-                        "logConfig": null,
-                        "name": "subnet-e66b565",
-                        "network": "https://www.googleapis.com/compute/v1/projects/prototype-infra/global/networks/network-b04337a",
-                        "privateIpGoogleAccess": true,
-                        "privateIpv6GoogleAccess": "DISABLE_GOOGLE_ACCESS",
-                        "project": "prototype-infra",
-                        "purpose": "PRIVATE",
-                        "region": "us-central1",
-                        "role": "",
-                        "secondaryIpRanges": [],
-                        "selfLink": "https://www.googleapis.com/compute/v1/projects/prototype-infra/regions/us-central1/subnetworks/subnet-e66b565",
-                        "stackType": "IPV4_ONLY"
-                    },
-                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
-                    "dependencies": [
-                        "urn:pulumi:dev::infra::gcp:compute/network:Network::network"
-                    ],
-                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::83d3ce7f-c5dc-48fa-b7ca-c75bba669b7e",
-                    "propertyDependencies": {
-                        "ipCidrRange": null,
-                        "network": [
-                            "urn:pulumi:dev::infra::gcp:compute/network:Network::network"
-                        ],
-                        "privateIpGoogleAccess": null
-                    }
-                },
-                {
-                    "urn": "urn:pulumi:dev::infra::gcp:compute/firewall:Firewall::allow-ssh-firewall",
-                    "custom": true,
-                    "id": "projects/prototype-infra/global/firewalls/allow-ssh-firewall-872969e",
-                    "type": "gcp:compute/firewall:Firewall",
-                    "inputs": {
-                        "__defaults": [
-                            "name",
-                            "priority"
-                        ],
-                        "allows": [
-                            {
-                                "__defaults": [],
-                                "ports": [
-                                    "22"
-                                ],
-                                "protocol": "tcp"
-                            }
-                        ],
-                        "direction": "INGRESS",
-                        "name": "allow-ssh-firewall-872969e",
-                        "network": "network-b04337a",
-                        "priority": 1000,
-                        "sourceRanges": [
-                            "0.0.0.0/0"
-                        ],
-                        "targetTags": [
-                            "allow-ssh"
-                        ]
-                    },
-                    "outputs": {
-                        "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000},\"schema_version\":\"1\"}",
-                        "allows": [
-                            {
-                                "ports": [
-                                    "22"
-                                ],
-                                "protocol": "tcp"
-                            }
-                        ],
-                        "creationTimestamp": "2022-11-10T06:27:02.042-08:00",
-                        "denies": [],
-                        "description": "",
-                        "destinationRanges": [],
-                        "direction": "INGRESS",
-                        "disabled": false,
-                        "id": "projects/prototype-infra/global/firewalls/allow-ssh-firewall-872969e",
-                        "logConfig": null,
-                        "name": "allow-ssh-firewall-872969e",
-                        "network": "https://www.googleapis.com/compute/v1/projects/prototype-infra/global/networks/network-b04337a",
-                        "priority": 1000,
-                        "project": "prototype-infra",
-                        "selfLink": "https://www.googleapis.com/compute/v1/projects/prototype-infra/global/firewalls/allow-ssh-firewall-872969e",
-                        "sourceRanges": [
-                            "0.0.0.0/0"
-                        ],
-                        "sourceServiceAccounts": [],
-                        "sourceTags": [],
-                        "targetServiceAccounts": [],
-                        "targetTags": [
-                            "allow-ssh"
-                        ]
-                    },
-                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
-                    "dependencies": [
-                        "urn:pulumi:dev::infra::gcp:compute/network:Network::network"
-                    ],
-                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::83d3ce7f-c5dc-48fa-b7ca-c75bba669b7e",
-                    "propertyDependencies": {
-                        "allows": null,
-                        "direction": null,
-                        "network": [
-                            "urn:pulumi:dev::infra::gcp:compute/network:Network::network"
-                        ],
-                        "sourceRanges": null,
-                        "targetTags": null
-                    }
-                },
-                {
-                    "urn": "urn:pulumi:dev::infra::gcp:compute/router:Router::nat-router",
-                    "custom": true,
-                    "id": "projects/prototype-infra/regions/us-central1/routers/nat-router-7fd33f6",
-                    "type": "gcp:compute/router:Router",
-                    "inputs": {
-                        "__defaults": [
-                            "name"
-                        ],
-                        "name": "nat-router-7fd33f6",
-                        "network": "projects/prototype-infra/global/networks/network-b04337a"
-                    },
-                    "outputs": {
-                        "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
-                        "bgp": null,
-                        "creationTimestamp": "2022-11-10T05:53:30.961-08:00",
-                        "description": "",
-                        "encryptedInterconnectRouter": false,
-                        "id": "projects/prototype-infra/regions/us-central1/routers/nat-router-7fd33f6",
-                        "name": "nat-router-7fd33f6",
-                        "network": "https://www.googleapis.com/compute/v1/projects/prototype-infra/global/networks/network-b04337a",
-                        "project": "prototype-infra",
-                        "region": "us-central1",
-                        "selfLink": "https://www.googleapis.com/compute/v1/projects/prototype-infra/regions/us-central1/routers/nat-router-7fd33f6"
-                    },
-                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
-                    "dependencies": [
-                        "urn:pulumi:dev::infra::gcp:compute/network:Network::network"
-                    ],
-                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::83d3ce7f-c5dc-48fa-b7ca-c75bba669b7e",
-                    "propertyDependencies": {
-                        "network": [
-                            "urn:pulumi:dev::infra::gcp:compute/network:Network::network"
-                        ]
-                    }
-                },
-                {
                     "urn": "urn:pulumi:dev::infra::gcp:compute/firewall:Firewall::allow-https-firewall",
                     "custom": true,
                     "id": "projects/prototype-infra/global/firewalls/allow-https-firewall-9b85542",
@@ -429,9 +601,9 @@
                     }
                 },
                 {
-                    "urn": "urn:pulumi:dev::infra::gcp:compute/firewall:Firewall::node-allow-master-tcp8443-firewall",
+                    "urn": "urn:pulumi:dev::infra::gcp:compute/firewall:Firewall::allow-ssh-firewall",
                     "custom": true,
-                    "id": "projects/prototype-infra/global/firewalls/node-allow-master-tcp8443-firewall-2d07ad6",
+                    "id": "projects/prototype-infra/global/firewalls/allow-ssh-firewall-872969e",
                     "type": "gcp:compute/firewall:Firewall",
                     "inputs": {
                         "__defaults": [
@@ -442,20 +614,20 @@
                             {
                                 "__defaults": [],
                                 "ports": [
-                                    "8443"
+                                    "22"
                                 ],
                                 "protocol": "tcp"
                             }
                         ],
                         "direction": "INGRESS",
-                        "name": "node-allow-master-tcp8443-firewall-2d07ad6",
+                        "name": "allow-ssh-firewall-872969e",
                         "network": "network-b04337a",
                         "priority": 1000,
                         "sourceRanges": [
-                            "10.100.0.0/28"
+                            "0.0.0.0/0"
                         ],
                         "targetTags": [
-                            "allow-master-tcp-8334"
+                            "allow-ssh"
                         ]
                     },
                     "outputs": {
@@ -463,32 +635,32 @@
                         "allows": [
                             {
                                 "ports": [
-                                    "8443"
+                                    "22"
                                 ],
                                 "protocol": "tcp"
                             }
                         ],
-                        "creationTimestamp": "2022-11-10T05:53:29.802-08:00",
+                        "creationTimestamp": "2022-11-10T06:27:02.042-08:00",
                         "denies": [],
                         "description": "",
                         "destinationRanges": [],
                         "direction": "INGRESS",
                         "disabled": false,
-                        "id": "projects/prototype-infra/global/firewalls/node-allow-master-tcp8443-firewall-2d07ad6",
+                        "id": "projects/prototype-infra/global/firewalls/allow-ssh-firewall-872969e",
                         "logConfig": null,
-                        "name": "node-allow-master-tcp8443-firewall-2d07ad6",
+                        "name": "allow-ssh-firewall-872969e",
                         "network": "https://www.googleapis.com/compute/v1/projects/prototype-infra/global/networks/network-b04337a",
                         "priority": 1000,
                         "project": "prototype-infra",
-                        "selfLink": "https://www.googleapis.com/compute/v1/projects/prototype-infra/global/firewalls/node-allow-master-tcp8443-firewall-2d07ad6",
+                        "selfLink": "https://www.googleapis.com/compute/v1/projects/prototype-infra/global/firewalls/allow-ssh-firewall-872969e",
                         "sourceRanges": [
-                            "10.100.0.0/28"
+                            "0.0.0.0/0"
                         ],
                         "sourceServiceAccounts": [],
                         "sourceTags": [],
                         "targetServiceAccounts": [],
                         "targetTags": [
-                            "allow-master-tcp-8334"
+                            "allow-ssh"
                         ]
                     },
                     "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
@@ -572,6 +744,191 @@
                             "urn:pulumi:dev::infra::gcp:compute/router:Router::nat-router"
                         ],
                         "sourceSubnetworkIpRangesToNat": null
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:dev::infra::gcp:compute/instance:Instance::caddy",
+                    "custom": true,
+                    "id": "projects/prototype-infra/zones/us-central1-a/instances/caddy-0dbfdcd",
+                    "type": "gcp:compute/instance:Instance",
+                    "inputs": {
+                        "__defaults": [
+                            "canIpForward",
+                            "deletionProtection",
+                            "name"
+                        ],
+                        "bootDisk": {
+                            "__defaults": [
+                                "autoDelete",
+                                "mode"
+                            ],
+                            "autoDelete": true,
+                            "initializeParams": {
+                                "__defaults": [],
+                                "image": "projects/cos-cloud/global/images/family/cos-stable",
+                                "size": 10
+                            },
+                            "mode": "READ_WRITE"
+                        },
+                        "canIpForward": false,
+                        "deletionProtection": false,
+                        "machineType": "e2-small",
+                        "metadata": {
+                            "__defaults": [],
+                            "gce-container-declaration": "spec:\n  containers:\n  - image: ghcr.io/persol-epdndo/prototype-infra-poc/caddy:8\n    name: caddy\n    env:\n    - name: DOMAIN_NAMES\n      value: sampleapp.poc.epdndo.com\n    securityContext:\n      privileged: false\n    stdin: false\n    tty: false\n    volumeMounts: []\n  volumes: []\n  restartPolicy: Always\n",
+                            "google-logging-enabled": "true",
+                            "google-monitoring-enabled": "true"
+                        },
+                        "name": "caddy-0dbfdcd",
+                        "networkInterfaces": [
+                            {
+                                "__defaults": [],
+                                "accessConfigs": [
+                                    {
+                                        "__defaults": [],
+                                        "natIp": "34.28.183.164"
+                                    }
+                                ],
+                                "network": "projects/prototype-infra/global/networks/network-b04337a",
+                                "subnetwork": "projects/prototype-infra/regions/us-central1/subnetworks/subnet-e66b565"
+                            }
+                        ],
+                        "serviceAccount": {
+                            "__defaults": [],
+                            "email": "caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                            "scopes": [
+                                "cloud-platform"
+                            ]
+                        },
+                        "tags": [
+                            "allow-http",
+                            "allow-https",
+                            "allow-ssh"
+                        ],
+                        "zone": "us-central1-a"
+                    },
+                    "outputs": {
+                        "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000},\"schema_version\":\"6\"}",
+                        "advancedMachineFeatures": null,
+                        "attachedDisks": [],
+                        "bootDisk": {
+                            "autoDelete": true,
+                            "deviceName": "persistent-disk-0",
+                            "diskEncryptionKeyRaw": {
+                                "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
+                                "ciphertext": "v1:Um/ELeG7diz3Fjj5:FItO6I7Br8w+ijogxZmI575S"
+                            },
+                            "diskEncryptionKeySha256": "",
+                            "initializeParams": {
+                                "image": "https://www.googleapis.com/compute/beta/projects/cos-cloud/global/images/cos-stable-101-17162-40-34",
+                                "labels": {},
+                                "size": 10,
+                                "type": "pd-standard"
+                            },
+                            "kmsKeySelfLink": "",
+                            "mode": "READ_WRITE",
+                            "source": "https://www.googleapis.com/compute/v1/projects/prototype-infra/zones/us-central1-a/disks/caddy-0dbfdcd"
+                        },
+                        "canIpForward": false,
+                        "confidentialInstanceConfig": null,
+                        "cpuPlatform": "Intel Broadwell",
+                        "currentStatus": "RUNNING",
+                        "deletionProtection": false,
+                        "description": "",
+                        "enableDisplay": false,
+                        "guestAccelerators": [],
+                        "hostname": "",
+                        "id": "projects/prototype-infra/zones/us-central1-a/instances/caddy-0dbfdcd",
+                        "instanceId": "344250960628697694",
+                        "labelFingerprint": "42WmSpB8rSM=",
+                        "labels": {},
+                        "machineType": "e2-small",
+                        "metadata": {
+                            "gce-container-declaration": "spec:\n  containers:\n  - image: ghcr.io/persol-epdndo/prototype-infra-poc/caddy:8\n    name: caddy\n    env:\n    - name: DOMAIN_NAMES\n      value: sampleapp.poc.epdndo.com\n    securityContext:\n      privileged: false\n    stdin: false\n    tty: false\n    volumeMounts: []\n  volumes: []\n  restartPolicy: Always\n",
+                            "google-logging-enabled": "true",
+                            "google-monitoring-enabled": "true"
+                        },
+                        "metadataFingerprint": "xZP8RAngJa4=",
+                        "minCpuPlatform": "",
+                        "name": "caddy-0dbfdcd",
+                        "networkInterfaces": [
+                            {
+                                "accessConfigs": [
+                                    {
+                                        "natIp": "34.28.183.164",
+                                        "networkTier": "PREMIUM",
+                                        "publicPtrDomainName": ""
+                                    }
+                                ],
+                                "aliasIpRanges": [],
+                                "ipv6AccessConfigs": [],
+                                "ipv6AccessType": "",
+                                "name": "nic0",
+                                "network": "https://www.googleapis.com/compute/v1/projects/prototype-infra/global/networks/network-b04337a",
+                                "networkIp": "10.128.0.6",
+                                "nicType": "",
+                                "queueCount": 0,
+                                "stackType": "IPV4_ONLY",
+                                "subnetwork": "https://www.googleapis.com/compute/v1/projects/prototype-infra/regions/us-central1/subnetworks/subnet-e66b565",
+                                "subnetworkProject": "prototype-infra"
+                            }
+                        ],
+                        "networkPerformanceConfig": null,
+                        "project": "prototype-infra",
+                        "reservationAffinity": null,
+                        "resourcePolicies": null,
+                        "scheduling": {
+                            "automaticRestart": true,
+                            "instanceTerminationAction": "",
+                            "minNodeCpus": 0,
+                            "nodeAffinities": [],
+                            "onHostMaintenance": "MIGRATE",
+                            "preemptible": false,
+                            "provisioningModel": "STANDARD"
+                        },
+                        "scratchDisks": [],
+                        "selfLink": "https://www.googleapis.com/compute/v1/projects/prototype-infra/zones/us-central1-a/instances/caddy-0dbfdcd",
+                        "serviceAccount": {
+                            "email": "caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "shieldedInstanceConfig": {
+                            "enableIntegrityMonitoring": true,
+                            "enableSecureBoot": false,
+                            "enableVtpm": true
+                        },
+                        "tags": [
+                            "allow-ssh",
+                            "allow-https",
+                            "allow-http"
+                        ],
+                        "tagsFingerprint": "sEn_6wOAnyk=",
+                        "zone": "us-central1-a"
+                    },
+                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
+                    "dependencies": [
+                        "urn:pulumi:dev::infra::gcp:compute/network:Network::network",
+                        "urn:pulumi:dev::infra::gcp:compute/subnetwork:Subnetwork::subnet",
+                        "urn:pulumi:dev::infra::gcp:compute/address:Address::caddy-ip",
+                        "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
+                    ],
+                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::83d3ce7f-c5dc-48fa-b7ca-c75bba669b7e",
+                    "propertyDependencies": {
+                        "bootDisk": null,
+                        "machineType": null,
+                        "metadata": null,
+                        "networkInterfaces": [
+                            "urn:pulumi:dev::infra::gcp:compute/network:Network::network",
+                            "urn:pulumi:dev::infra::gcp:compute/subnetwork:Subnetwork::subnet",
+                            "urn:pulumi:dev::infra::gcp:compute/address:Address::caddy-ip"
+                        ],
+                        "serviceAccount": [
+                            "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
+                        ],
+                        "tags": null,
+                        "zone": null
                     }
                 },
                 {
@@ -730,7 +1087,7 @@
                             },
                             "clientKey": {
                                 "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
-                                "ciphertext": "v1:MdS31qRIHnYTjWSX:tVRO8W80BKocf/8YeVJImwYX"
+                                "ciphertext": "v1:hcxHyJk2mFtqy9FH:pL5u8sZbLFv1l/cHSrkf6wpm"
                             },
                             "clusterCaCertificate": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUVMRENDQXBTZ0F3SUJBZ0lRS1pNd3VUVmxGazNmUVcxVWpGMis4ekFOQmdrcWhraUc5dzBCQVFzRkFEQXYKTVMwd0t3WURWUVFERXlSa1pHRTFOakV5WkMwNU9URXlMVFJoTURZdE9XRmlOeTFsTVdFd04yUmpabVpqTVRVdwpJQmNOTWpJeE1URXdNVEkxTXpRM1doZ1BNakExTWpFeE1ESXhNelV6TkRkYU1DOHhMVEFyQmdOVkJBTVRKR1JrCllUVTJNVEprTFRrNU1USXROR0V3TmkwNVlXSTNMV1V4WVRBM1pHTm1abU14TlRDQ0FhSXdEUVlKS29aSWh2Y04KQVFFQkJRQURnZ0dQQURDQ0FZb0NnZ0dCQUowRStIK2Yzb0orM1RoTHdlWFpxb0JEYmxncFhvRGxjQ2lQVVJUVwpwVXVyeG1zM20vVDZQcmY3Qlo4RmtzNzh4Sy9FMDBwNjhzYlFYQnVNbXVqTXhmemdJR1Vyd3hGUzVYUzNGc2FlCjRZd3MxOGdJSjJqVlBiWGwyYU9RUWtEajZHQjBrS1N3eEV0ekoweWFuWW9KQVlIZGZnVzBlVTk2czlFa05NNkUKQzFEUmZmN3RNRGJhRWkvZm1Vc05nbEc4L1I0OEducnFpL1hQM1pjNFFYYVdsVmR0UE1iTyt5eS9GUnpLOHNOZgpIb3Q5cWtYOHNoVDFXUUtPdzduRi9MZjlRcS92dllOKzE5Y1BqdlQvUXgrK0RuTEJOZnE3bEk1dU1wWkRucXlyCk51emx5elptc1ptMWVTc0FGZmFNc01qN1hadDJZVEtQQWRoT2xUbjNTQSsya3NqeGRIVzZBblhtMTZXQ1k2OEcKTWk4MGU5VEFkcndqWVlTaEtQbnVMWitIUXcyVUtFUnQyUmxrUnMwYkU3ME5zdFMvTmt4czZ4UCs5cUJCQTlRUAp3czlMbnNPdkNCTktKU214b3lURFdhTmYrb1d5RDZGbnNremJQWWRGK3pTOHBzVm91TVM2Ymd2Wk1uemFBQ05CCkNzWXdNQVExSWdjWjF6ZE5IZnVKdzRRWGF3SURBUUFCbzBJd1FEQU9CZ05WSFE4QkFmOEVCQU1DQWdRd0R3WUQKVlIwVEFRSC9CQVV3QXdFQi96QWRCZ05WSFE0RUZnUVVuampKb1FYdTRsNjNCY1BTenBOUjAyNUU1L3N3RFFZSgpLb1pJaHZjTkFRRUxCUUFEZ2dHQkFGZ3IrOHVOOVNYa2VkQUUyd1FjVUFPWlphbWdhYk9RdUtCZFp2WkFHakd5Cnl2MVNBMWxGYnNsY3J6dllZak1XWStVM2lCRFg1RWZLYW53YmgrRlhnTWtaaEN0bmVVeTdlZkY4dWorMm4vOEcKL1liODFPL2VVamVOZlBCZHFGUVRLeFlIZW9XSzNjajRJL3czaHVib3pkSDRGRlh4b0VhV2VpVXdyQzgyWGFDSwpOQi9Ram84M1FON2Y0Qld5cjlqenc4Qzd2TzAvOERqZjROeVdYdWlTUktmcEtONXF4NWo3YXVuVzhaMUc0U0NuCnlCc090aWNFbWZoZzhZZ28ramV2MWZIaFBuZzkyd2NWdTlEUXZnVXlnTTdtd3dEUXVSUTYzU21ud2FLd3lxMkQKYUNCN2Zpa21JRTdLc0s1UFAxdmw0VEVSeWFwMW9PUFFzR2ZVb1l2VTVndXZPL1Y5VGZxRkc1THRRamQ3eHdCdwppODg5Sk5lcFlBNmxRRC9NUVBEc2toeXJmMTdtaEp6dUJOYmJHQXpYK0tQTFJzYkkzeUt0aG91ajF1SDMySENqClFyMER5ajgxVEU0Tk4vY0p0bWZGdkRuVnRRQWR2b1BYUnFpaDVkV3NmcDdrTmRKZGdQemRkMVpPampjY1VzN3gKK1cvdUE1QWxSV004WHNLNmNlb0ZiZz09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K"
                         },
@@ -758,11 +1115,121 @@
                             "provider": "PROVIDER_UNSPECIFIED"
                         },
                         "networkingMode": "VPC_NATIVE",
-                        "nodeConfig": null,
+                        "nodeConfig": {
+                            "bootDiskKmsKey": "",
+                            "diskSizeGb": 20,
+                            "diskType": "pd-standard",
+                            "ephemeralStorageConfig": null,
+                            "gcfsConfig": null,
+                            "guestAccelerators": [],
+                            "gvnic": null,
+                            "imageType": "COS_CONTAINERD",
+                            "kubeletConfig": null,
+                            "labels": {},
+                            "linuxNodeConfig": null,
+                            "localSsdCount": 0,
+                            "machineType": "e2-small",
+                            "metadata": {
+                                "disable-legacy-endpoints": "true"
+                            },
+                            "minCpuPlatform": "",
+                            "nodeGroup": "",
+                            "oauthScopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ],
+                            "preemptible": false,
+                            "reservationAffinity": null,
+                            "sandboxConfig": null,
+                            "serviceAccount": "cluster-512ef9c-np-1-sa@prototype-infra.iam.gserviceaccount.com",
+                            "shieldedInstanceConfig": {
+                                "enableIntegrityMonitoring": true,
+                                "enableSecureBoot": false
+                            },
+                            "spot": true,
+                            "tags": [
+                                "allow-master-tcp-8334"
+                            ],
+                            "taints": [],
+                            "workloadMetadataConfig": {
+                                "mode": "GKE_METADATA"
+                            }
+                        },
                         "nodeLocations": [],
                         "nodePoolAutoConfig": null,
                         "nodePoolDefaults": null,
-                        "nodePools": [],
+                        "nodePools": [
+                            {
+                                "autoscaling": null,
+                                "initialNodeCount": 2,
+                                "instanceGroupUrls": [
+                                    "https://www.googleapis.com/compute/v1/projects/prototype-infra/zones/us-central1-a/instanceGroupManagers/gke-cluster-512ef9c-nodepool-0db5d1c-81648868-grp"
+                                ],
+                                "managedInstanceGroupUrls": [
+                                    "https://www.googleapis.com/compute/beta/projects/prototype-infra/zones/us-central1-a/instanceGroups/gke-cluster-512ef9c-nodepool-0db5d1c-81648868-grp"
+                                ],
+                                "management": {
+                                    "autoRepair": true,
+                                    "autoUpgrade": true
+                                },
+                                "maxPodsPerNode": 110,
+                                "name": "nodepool-0db5d1c",
+                                "namePrefix": "",
+                                "networkConfig": {
+                                    "createPodRange": false,
+                                    "podIpv4CidrBlock": "10.148.0.0/14",
+                                    "podRange": "gke-cluster-512ef9c-pods-f03640e1"
+                                },
+                                "nodeConfig": {
+                                    "bootDiskKmsKey": "",
+                                    "diskSizeGb": 20,
+                                    "diskType": "pd-standard",
+                                    "ephemeralStorageConfig": null,
+                                    "gcfsConfig": null,
+                                    "guestAccelerators": [],
+                                    "gvnic": null,
+                                    "imageType": "COS_CONTAINERD",
+                                    "kubeletConfig": null,
+                                    "labels": {},
+                                    "linuxNodeConfig": null,
+                                    "localSsdCount": 0,
+                                    "machineType": "e2-small",
+                                    "metadata": {
+                                        "disable-legacy-endpoints": "true"
+                                    },
+                                    "minCpuPlatform": "",
+                                    "nodeGroup": "",
+                                    "oauthScopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ],
+                                    "preemptible": false,
+                                    "reservationAffinity": null,
+                                    "sandboxConfig": null,
+                                    "serviceAccount": "cluster-512ef9c-np-1-sa@prototype-infra.iam.gserviceaccount.com",
+                                    "shieldedInstanceConfig": {
+                                        "enableIntegrityMonitoring": true,
+                                        "enableSecureBoot": false
+                                    },
+                                    "spot": true,
+                                    "tags": [
+                                        "allow-master-tcp-8334"
+                                    ],
+                                    "taints": [],
+                                    "workloadMetadataConfig": {
+                                        "mode": "GKE_METADATA"
+                                    }
+                                },
+                                "nodeCount": 2,
+                                "nodeLocations": [
+                                    "us-central1-a"
+                                ],
+                                "placementPolicy": null,
+                                "upgradeSettings": {
+                                    "maxSurge": 1,
+                                    "maxUnavailable": 0
+                                },
+                                "version": "1.22.12-gke.2300"
+                            }
+                        ],
                         "nodeVersion": "1.22.12-gke.2300",
                         "notificationConfig": {
                             "pubsub": {
@@ -799,6 +1266,7 @@
                         },
                         "servicesIpv4Cidr": "10.152.0.0/20",
                         "subnetwork": "projects/prototype-infra/regions/us-central1/subnetworks/subnet-e66b565",
+                        "tpuConfig": null,
                         "tpuIpv4CidrBlock": "",
                         "verticalPodAutoscaling": null,
                         "workloadIdentityConfig": {
@@ -878,14 +1346,14 @@
                     "inputs": {
                         "kubeconfig": {
                             "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
-                            "ciphertext": "v1:NUmA1JROKwZODdsK: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"
+                            "ciphertext": "v1:+ZE+WTtEzs1HRFYh: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"
                         },
                         "version": "3.22.1"
                     },
                     "outputs": {
                         "kubeconfig": {
                             "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
-                            "ciphertext": "v1:sE1hcTmCZov0OMa7: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"
+                            "ciphertext": "v1:trvkF7M9HprVOr0g:NfyB9v3wQCMqhMnLLrtPpUjKDJBb+orDQA8HmJCnCL4bCy/A+32zY8RYe12hTb0XcntFCTmwQtBTMRF7AnrHPpMlidmDsF3p7nrLot8l8GJrxsnG9/XDSnc2EUjlgh1NMrjSPiB48SUA1+9+amtag/fsKcFSJ8IWz1pR3rJHaTJLwAgfJ2IjmwF2ft6XnYQPCLdsYAxfc9s+Zhs4engmn2kU5ZIBHOYhvzejrb0zyowuRMkEepLttZigQn5uxdDH+X0zVe2SpvMEi8I2mL0+3AfALbhqJtq4gDHpmUj9GYmqic8haCzgAnZyBMB1MAIamiIqxfKcKPXeRTxwWOcFYGRoU5XV7O+6N/z8b3AQ6q+dxe3Ui2C4bTknFH71YHmGHVnDdxOTeBYNMmW3U9vMUBie5RO/PezNjcnfsxu75DHZmJUVwy3itpeL76dbnaGl6FEzqAbwtlNI8ZQIKYnunNQJsDsiwqoODZ5JGwZi/Nh6fShxwF28EQnj/9TuO45rOFGloKvJ89aCtim8FQSoWwWzlpr5oiMQaX6IagwNYd+TPt/Gp8dZm1bb741dgx5v9jmhfbwF7gCfSdNnoaXF1Yq2FjMpR57LgbvUdSIwAUh7Hxe6ImhA+Zv/7Eu+xRwhJymqm9gET+4et1pNgow0Wr15R8svPevL3zOaGPejQFEI/PIAmLJeaFNONoCcsPxvjdw9prjSMi8qKUG+WCECbH8f7ICESuv6lx0FRpTO4vemYJOheFjyzf/uQNeSf5TH+UIP1yLv0PCT4BGdSkey6mUB4YcBBM2g4wUbysc8LdgQiQhMnowE/cMDOXX8bxDtP/WopmFuKRGl7mW2sHtBeHsCIF3chBO81n/egwuH9MPtkDSnbMkB08HhBOgnd5vPZvLuZzSjIWMZRRWPvBKEwpB9WytqYNSR+oXNK7w7wcMaDpZG609RLXR+WNquS6UTGb5nisa68pEQJHn2iAvMBeYJIDDKb2XyFGGiQkYpupY3s0u2Hc1O8TnHDUCfSF6rVHMKzSKtYsGYDFOZC7dxkE4bW3k15EL0FsAg8I2G1T58gofv+vgSWHiZGjh35JoB011kLaZpM5P1O60l3f51K4GXqjAdXYOWD2/cvaycAMrElUO0v3qAWbPeEG53AWpAbLMwNFjB7TDpR/WGRLRlxJnnqrwa7LeakmBTLyMq3FgS1d3YhGVUYONezN74wlnTva5DWe7qfDivpcqOLcqtSLOMgAU/+5NWgyeDyYModQxUEWSj18O8SwgEuYMZa2V9YHjTm6vH7TVSLPkfCftL8/FEFCvIXoIgCRn1NmrMhQHYBDfKGwN51yUJUh+Idbx5LkwdXT2Rz2cGRArjJu0V0kFP8R8ZaYSK60aMjcke0oVzLQcmhUeibED4ZYs/GBmQ+xcAD9sNfIQ0gaAT22Wal/wzyp+u933WN87ARWeMkm50a2FAc1X2MOWZSi+5AVxGEq54+/Mk3+F8AQd9WNVopihoHRls2qvKEhovXVI34NiELukpwL3h55OmHpaPDftlhyVeX/oHWtaFXbMheMPFBc2g860KEPVyKY9le2XWNyusYQyVFaprORQSSBuIOuqZeokVuISBHKC2Tb+r0hRaEKJzaQk0D8aNfzL6w4jKYUvPJlfixWAZNeZ8dE+vlQWWO+wrJlZkyXj7RjdF64Y9ljDKHid1ikm8v/ZdbnT6MOS3IrIK+JVocgW1pl5nzOLKvymvkE04TilhD0DRsQTAtvmddMQfwpEAz9kZ1N2GNCRA58ZOmo0FABTIMm2vU4v6jbyEkTyBSfoacCWr1oaORaIWyKwnKQ2I+t2If+tdMJ3QBzDxm+x1PYTwaFeXCTp/48zgIaETbRNdoaVtLFXiCpkDXq1VhjxF0xzXlx9vXaJ+JvImIZzJePBPnUejqPXeRiv5fT69St4iD7gPser1eyyHByR5Fnaa850CDBvT8uGYdTf+Q6Nc9S/TMl1Wu36cRIxq392/CSEuLQfWAF1PCwZ2oIivwbzAIFxurEYAS7OK9RHHPZDFw9aG1e/A93R91Z9AIP6M3s1DmoobmhMmuZPIStumEMcYebvjWVyLrNkMuRR88SEkCbK4bxOMj6hh7QoaBIpWlEDfkp90oUg5R430FKUrPhGSUluTUVx+Wssn47yGOCughMUqgkV2dpDAgRc4vxn7yO8JxIO72BgPYV+l4zKYfjuQ7KE819cZIV0nDoFh5Kbmm3dGDFAL+kB9wuj0pSLk59X8JusN6fFO1DAmdRuKktBcp03zbeR5Avfu4zXtquKcL9f6lVVF47dFcdZzbcwtV5EEBgf74LSsIR49fAFA9Ro9NzGUbZFjSki2GVUXxyv4Ur34iKQB5BI8u1zqineRtyf10acujiDFuJrQnLnql81vi1yt8VQjS9eNNB0cl/vNCl4/bXHFSVteBduE9QMjB+OkMcLuxrlfF3S0nPSZvBqFU67dVNPoxchwNyhgxKdc80ZN3T+s3jgddF21KMHnKezJIBLvmve/e8ZRpWHpqFevR7le9w7aXNuzNZbbAS3NbhFLkBDwTkqNtN9xn3C3aSiMQqtfvKJ9IpZWNrD34NXaB1Gerjqn0GL2qj4VhbibJczFVIR4e47A2VwDVy2W40XbsFp8f36J3aOEhmYlTYmkqNksFH7fDBfbwtVymj1g0xMBVx/SDZb7LSUDiOE8HvfepAWO86LUoahOZpkk9RC/traeiyfGT15jKclkRsKaSlE3RgISkVUEdJT/GJPalI5npH504Ds3ksm1le7O1sW0A17LUj2XjducNlq1EGe+KsLuwqf+KX0pHZwWUvhJggYnQL5AY64H7WfnmdcfmlQFomKQ+e83NViklayprXpzXx/dSjHpUtl9PPk+pzs7Erp8MxN3cqR7M3FqsmnZtI6Fxua26pSPWHmS3KH9O7DeJ6Owj+pD4RH5nCwO29OHZN1+nHLoL/IbHENFjbbU7eZreKMvDMHkBIwGRyN5RZ5h/5RWD/e2qE0R/u6u+2uKmB70NqE4+NIfkbis59EWVsapVBo9UYiZFPhsJ8oauTFtLMjt641a5PpIdsGnqy2lPjKsatwTfBqaEeIJj6TyyPxtrzM09a1eLPI0YYubw/XTaeODyTB1fjpzNFjoXRjkCEolginTMF7gUkspB4Npo2zxctHJIOz7WAZpZThxq9XmqAw3G6ls3D3PkYvOQRoOVvvJ2rSMgiy5SqlPW7+mExWbxEbKV/Wf38c2uCWJNugfFs0nHHSBv5+xXyYLxaT1pHVA1rYkQow6Rrwii+x41WG/3+dqr4iM9Pb5EdTQcUXJrEqEhWogILQoQrmu40ejxQcjSS1RtNWEhcuRmgxAqyXDnyrS3NGhaAJHmGqP8+m6lIqUSQ7T5j26DV4lK1JrYuQ89DUrbfpH0J9mCK9bJ6R5O7GmQObNBCLff3NW1qhBwxqJTAbbNa0ifkaXEExsLzvEHuXEKFjuBXb82UcfpH49ihTLsDkGWPx54YQJ7K29Lb2Lk23YgAhf4LaDIO9PwfZudGxpeJQYC3BwsJNfdy2B441xkdpGa33N8Et88DHf094YkMRnT+2FOPH0qmfxTYf2"
                         },
                         "version": "3.22.1"
                     },
@@ -1018,240 +1486,6 @@
                             "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::nodepool-sa"
                         ],
                         "nodeCount": null
-                    }
-                },
-                {
-                    "urn": "urn:pulumi:dev::infra::gcp:projects/iAMBinding:IAMBinding::nodepool-sa-iam-binding",
-                    "custom": true,
-                    "id": "prototype-infra/roles/container.nodeServiceAccount",
-                    "type": "gcp:projects/iAMBinding:IAMBinding",
-                    "inputs": {
-                        "__defaults": [],
-                        "members": [
-                            "serviceAccount:cluster-512ef9c-np-1-sa@prototype-infra.iam.gserviceaccount.com"
-                        ],
-                        "project": "prototype-infra",
-                        "role": "roles/container.nodeServiceAccount"
-                    },
-                    "outputs": {
-                        "condition": null,
-                        "etag": "BwXtHmbsy8A=",
-                        "id": "prototype-infra/roles/container.nodeServiceAccount",
-                        "members": [
-                            "serviceAccount:cluster-512ef9c-np-1-sa@prototype-infra.iam.gserviceaccount.com"
-                        ],
-                        "project": "prototype-infra",
-                        "role": "roles/container.nodeServiceAccount"
-                    },
-                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
-                    "dependencies": [
-                        "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::nodepool-sa"
-                    ],
-                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::83d3ce7f-c5dc-48fa-b7ca-c75bba669b7e",
-                    "propertyDependencies": {
-                        "members": [
-                            "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::nodepool-sa"
-                        ],
-                        "project": null,
-                        "role": null
-                    }
-                },
-                {
-                    "urn": "urn:pulumi:dev::infra::kubernetes:helm.sh/v3:Release::ingress-nginx",
-                    "custom": true,
-                    "id": "default/ingress-nginx-3eb0d62b",
-                    "type": "kubernetes:helm.sh/v3:Release",
-                    "inputs": {
-                        "atomic": false,
-                        "chart": "ingress-nginx",
-                        "cleanupOnFail": false,
-                        "createNamespace": false,
-                        "dependencyUpdate": false,
-                        "description": "",
-                        "devel": false,
-                        "disableCRDHooks": false,
-                        "disableOpenapiValidation": false,
-                        "disableWebhooks": false,
-                        "forceUpdate": false,
-                        "keyring": "",
-                        "lint": false,
-                        "name": "ingress-nginx-3eb0d62b",
-                        "namespace": "default",
-                        "postrender": "",
-                        "recreatePods": false,
-                        "renderSubchartNotes": false,
-                        "replace": false,
-                        "repositoryOpts": {
-                            "caFile": "",
-                            "certFile": "",
-                            "keyFile": "",
-                            "password": "",
-                            "repo": "https://kubernetes.github.io/ingress-nginx",
-                            "username": ""
-                        },
-                        "resetValues": false,
-                        "resourceNames": {
-                            "ClusterRole.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
-                                "ingress-nginx-3eb0d62b",
-                                "ingress-nginx-3eb0d62b-admission"
-                            ],
-                            "ClusterRoleBinding.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
-                                "ingress-nginx-3eb0d62b",
-                                "ingress-nginx-3eb0d62b-admission"
-                            ],
-                            "ConfigMap/v1": [
-                                "default/ingress-nginx-3eb0d62b-controller"
-                            ],
-                            "Deployment.apps/apps/v1": [
-                                "default/ingress-nginx-3eb0d62b-controller"
-                            ],
-                            "IngressClass.networking.k8s.io/networking.k8s.io/v1": [
-                                "nginx"
-                            ],
-                            "Job.batch/batch/v1": [
-                                "default/ingress-nginx-3eb0d62b-admission-create",
-                                "default/ingress-nginx-3eb0d62b-admission-patch"
-                            ],
-                            "Role.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
-                                "default/ingress-nginx-3eb0d62b",
-                                "default/ingress-nginx-3eb0d62b-admission"
-                            ],
-                            "RoleBinding.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
-                                "default/ingress-nginx-3eb0d62b",
-                                "default/ingress-nginx-3eb0d62b-admission"
-                            ],
-                            "Service/v1": [
-                                "default/ingress-nginx-3eb0d62b-controller",
-                                "default/ingress-nginx-3eb0d62b-controller-admission"
-                            ],
-                            "ServiceAccount/v1": [
-                                "default/ingress-nginx-3eb0d62b",
-                                "default/ingress-nginx-3eb0d62b-admission"
-                            ],
-                            "ValidatingWebhookConfiguration.admissionregistration.k8s.io/admissionregistration.k8s.io/v1": [
-                                "ingress-nginx-3eb0d62b-admission"
-                            ]
-                        },
-                        "reuseValues": false,
-                        "skipAwait": false,
-                        "skipCrds": false,
-                        "timeout": 300,
-                        "values": {
-                            "controller": {
-                                "service": {
-                                    "nodePorts": {
-                                        "http": 32080,
-                                        "https": 32443
-                                    },
-                                    "type": "NodePort"
-                                }
-                            }
-                        },
-                        "verify": false,
-                        "version": "",
-                        "waitForJobs": false
-                    },
-                    "outputs": {
-                        "__inputs": {
-                            "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
-                            "ciphertext": "v1:WLLLm0zCc2/wLb3z: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"
-                        },
-                        "atomic": false,
-                        "chart": "ingress-nginx",
-                        "cleanupOnFail": false,
-                        "createNamespace": false,
-                        "dependencyUpdate": false,
-                        "description": "",
-                        "devel": false,
-                        "disableCRDHooks": false,
-                        "disableOpenapiValidation": false,
-                        "disableWebhooks": false,
-                        "forceUpdate": false,
-                        "keyring": "",
-                        "lint": false,
-                        "name": "ingress-nginx-3eb0d62b",
-                        "namespace": "default",
-                        "postrender": "",
-                        "recreatePods": false,
-                        "renderSubchartNotes": false,
-                        "replace": false,
-                        "repositoryOpts": {
-                            "caFile": "",
-                            "certFile": "",
-                            "keyFile": "",
-                            "password": "",
-                            "repo": "https://kubernetes.github.io/ingress-nginx",
-                            "username": ""
-                        },
-                        "resetValues": false,
-                        "resourceNames": {
-                            "ClusterRole.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
-                                "ingress-nginx-3eb0d62b"
-                            ],
-                            "ClusterRoleBinding.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
-                                "ingress-nginx-3eb0d62b"
-                            ],
-                            "ConfigMap/v1": [
-                                "default/ingress-nginx-3eb0d62b-controller"
-                            ],
-                            "Deployment.apps/apps/v1": [
-                                "default/ingress-nginx-3eb0d62b-controller"
-                            ],
-                            "IngressClass.networking.k8s.io/networking.k8s.io/v1": [
-                                "nginx"
-                            ],
-                            "Role.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
-                                "default/ingress-nginx-3eb0d62b"
-                            ],
-                            "RoleBinding.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
-                                "default/ingress-nginx-3eb0d62b"
-                            ],
-                            "Service/v1": [
-                                "default/ingress-nginx-3eb0d62b-controller",
-                                "default/ingress-nginx-3eb0d62b-controller-admission"
-                            ],
-                            "ServiceAccount/v1": [
-                                "default/ingress-nginx-3eb0d62b"
-                            ],
-                            "ValidatingWebhookConfiguration.admissionregistration.k8s.io/admissionregistration.k8s.io/v1": [
-                                "ingress-nginx-3eb0d62b-admission"
-                            ]
-                        },
-                        "reuseValues": false,
-                        "skipAwait": false,
-                        "skipCrds": false,
-                        "status": {
-                            "appVersion": "1.5.1",
-                            "chart": "ingress-nginx",
-                            "name": "ingress-nginx-3eb0d62b",
-                            "namespace": "default",
-                            "revision": 1,
-                            "status": "deployed",
-                            "version": "4.4.0"
-                        },
-                        "timeout": 300,
-                        "values": {
-                            "controller": {
-                                "service": {
-                                    "nodePorts": {
-                                        "http": 32080,
-                                        "https": 32443
-                                    },
-                                    "type": "NodePort"
-                                }
-                            }
-                        },
-                        "verify": false,
-                        "version": "4.4.0",
-                        "waitForJobs": false
-                    },
-                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
-                    "provider": "urn:pulumi:dev::infra::pulumi:providers:kubernetes::k8s-provider::41c3f6a8-0649-4a29-86d1-564cae8e4e1e",
-                    "propertyDependencies": {
-                        "chart": null,
-                        "compat": null,
-                        "repositoryOpts": null,
-                        "values": null
                     }
                 },
                 {
@@ -1396,180 +1630,201 @@
                     }
                 },
                 {
-                    "urn": "urn:pulumi:dev::infra::kubernetes:networking.k8s.io/v1:Ingress::sample-app-ingress",
+                    "urn": "urn:pulumi:dev::infra::kubernetes:helm.sh/v3:Release::ingress-nginx",
                     "custom": true,
-                    "id": "default/sample-app-ingress",
-                    "type": "kubernetes:networking.k8s.io/v1:Ingress",
+                    "id": "default/ingress-nginx-3eb0d62b",
+                    "type": "kubernetes:helm.sh/v3:Release",
                     "inputs": {
-                        "apiVersion": "networking.k8s.io/v1",
-                        "kind": "Ingress",
-                        "metadata": {
-                            "labels": {
-                                "app.kubernetes.io/managed-by": "pulumi"
-                            },
-                            "name": "sample-app-ingress",
-                            "namespace": "default"
+                        "atomic": false,
+                        "chart": "ingress-nginx",
+                        "cleanupOnFail": false,
+                        "createNamespace": false,
+                        "dependencyUpdate": false,
+                        "description": "",
+                        "devel": false,
+                        "disableCRDHooks": false,
+                        "disableOpenapiValidation": false,
+                        "disableWebhooks": false,
+                        "forceUpdate": false,
+                        "keyring": "",
+                        "lint": false,
+                        "name": "ingress-nginx-3eb0d62b",
+                        "namespace": "default",
+                        "postrender": "",
+                        "recreatePods": false,
+                        "renderSubchartNotes": false,
+                        "replace": false,
+                        "repositoryOpts": {
+                            "caFile": "",
+                            "certFile": "",
+                            "keyFile": "",
+                            "password": "",
+                            "repo": "https://kubernetes.github.io/ingress-nginx",
+                            "username": ""
                         },
-                        "spec": {
-                            "ingressClassName": "nginx",
-                            "rules": [
-                                {
-                                    "host": "sampleapp.poc.epdndo.com",
-                                    "http": {
-                                        "paths": [
-                                            {
-                                                "backend": {
-                                                    "service": {
-                                                        "name": "sample-app",
-                                                        "port": {
-                                                            "number": 80
-                                                        }
-                                                    }
-                                                },
-                                                "path": "/",
-                                                "pathType": "Prefix"
-                                            }
-                                        ]
-                                    }
-                                }
+                        "resetValues": false,
+                        "resourceNames": {
+                            "ClusterRole.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
+                                "ingress-nginx-3eb0d62b",
+                                "ingress-nginx-3eb0d62b-admission"
+                            ],
+                            "ClusterRoleBinding.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
+                                "ingress-nginx-3eb0d62b",
+                                "ingress-nginx-3eb0d62b-admission"
+                            ],
+                            "ConfigMap/v1": [
+                                "default/ingress-nginx-3eb0d62b-controller"
+                            ],
+                            "Deployment.apps/apps/v1": [
+                                "default/ingress-nginx-3eb0d62b-controller"
+                            ],
+                            "IngressClass.networking.k8s.io/networking.k8s.io/v1": [
+                                "nginx"
+                            ],
+                            "Job.batch/batch/v1": [
+                                "default/ingress-nginx-3eb0d62b-admission-create",
+                                "default/ingress-nginx-3eb0d62b-admission-patch"
+                            ],
+                            "Role.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
+                                "default/ingress-nginx-3eb0d62b",
+                                "default/ingress-nginx-3eb0d62b-admission"
+                            ],
+                            "RoleBinding.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
+                                "default/ingress-nginx-3eb0d62b",
+                                "default/ingress-nginx-3eb0d62b-admission"
+                            ],
+                            "Service/v1": [
+                                "default/ingress-nginx-3eb0d62b-controller",
+                                "default/ingress-nginx-3eb0d62b-controller-admission"
+                            ],
+                            "ServiceAccount/v1": [
+                                "default/ingress-nginx-3eb0d62b",
+                                "default/ingress-nginx-3eb0d62b-admission"
+                            ],
+                            "ValidatingWebhookConfiguration.admissionregistration.k8s.io/admissionregistration.k8s.io/v1": [
+                                "ingress-nginx-3eb0d62b-admission"
                             ]
-                        }
+                        },
+                        "reuseValues": false,
+                        "skipAwait": false,
+                        "skipCrds": false,
+                        "timeout": 300,
+                        "values": {
+                            "controller": {
+                                "service": {
+                                    "nodePorts": {
+                                        "http": 32080,
+                                        "https": 32443
+                                    },
+                                    "type": "NodePort"
+                                }
+                            }
+                        },
+                        "verify": false,
+                        "version": "",
+                        "waitForJobs": false
                     },
                     "outputs": {
-                        "__fieldManager": "pulumi-kubernetes-7364feef",
-                        "__initialApiVersion": "networking.k8s.io/v1",
                         "__inputs": {
-                            "apiVersion": "networking.k8s.io/v1",
-                            "kind": "Ingress",
-                            "metadata": {
-                                "labels": {
-                                    "app.kubernetes.io/managed-by": "pulumi"
-                                },
-                                "name": "sample-app-ingress",
-                                "namespace": "default"
-                            },
-                            "spec": {
-                                "ingressClassName": "nginx",
-                                "rules": [
-                                    {
-                                        "host": "sampleapp.poc.epdndo.com",
-                                        "http": {
-                                            "paths": [
-                                                {
-                                                    "backend": {
-                                                        "service": {
-                                                            "name": "sample-app",
-                                                            "port": {
-                                                                "number": 80
-                                                            }
-                                                        }
-                                                    },
-                                                    "path": "/",
-                                                    "pathType": "Prefix"
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
-                            }
+                            "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
+                            "ciphertext": "v1:e8F5YtJXR0/fJdF9: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"
                         },
-                        "apiVersion": "networking.k8s.io/v1",
-                        "kind": "Ingress",
-                        "metadata": {
-                            "annotations": {
-                                "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"networking.k8s.io/v1\",\"kind\":\"Ingress\",\"metadata\":{\"labels\":{\"app.kubernetes.io/managed-by\":\"pulumi\"},\"name\":\"sample-app-ingress\",\"namespace\":\"default\"},\"spec\":{\"ingressClassName\":\"nginx\",\"rules\":[{\"host\":\"sampleapp.poc.epdndo.com\",\"http\":{\"paths\":[{\"backend\":{\"service\":{\"name\":\"sample-app\",\"port\":{\"number\":80}}},\"path\":\"/\",\"pathType\":\"Prefix\"}]}}]}}\n"
-                            },
-                            "creationTimestamp": "2022-11-10T14:07:49Z",
-                            "generation": 1,
-                            "labels": {
-                                "app.kubernetes.io/managed-by": "pulumi"
-                            },
-                            "managedFields": [
-                                {
-                                    "apiVersion": "networking.k8s.io/v1",
-                                    "fieldsType": "FieldsV1",
-                                    "fieldsV1": {
-                                        "f:metadata": {
-                                            "f:annotations": {
-                                                ".": {},
-                                                "f:kubectl.kubernetes.io/last-applied-configuration": {}
-                                            },
-                                            "f:labels": {
-                                                ".": {},
-                                                "f:app.kubernetes.io/managed-by": {}
-                                            }
-                                        },
-                                        "f:spec": {
-                                            "f:ingressClassName": {},
-                                            "f:rules": {}
-                                        }
-                                    },
-                                    "manager": "pulumi-resource-kubernetes",
-                                    "operation": "Update",
-                                    "time": "2022-11-10T14:07:49Z"
-                                },
-                                {
-                                    "apiVersion": "networking.k8s.io/v1",
-                                    "fieldsType": "FieldsV1",
-                                    "fieldsV1": {
-                                        "f:status": {
-                                            "f:loadBalancer": {
-                                                "f:ingress": {}
-                                            }
-                                        }
-                                    },
-                                    "manager": "nginx-ingress-controller",
-                                    "operation": "Update",
-                                    "subresource": "status",
-                                    "time": "2022-11-10T14:12:20Z"
-                                }
+                        "atomic": false,
+                        "chart": "ingress-nginx",
+                        "cleanupOnFail": false,
+                        "createNamespace": false,
+                        "dependencyUpdate": false,
+                        "description": "",
+                        "devel": false,
+                        "disableCRDHooks": false,
+                        "disableOpenapiValidation": false,
+                        "disableWebhooks": false,
+                        "forceUpdate": false,
+                        "keyring": "",
+                        "lint": false,
+                        "name": "ingress-nginx-3eb0d62b",
+                        "namespace": "default",
+                        "postrender": "",
+                        "recreatePods": false,
+                        "renderSubchartNotes": false,
+                        "replace": false,
+                        "repositoryOpts": {
+                            "caFile": "",
+                            "certFile": "",
+                            "keyFile": "",
+                            "password": "",
+                            "repo": "https://kubernetes.github.io/ingress-nginx",
+                            "username": ""
+                        },
+                        "resetValues": false,
+                        "resourceNames": {
+                            "ClusterRole.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
+                                "ingress-nginx-3eb0d62b"
                             ],
-                            "name": "sample-app-ingress",
-                            "namespace": "default",
-                            "resourceVersion": "6851",
-                            "uid": "265b42c5-2653-4b5f-bc58-eca01e289abe"
-                        },
-                        "spec": {
-                            "ingressClassName": "nginx",
-                            "rules": [
-                                {
-                                    "host": "sampleapp.poc.epdndo.com",
-                                    "http": {
-                                        "paths": [
-                                            {
-                                                "backend": {
-                                                    "service": {
-                                                        "name": "sample-app",
-                                                        "port": {
-                                                            "number": 80
-                                                        }
-                                                    }
-                                                },
-                                                "path": "/",
-                                                "pathType": "Prefix"
-                                            }
-                                        ]
-                                    }
-                                }
+                            "ClusterRoleBinding.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
+                                "ingress-nginx-3eb0d62b"
+                            ],
+                            "ConfigMap/v1": [
+                                "default/ingress-nginx-3eb0d62b-controller"
+                            ],
+                            "Deployment.apps/apps/v1": [
+                                "default/ingress-nginx-3eb0d62b-controller"
+                            ],
+                            "IngressClass.networking.k8s.io/networking.k8s.io/v1": [
+                                "nginx"
+                            ],
+                            "Role.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
+                                "default/ingress-nginx-3eb0d62b"
+                            ],
+                            "RoleBinding.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
+                                "default/ingress-nginx-3eb0d62b"
+                            ],
+                            "Service/v1": [
+                                "default/ingress-nginx-3eb0d62b-controller",
+                                "default/ingress-nginx-3eb0d62b-controller-admission"
+                            ],
+                            "ServiceAccount/v1": [
+                                "default/ingress-nginx-3eb0d62b"
+                            ],
+                            "ValidatingWebhookConfiguration.admissionregistration.k8s.io/admissionregistration.k8s.io/v1": [
+                                "ingress-nginx-3eb0d62b-admission"
                             ]
                         },
+                        "reuseValues": false,
+                        "skipAwait": false,
+                        "skipCrds": false,
                         "status": {
-                            "loadBalancer": {
-                                "ingress": [
-                                    {
-                                        "ip": "10.152.5.45"
-                                    }
-                                ]
+                            "appVersion": "1.5.1",
+                            "chart": "ingress-nginx",
+                            "name": "ingress-nginx-3eb0d62b",
+                            "namespace": "default",
+                            "revision": 1,
+                            "status": "deployed",
+                            "version": "4.4.0"
+                        },
+                        "timeout": 300,
+                        "values": {
+                            "controller": {
+                                "service": {
+                                    "nodePorts": {
+                                        "http": 32080,
+                                        "https": 32443
+                                    },
+                                    "type": "NodePort"
+                                }
                             }
-                        }
+                        },
+                        "verify": false,
+                        "version": "4.4.0",
+                        "waitForJobs": false
                     },
                     "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
                     "provider": "urn:pulumi:dev::infra::pulumi:providers:kubernetes::k8s-provider::41c3f6a8-0649-4a29-86d1-564cae8e4e1e",
                     "propertyDependencies": {
-                        "apiVersion": null,
-                        "kind": null,
-                        "metadata": null,
-                        "spec": null
+                        "chart": null,
+                        "compat": null,
+                        "repositoryOpts": null,
+                        "values": null
                     }
                 },
                 {
@@ -1896,251 +2151,209 @@
                     }
                 },
                 {
-                    "urn": "urn:pulumi:dev::infra::gcp:compute/instance:Instance::caddy",
+                    "urn": "urn:pulumi:dev::infra::kubernetes:networking.k8s.io/v1:Ingress::sample-app-ingress",
                     "custom": true,
-                    "id": "projects/prototype-infra/zones/us-central1-a/instances/caddy-cc3df67",
-                    "type": "gcp:compute/instance:Instance",
+                    "id": "default/sample-app-ingress",
+                    "type": "kubernetes:networking.k8s.io/v1:Ingress",
                     "inputs": {
-                        "__defaults": [
-                            "canIpForward",
-                            "deletionProtection",
-                            "name"
-                        ],
-                        "bootDisk": {
-                            "__defaults": [
-                                "autoDelete",
-                                "mode"
-                            ],
-                            "autoDelete": true,
-                            "initializeParams": {
-                                "__defaults": [],
-                                "image": "projects/cos-cloud/global/images/family/cos-stable",
-                                "size": 10
-                            },
-                            "mode": "READ_WRITE"
-                        },
-                        "canIpForward": false,
-                        "deletionProtection": false,
-                        "machineType": "e2-small",
+                        "apiVersion": "networking.k8s.io/v1",
+                        "kind": "Ingress",
                         "metadata": {
-                            "__defaults": [],
-                            "gce-container-declaration": "spec:\n  containers:\n  - image: ghcr.io/persol-epdndo/prototype-infra-poc/caddy:7\n    name: caddy\n    env:\n    - name: DOMAIN_NAMES\n      value: sampleapp.poc.epdndo.com\n    securityContext:\n      privileged: false\n    stdin: false\n    tty: false\n    volumeMounts: []\n  volumes: []\n  restartPolicy: Always\n",
-                            "google-logging-enabled": "true",
-                            "google-monitoring-enabled": "true"
+                            "labels": {
+                                "app.kubernetes.io/managed-by": "pulumi"
+                            },
+                            "name": "sample-app-ingress",
+                            "namespace": "default"
                         },
-                        "name": "caddy-cc3df67",
-                        "networkInterfaces": [
-                            {
-                                "__defaults": [],
-                                "accessConfigs": [
-                                    {
-                                        "__defaults": [],
-                                        "natIp": "34.28.183.164"
+                        "spec": {
+                            "ingressClassName": "nginx",
+                            "rules": [
+                                {
+                                    "host": "sampleapp.poc.epdndo.com",
+                                    "http": {
+                                        "paths": [
+                                            {
+                                                "backend": {
+                                                    "service": {
+                                                        "name": "sample-app",
+                                                        "port": {
+                                                            "number": 80
+                                                        }
+                                                    }
+                                                },
+                                                "path": "/",
+                                                "pathType": "Prefix"
+                                            }
+                                        ]
                                     }
-                                ],
-                                "network": "projects/prototype-infra/global/networks/network-b04337a",
-                                "subnetwork": "projects/prototype-infra/regions/us-central1/subnetworks/subnet-e66b565"
-                            }
-                        ],
-                        "tags": [
-                            "http-server",
-                            "https-server",
-                            "allow-ssh"
-                        ],
-                        "zone": "us-central1-a"
+                                }
+                            ]
+                        }
                     },
                     "outputs": {
-                        "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000},\"schema_version\":\"6\"}",
-                        "advancedMachineFeatures": null,
-                        "attachedDisks": [],
-                        "bootDisk": {
-                            "autoDelete": true,
-                            "deviceName": "persistent-disk-0",
-                            "diskEncryptionKeyRaw": {
-                                "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
-                                "ciphertext": "v1:AWrcCFVTnMXLQcoK:IJd5sd2BEwDlWEalerj4FRl5"
+                        "__fieldManager": "pulumi-kubernetes-7364feef",
+                        "__initialApiVersion": "networking.k8s.io/v1",
+                        "__inputs": {
+                            "apiVersion": "networking.k8s.io/v1",
+                            "kind": "Ingress",
+                            "metadata": {
+                                "labels": {
+                                    "app.kubernetes.io/managed-by": "pulumi"
+                                },
+                                "name": "sample-app-ingress",
+                                "namespace": "default"
                             },
-                            "diskEncryptionKeySha256": "",
-                            "initializeParams": {
-                                "image": "https://www.googleapis.com/compute/beta/projects/cos-cloud/global/images/cos-stable-101-17162-40-25",
-                                "labels": {},
-                                "size": 10,
-                                "type": "pd-standard"
-                            },
-                            "kmsKeySelfLink": "",
-                            "mode": "READ_WRITE",
-                            "source": "https://www.googleapis.com/compute/v1/projects/prototype-infra/zones/us-central1-a/disks/caddy-cc3df67"
-                        },
-                        "canIpForward": false,
-                        "confidentialInstanceConfig": null,
-                        "cpuPlatform": "Intel Broadwell",
-                        "currentStatus": "RUNNING",
-                        "deletionProtection": false,
-                        "description": "",
-                        "enableDisplay": false,
-                        "guestAccelerators": [],
-                        "hostname": "",
-                        "id": "projects/prototype-infra/zones/us-central1-a/instances/caddy-cc3df67",
-                        "instanceId": "476487368673637951",
-                        "labelFingerprint": "42WmSpB8rSM=",
-                        "labels": {},
-                        "machineType": "e2-small",
-                        "metadata": {
-                            "gce-container-declaration": "spec:\n  containers:\n  - image: ghcr.io/persol-epdndo/prototype-infra-poc/caddy:7\n    name: caddy\n    env:\n    - name: DOMAIN_NAMES\n      value: sampleapp.poc.epdndo.com\n    securityContext:\n      privileged: false\n    stdin: false\n    tty: false\n    volumeMounts: []\n  volumes: []\n  restartPolicy: Always\n",
-                            "google-logging-enabled": "true",
-                            "google-monitoring-enabled": "true"
-                        },
-                        "metadataFingerprint": "hJpDUTDUhAo=",
-                        "minCpuPlatform": "",
-                        "name": "caddy-cc3df67",
-                        "networkInterfaces": [
-                            {
-                                "accessConfigs": [
+                            "spec": {
+                                "ingressClassName": "nginx",
+                                "rules": [
                                     {
-                                        "natIp": "34.28.183.164",
-                                        "networkTier": "PREMIUM",
-                                        "publicPtrDomainName": ""
+                                        "host": "sampleapp.poc.epdndo.com",
+                                        "http": {
+                                            "paths": [
+                                                {
+                                                    "backend": {
+                                                        "service": {
+                                                            "name": "sample-app",
+                                                            "port": {
+                                                                "number": 80
+                                                            }
+                                                        }
+                                                    },
+                                                    "path": "/",
+                                                    "pathType": "Prefix"
+                                                }
+                                            ]
+                                        }
                                     }
-                                ],
-                                "aliasIpRanges": [],
-                                "ipv6AccessConfigs": [],
-                                "ipv6AccessType": "",
-                                "name": "nic0",
-                                "network": "https://www.googleapis.com/compute/v1/projects/prototype-infra/global/networks/network-b04337a",
-                                "networkIp": "10.128.0.4",
-                                "nicType": "",
-                                "queueCount": 0,
-                                "stackType": "IPV4_ONLY",
-                                "subnetwork": "https://www.googleapis.com/compute/v1/projects/prototype-infra/regions/us-central1/subnetworks/subnet-e66b565",
-                                "subnetworkProject": "prototype-infra"
+                                ]
                             }
-                        ],
-                        "networkPerformanceConfig": null,
-                        "project": "prototype-infra",
-                        "reservationAffinity": null,
-                        "resourcePolicies": null,
-                        "scheduling": {
-                            "automaticRestart": true,
-                            "instanceTerminationAction": "",
-                            "minNodeCpus": 0,
-                            "nodeAffinities": [],
-                            "onHostMaintenance": "MIGRATE",
-                            "preemptible": false,
-                            "provisioningModel": "STANDARD"
                         },
-                        "scratchDisks": [],
-                        "selfLink": "https://www.googleapis.com/compute/v1/projects/prototype-infra/zones/us-central1-a/instances/caddy-cc3df67",
-                        "serviceAccount": null,
-                        "shieldedInstanceConfig": {
-                            "enableIntegrityMonitoring": true,
-                            "enableSecureBoot": false,
-                            "enableVtpm": true
+                        "apiVersion": "networking.k8s.io/v1",
+                        "kind": "Ingress",
+                        "metadata": {
+                            "annotations": {
+                                "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"networking.k8s.io/v1\",\"kind\":\"Ingress\",\"metadata\":{\"labels\":{\"app.kubernetes.io/managed-by\":\"pulumi\"},\"name\":\"sample-app-ingress\",\"namespace\":\"default\"},\"spec\":{\"ingressClassName\":\"nginx\",\"rules\":[{\"host\":\"sampleapp.poc.epdndo.com\",\"http\":{\"paths\":[{\"backend\":{\"service\":{\"name\":\"sample-app\",\"port\":{\"number\":80}}},\"path\":\"/\",\"pathType\":\"Prefix\"}]}}]}}\n"
+                            },
+                            "creationTimestamp": "2022-11-10T14:07:49Z",
+                            "generation": 1,
+                            "labels": {
+                                "app.kubernetes.io/managed-by": "pulumi"
+                            },
+                            "managedFields": [
+                                {
+                                    "apiVersion": "networking.k8s.io/v1",
+                                    "fieldsType": "FieldsV1",
+                                    "fieldsV1": {
+                                        "f:metadata": {
+                                            "f:annotations": {
+                                                ".": {},
+                                                "f:kubectl.kubernetes.io/last-applied-configuration": {}
+                                            },
+                                            "f:labels": {
+                                                ".": {},
+                                                "f:app.kubernetes.io/managed-by": {}
+                                            }
+                                        },
+                                        "f:spec": {
+                                            "f:ingressClassName": {},
+                                            "f:rules": {}
+                                        }
+                                    },
+                                    "manager": "pulumi-resource-kubernetes",
+                                    "operation": "Update",
+                                    "time": "2022-11-10T14:07:49Z"
+                                },
+                                {
+                                    "apiVersion": "networking.k8s.io/v1",
+                                    "fieldsType": "FieldsV1",
+                                    "fieldsV1": {
+                                        "f:status": {
+                                            "f:loadBalancer": {
+                                                "f:ingress": {}
+                                            }
+                                        }
+                                    },
+                                    "manager": "nginx-ingress-controller",
+                                    "operation": "Update",
+                                    "subresource": "status",
+                                    "time": "2022-11-10T14:12:20Z"
+                                }
+                            ],
+                            "name": "sample-app-ingress",
+                            "namespace": "default",
+                            "resourceVersion": "6851",
+                            "uid": "265b42c5-2653-4b5f-bc58-eca01e289abe"
                         },
-                        "tags": [
-                            "https-server",
-                            "allow-ssh",
-                            "http-server"
-                        ],
-                        "tagsFingerprint": "AjBareu59_s=",
-                        "zone": "us-central1-a"
+                        "spec": {
+                            "ingressClassName": "nginx",
+                            "rules": [
+                                {
+                                    "host": "sampleapp.poc.epdndo.com",
+                                    "http": {
+                                        "paths": [
+                                            {
+                                                "backend": {
+                                                    "service": {
+                                                        "name": "sample-app",
+                                                        "port": {
+                                                            "number": 80
+                                                        }
+                                                    }
+                                                },
+                                                "path": "/",
+                                                "pathType": "Prefix"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        },
+                        "status": {
+                            "loadBalancer": {
+                                "ingress": [
+                                    {
+                                        "ip": "10.152.5.45"
+                                    }
+                                ]
+                            }
+                        }
                     },
                     "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
-                    "dependencies": [
-                        "urn:pulumi:dev::infra::gcp:compute/network:Network::network",
-                        "urn:pulumi:dev::infra::gcp:compute/subnetwork:Subnetwork::subnet",
-                        "urn:pulumi:dev::infra::gcp:compute/address:Address::caddy-ip"
-                    ],
-                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::83d3ce7f-c5dc-48fa-b7ca-c75bba669b7e",
+                    "provider": "urn:pulumi:dev::infra::pulumi:providers:kubernetes::k8s-provider::41c3f6a8-0649-4a29-86d1-564cae8e4e1e",
                     "propertyDependencies": {
-                        "bootDisk": null,
-                        "machineType": null,
+                        "apiVersion": null,
+                        "kind": null,
                         "metadata": null,
-                        "networkInterfaces": [
-                            "urn:pulumi:dev::infra::gcp:compute/network:Network::network",
-                            "urn:pulumi:dev::infra::gcp:compute/subnetwork:Subnetwork::subnet",
-                            "urn:pulumi:dev::infra::gcp:compute/address:Address::caddy-ip"
-                        ],
-                        "tags": null,
-                        "zone": null
+                        "spec": null
                     }
                 }
             ],
             "pending_operations": [
                 {
                     "resource": {
-                        "urn": "urn:pulumi:dev::infra::gcp:compute/instance:Instance::caddy",
+                        "urn": "urn:pulumi:dev::infra::gcp:projects/iAMMember:IAMMember::nodepool-sa-node-service-account-iam-binding",
                         "custom": true,
-                        "type": "gcp:compute/instance:Instance",
+                        "type": "gcp:projects/iAMMember:IAMMember",
                         "inputs": {
-                            "__defaults": [
-                                "canIpForward",
-                                "deletionProtection",
-                                "name"
-                            ],
-                            "bootDisk": {
-                                "__defaults": [
-                                    "autoDelete",
-                                    "mode"
-                                ],
-                                "autoDelete": true,
-                                "initializeParams": {
-                                    "__defaults": [],
-                                    "image": "projects/cos-cloud/global/images/family/cos-stable",
-                                    "size": 10
-                                },
-                                "mode": "READ_WRITE"
-                            },
-                            "canIpForward": false,
-                            "deletionProtection": false,
-                            "machineType": "e2-small",
-                            "metadata": {
-                                "__defaults": [],
-                                "gce-container-declaration": "spec:\n  containers:\n  - image: ghcr.io/persol-epdndo/prototype-infra-poc/caddy:7\n    name: caddy\n    env:\n    - name: DOMAIN_NAMES\n      value: sampleapp.poc.epdndo.com\n    securityContext:\n      privileged: false\n    stdin: false\n    tty: false\n    volumeMounts: []\n  volumes: []\n  restartPolicy: Always\n",
-                                "google-logging-enabled": "true",
-                                "google-monitoring-enabled": "true"
-                            },
-                            "name": "caddy-cc3df67",
-                            "networkInterfaces": [
-                                {
-                                    "__defaults": [],
-                                    "accessConfigs": [
-                                        {
-                                            "__defaults": [],
-                                            "natIp": "34.28.183.164"
-                                        }
-                                    ],
-                                    "network": "projects/prototype-infra/global/networks/network-b04337a",
-                                    "subnetwork": "projects/prototype-infra/regions/us-central1/subnetworks/subnet-e66b565"
-                                }
-                            ],
-                            "tags": [
-                                "allow-http",
-                                "allow-https",
-                                "allow-ssh"
-                            ],
-                            "zone": "us-central1-a"
+                            "__defaults": [],
+                            "member": "serviceAccount:cluster-512ef9c-np-1-sa@prototype-infra.iam.gserviceaccount.com",
+                            "project": "prototype-infra",
+                            "role": "roles/container.nodeServiceAccount"
                         },
                         "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
                         "dependencies": [
-                            "urn:pulumi:dev::infra::gcp:compute/network:Network::network",
-                            "urn:pulumi:dev::infra::gcp:compute/subnetwork:Subnetwork::subnet",
-                            "urn:pulumi:dev::infra::gcp:compute/address:Address::caddy-ip"
+                            "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::nodepool-sa"
                         ],
                         "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::83d3ce7f-c5dc-48fa-b7ca-c75bba669b7e",
                         "propertyDependencies": {
-                            "bootDisk": null,
-                            "machineType": null,
-                            "metadata": null,
-                            "networkInterfaces": [
-                                "urn:pulumi:dev::infra::gcp:compute/network:Network::network",
-                                "urn:pulumi:dev::infra::gcp:compute/subnetwork:Subnetwork::subnet",
-                                "urn:pulumi:dev::infra::gcp:compute/address:Address::caddy-ip"
+                            "member": [
+                                "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::nodepool-sa"
                             ],
-                            "tags": null,
-                            "zone": null
+                            "project": null,
+                            "role": null
                         }
                     },
-                    "type": "updating"
+                    "type": "creating"
                 }
             ]
         }

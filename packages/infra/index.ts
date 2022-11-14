@@ -89,10 +89,18 @@ const nodepoolSA = new gcp.serviceaccount.Account('nodepool-sa', {
   displayName: 'GKE Nodepool Service Account',
 })
 
-const nodepoolSABinding = new gcp.projects.IAMBinding('nodepool-sa-iam-binding', {
-  project: project,
-  members: [pulumi.interpolate`serviceAccount:${nodepoolSA.email}`],
-  role: 'roles/container.nodeServiceAccount',
+const nodepoolSARoles = [
+  {
+    name: 'node-service-account',
+    role: 'roles/container.nodeServiceAccount',
+  },
+]
+nodepoolSARoles.map((x) => {
+  new gcp.projects.IAMMember(`nodepool-sa-${x.name}-iam-binding`, {
+    project: project,
+    role: x.role,
+    member: pulumi.interpolate`serviceAccount:${nodepoolSA.email}`,
+  })
 })
 
 const nodeAllowMasterTcp8443Firewall = new gcp.compute.Firewall(
@@ -291,6 +299,37 @@ const allowSSH = new gcp.compute.Firewall('allow-ssh-firewall', {
   targetTags: ['allow-ssh'],
 })
 
+const caddySA = new gcp.serviceaccount.Account('caddy-sa', {
+  accountId: pulumi.interpolate`caddy-sa`,
+  displayName: 'Caddy Service Account',
+})
+
+const caddySARoles = [
+  {
+    name: 'compute-viewer',
+    role: 'roles/compute.viewer',
+  },
+  {
+    name: 'log-writer',
+    role: 'roles/logging.logWriter',
+  },
+  {
+    name: 'metric-writer',
+    role: 'roles/monitoring.metricWriter',
+  },
+  {
+    name: 'monitoring-viewer',
+    role: 'roles/monitoring.viewer',
+  },
+]
+caddySARoles.map((x) => {
+  new gcp.projects.IAMMember(`caddy-sa-${x.name}-iam-binding`, {
+    project: project,
+    role: x.role,
+    member: pulumi.interpolate`serviceAccount:${caddySA.email}`,
+  })
+})
+
 const caddy = new gcp.compute.Instance(
   'caddy',
   {
@@ -312,7 +351,7 @@ const caddy = new gcp.compute.Instance(
     metadata: {
       'gce-container-declaration': `spec:
   containers:
-  - image: ghcr.io/persol-epdndo/prototype-infra-poc/caddy:7
+  - image: ghcr.io/persol-epdndo/prototype-infra-poc/caddy:8
     name: caddy
     env:
     - name: DOMAIN_NAMES
@@ -329,6 +368,10 @@ const caddy = new gcp.compute.Instance(
       'google-monitoring-enabled': 'true',
     },
     tags: ['allow-http', 'allow-https', 'allow-ssh'],
+    serviceAccount: {
+      email: caddySA.email,
+      scopes: ['cloud-platform'],
+    },
   },
   {
     deleteBeforeReplace: true,
