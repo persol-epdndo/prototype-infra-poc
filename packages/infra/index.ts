@@ -9,7 +9,7 @@ const cfg = new pulumi.Config()
 const nodesPerZone = cfg.getNumber('nodesPerZone')
 const zones = gcp.compute.getZones()
 
-const domainNames = 'sampleapp.poc.epdndo.com'
+const domainNames = 'v3.poc.epdndo.com'
 
 const network = new gcp.compute.Network('network', {
   autoCreateSubnetworks: false,
@@ -125,7 +125,8 @@ const nodepool = new gcp.container.NodePool('nodepool', {
   nodeConfig: {
     spot: true,
     machineType: 'e2-small',
-    diskSizeGb: 20,
+    diskSizeGb: 16,
+    diskType: 'pd-standard',
     oauthScopes: ['https://www.googleapis.com/auth/cloud-platform'],
     serviceAccount: nodepoolSA.email,
     tags: ['allow-master-tcp-8334'],
@@ -159,12 +160,53 @@ users:
 
 const k8sProvider = new k8s.Provider('k8s-provider', {
   kubeconfig,
+  enableServerSideApply: true,
 })
 
+const disableKubeDNSAutoscalerPatch = new k8s.apps.v1.DeploymentPatch(
+  'disable-kube-dns-autoscaler-patch',
+  {
+    metadata: {
+      namespace: 'kube-system',
+      name: 'kube-dns-autoscaler',
+    },
+    spec: {
+      replicas: 0,
+    },
+  },
+  { provider: k8sProvider },
+)
+
+const minimizeKubeDNSPatch = new k8s.apps.v1.DeploymentPatch(
+  'minimize-kube-dns-patch',
+  {
+    metadata: {
+      namespace: 'kube-system',
+      name: 'kube-dns',
+    },
+    spec: {
+      replicas: 1,
+    },
+  },
+  { provider: k8sProvider },
+)
+
+const nginxNamespace = new k8s.core.v1.Namespace(
+  'nginx-namespace',
+  {
+    metadata: {
+      name: 'ingress-nginx',
+    },
+  },
+  {
+    provider: k8sProvider,
+  },
+)
 const nginx = new k8s.helm.v3.Release(
   'ingress-nginx',
   {
     chart: 'ingress-nginx',
+    namespace: 'ingress-nginx',
     repositoryOpts: {
       repo: 'https://kubernetes.github.io/ingress-nginx',
     },
@@ -236,7 +278,7 @@ const ingress = new k8s.networking.v1.Ingress(
       ingressClassName: 'nginx',
       rules: [
         {
-          host: 'sampleapp.poc.epdndo.com',
+          host: domainNames,
           http: {
             paths: [
               {
@@ -345,6 +387,7 @@ const caddy = new gcp.compute.Instance(
     bootDisk: {
       initializeParams: {
         size: 10,
+        type: 'pd-standard',
         image: 'projects/cos-cloud/global/images/family/cos-stable',
       },
     },
