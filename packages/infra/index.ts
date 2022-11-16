@@ -10,7 +10,7 @@ const nodesPerZone = cfg.requireNumber('nodesPerZone')
 const githubToken = cfg.requireSecret('githubToken')
 const zones = gcp.compute.getZones()
 
-const domainNames = 'v3.poc.epdndo.com'
+const domainNames = ['v3.poc.epdndo.com', 'v4.poc.epdndo.com']
 const gitOpsConfigs = [
   {
     name: 'proto3rd',
@@ -421,7 +421,7 @@ const ingress = new k8s.networking.v1.Ingress(
       ingressClassName: 'nginx',
       rules: [
         {
-          host: domainNames,
+          host: domainNames[0],
           http: {
             paths: [
               {
@@ -541,7 +541,7 @@ const caddy = new gcp.compute.Instance(
     name: caddy
     env:
     - name: DOMAIN_NAMES
-      value: ${domainNames}
+      value: ${domainNames.join(', ')}
     securityContext:
       privileged: false
     stdin: false
