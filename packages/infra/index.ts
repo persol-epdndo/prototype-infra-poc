@@ -6,10 +6,30 @@ const providerCfg = new pulumi.Config('gcp')
 const project = providerCfg.require('project')
 const gcpRegion = providerCfg.get('region')
 const cfg = new pulumi.Config()
-const nodesPerZone = cfg.getNumber('nodesPerZone')
+const nodesPerZone = cfg.requireNumber('nodesPerZone')
+const githubToken = cfg.requireSecret('githubToken')
 const zones = gcp.compute.getZones()
 
 const domainNames = 'v3.poc.epdndo.com'
+const gitOpsConfigs = [
+  {
+    name: 'proto3rd',
+    secret: {
+      username: 'dekimasoon',
+      password: githubToken,
+    },
+    repository: {
+      url: 'https://github.com/persol-epdndo/proto3rd/',
+      branch: 'main',
+      targets: [
+        {
+          namespaceSuffix: 'production',
+          path: './deploy',
+        },
+      ],
+    },
+  },
+]
 
 const network = new gcp.compute.Network('network', {
   autoCreateSubnetworks: false,
@@ -240,7 +260,7 @@ const flux2 = new k8s.helm.v3.Release(
   'flux2',
   {
     chart: 'flux2',
-    namespace: 'flux2',
+    namespace: flux2Namespace.metadata.name,
     repositoryOpts: {
       repo: 'https://fluxcd-community.github.io/helm-charts/',
     },
@@ -267,6 +287,86 @@ const flux2 = new k8s.helm.v3.Release(
     provider: k8sProvider,
   },
 )
+
+gitOpsConfigs.map((x) => {
+  const secretName = `git-secret-${x.name}`
+  new k8s.core.v1.Secret(
+    secretName,
+    {
+      metadata: {
+        name: secretName,
+        namespace: flux2Namespace.metadata.name,
+      },
+      stringData: x.secret,
+    },
+    { provider: k8sProvider },
+  )
+
+  const repositoryName = `git-repository-${x.name}`
+  new k8s.apiextensions.CustomResource(
+    repositoryName,
+    {
+      apiVersion: 'source.toolkit.fluxcd.io/v1beta2',
+      kind: 'GitRepository',
+      metadata: {
+        name: repositoryName,
+        namespace: flux2Namespace.metadata.name,
+      },
+      spec: {
+        interval: '1m0s',
+        url: x.repository.url,
+        secretRef: {
+          name: secretName, // Flux user PAT (read-only access)
+        },
+        ref: {
+          branch: x.repository.branch,
+        },
+      },
+    },
+    { provider: k8sProvider },
+  )
+
+  x.repository.targets.map((t) => {
+    const gitOpsName = `git-ops-${x.name}`
+    const targetNamespace = `${x.name}-${t.namespaceSuffix}`
+    new k8s.core.v1.Namespace(
+      `${targetNamespace}-namespace`,
+      {
+        metadata: {
+          name: targetNamespace,
+        },
+      },
+      { provider: k8sProvider },
+    )
+    new k8s.apiextensions.CustomResource(
+      gitOpsName,
+      {
+        apiVersion: 'kustomize.toolkit.fluxcd.io/v1beta2',
+        kind: 'Kustomization',
+        metadata: {
+          name: gitOpsName,
+          namespace: flux2Namespace.metadata.name,
+        },
+        spec: {
+          interval: '60m0s', // detect drift and undo kubectl edits every hour
+          wait: true, // wait for all applied resources to become ready
+          timeout: '3m0s', // give up waiting after three minutes
+          retryInterval: '2m0s', // retry every two minutes on apply or waiting failures
+          prune: true, // remove stale resources from cluster
+          force: false, // enable this to recreate resources on immutable fields changes
+          targetNamespace, // set the namespace for all resources
+          sourceRef: {
+            kind: 'GitRepository',
+            name: repositoryName,
+            namespace: flux2Namespace.metadata.name,
+          },
+          path: t.path,
+        },
+      },
+      { provider: k8sProvider },
+    )
+  })
+})
 
 const appName = 'sample-app'
 const deployment = new k8s.apps.v1.Deployment(

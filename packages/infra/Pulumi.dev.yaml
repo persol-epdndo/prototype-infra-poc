@@ -1,5 +1,7 @@
 encryptionsalt: v1:8ERTHHUW39s=:v1:5DvxTt4NQYAXWUq1:lJIwrChHacx1YFEGCWrbYuXzUEGq1A==
 config:
-  gcp:project: 'prototype-infra'
+  gcp:project: prototype-infra
   gcp:region: us-central1
-  infra:nodesPerZone: '2'
+  infra:githubToken:
+    secure: v1:MvYaNTYDxPY1ncRn:vcLfyjpo1WIsg/sdrgVdaX0LCGPHY/C9hwL5mEyb+VghlrGkFzLX08hG+eR2a0vTJ6CCMP5I6xY=
+  infra:nodesPerZone: "2"
