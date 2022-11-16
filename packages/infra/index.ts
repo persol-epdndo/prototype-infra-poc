@@ -225,6 +225,31 @@ const nginx = new k8s.helm.v3.Release(
   { provider: k8sProvider },
 )
 
+const flux2Namespace = new k8s.core.v1.Namespace(
+  'flux2-namespace',
+  {
+    metadata: {
+      name: 'flux2',
+    },
+  },
+  {
+    provider: k8sProvider,
+  },
+)
+const flux2 = new k8s.helm.v3.Release(
+  'flux2',
+  {
+    chart: 'flux2',
+    namespace: 'flux2',
+    repositoryOpts: {
+      repo: 'https://fluxcd-community.github.io/helm-charts/',
+    },
+  },
+  {
+    provider: k8sProvider,
+  },
+)
+
 const appName = 'sample-app'
 const deployment = new k8s.apps.v1.Deployment(
   `sample-app-deployment`,
