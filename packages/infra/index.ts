@@ -244,6 +244,24 @@ const flux2 = new k8s.helm.v3.Release(
     repositoryOpts: {
       repo: 'https://fluxcd-community.github.io/helm-charts/',
     },
+    values: [
+      'helmController',
+      'imageAutomationController',
+      'imageReflectionController',
+      'kustomizeController',
+      'notificationController',
+      'sourceController',
+    ].reduce<any>((acc, x) => {
+      acc[x] = {
+        resources: {
+          requests: {
+            cpu: '50m',
+            memory: '48Mi',
+          },
+        },
+      }
+      return acc
+    }, {}),
   },
   {
     provider: k8sProvider,

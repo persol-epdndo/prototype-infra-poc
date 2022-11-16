@@ -4,7 +4,7 @@
         "stack": "dev",
         "latest": {
             "manifest": {
-                "time": "2022-11-16T00:41:53.5198906Z",
+                "time": "2022-11-16T01:00:22.8553917Z",
                 "magic": "a2c67a213a17dd9a1b5fb5260fa4842c1271d679913c41d577ab6ed80c1af4ab",
                 "version": "v3.46.0"
             },
@@ -74,39 +74,6 @@
                     "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::912a9c1e-0665-4376-aaa6-df93cf3e2672"
                 },
                 {
-                    "urn": "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa",
-                    "custom": true,
-                    "id": "projects/prototype-infra/serviceAccounts/caddy-sa@prototype-infra.iam.gserviceaccount.com",
-                    "type": "gcp:serviceAccount/account:Account",
-                    "inputs": {
-                        "__defaults": [
-                            "disabled"
-                        ],
-                        "accountId": "caddy-sa",
-                        "disabled": false,
-                        "displayName": "Caddy Service Account"
-                    },
-                    "outputs": {
-                        "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":300000000000}}",
-                        "accountId": "caddy-sa",
-                        "description": "",
-                        "disabled": false,
-                        "displayName": "Caddy Service Account",
-                        "email": "caddy-sa@prototype-infra.iam.gserviceaccount.com",
-                        "id": "projects/prototype-infra/serviceAccounts/caddy-sa@prototype-infra.iam.gserviceaccount.com",
-                        "member": "serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
-                        "name": "projects/prototype-infra/serviceAccounts/caddy-sa@prototype-infra.iam.gserviceaccount.com",
-                        "project": "prototype-infra",
-                        "uniqueId": "109968875813097828924"
-                    },
-                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
-                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::912a9c1e-0665-4376-aaa6-df93cf3e2672",
-                    "propertyDependencies": {
-                        "accountId": null,
-                        "displayName": null
-                    }
-                },
-                {
                     "urn": "urn:pulumi:dev::infra::gcp:compute/network:Network::network",
                     "custom": true,
                     "id": "projects/prototype-infra/global/networks/network-ad3e04a",
@@ -142,131 +109,36 @@
                     }
                 },
                 {
-                    "urn": "urn:pulumi:dev::infra::gcp:projects/iAMMember:IAMMember::caddy-sa-metric-writer-iam-binding",
+                    "urn": "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa",
                     "custom": true,
-                    "id": "prototype-infra/roles/monitoring.metricWriter/serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
-                    "type": "gcp:projects/iAMMember:IAMMember",
+                    "id": "projects/prototype-infra/serviceAccounts/caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                    "type": "gcp:serviceAccount/account:Account",
                     "inputs": {
-                        "__defaults": [],
-                        "member": "serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
-                        "project": "prototype-infra",
-                        "role": "roles/monitoring.metricWriter"
+                        "__defaults": [
+                            "disabled"
+                        ],
+                        "accountId": "caddy-sa",
+                        "disabled": false,
+                        "displayName": "Caddy Service Account"
                     },
                     "outputs": {
-                        "condition": null,
-                        "etag": "BwXtfIk2w1U=",
-                        "id": "prototype-infra/roles/monitoring.metricWriter/serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":300000000000}}",
+                        "accountId": "caddy-sa",
+                        "description": "",
+                        "disabled": false,
+                        "displayName": "Caddy Service Account",
+                        "email": "caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "id": "projects/prototype-infra/serviceAccounts/caddy-sa@prototype-infra.iam.gserviceaccount.com",
                         "member": "serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "name": "projects/prototype-infra/serviceAccounts/caddy-sa@prototype-infra.iam.gserviceaccount.com",
                         "project": "prototype-infra",
-                        "role": "roles/monitoring.metricWriter"
+                        "uniqueId": "109968875813097828924"
                     },
                     "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
-                    "dependencies": [
-                        "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
-                    ],
                     "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::912a9c1e-0665-4376-aaa6-df93cf3e2672",
                     "propertyDependencies": {
-                        "member": [
-                            "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
-                        ],
-                        "project": null,
-                        "role": null
-                    }
-                },
-                {
-                    "urn": "urn:pulumi:dev::infra::gcp:projects/iAMMember:IAMMember::caddy-sa-monitoring-viewer-iam-binding",
-                    "custom": true,
-                    "id": "prototype-infra/roles/monitoring.viewer/serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
-                    "type": "gcp:projects/iAMMember:IAMMember",
-                    "inputs": {
-                        "__defaults": [],
-                        "member": "serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
-                        "project": "prototype-infra",
-                        "role": "roles/monitoring.viewer"
-                    },
-                    "outputs": {
-                        "condition": null,
-                        "etag": "BwXtfIk2w1U=",
-                        "id": "prototype-infra/roles/monitoring.viewer/serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
-                        "member": "serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
-                        "project": "prototype-infra",
-                        "role": "roles/monitoring.viewer"
-                    },
-                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
-                    "dependencies": [
-                        "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
-                    ],
-                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::912a9c1e-0665-4376-aaa6-df93cf3e2672",
-                    "propertyDependencies": {
-                        "member": [
-                            "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
-                        ],
-                        "project": null,
-                        "role": null
-                    }
-                },
-                {
-                    "urn": "urn:pulumi:dev::infra::gcp:projects/iAMMember:IAMMember::caddy-sa-compute-viewer-iam-binding",
-                    "custom": true,
-                    "id": "prototype-infra/roles/compute.viewer/serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
-                    "type": "gcp:projects/iAMMember:IAMMember",
-                    "inputs": {
-                        "__defaults": [],
-                        "member": "serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
-                        "project": "prototype-infra",
-                        "role": "roles/compute.viewer"
-                    },
-                    "outputs": {
-                        "condition": null,
-                        "etag": "BwXtfIk2w1U=",
-                        "id": "prototype-infra/roles/compute.viewer/serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
-                        "member": "serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
-                        "project": "prototype-infra",
-                        "role": "roles/compute.viewer"
-                    },
-                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
-                    "dependencies": [
-                        "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
-                    ],
-                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::912a9c1e-0665-4376-aaa6-df93cf3e2672",
-                    "propertyDependencies": {
-                        "member": [
-                            "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
-                        ],
-                        "project": null,
-                        "role": null
-                    }
-                },
-                {
-                    "urn": "urn:pulumi:dev::infra::gcp:projects/iAMMember:IAMMember::caddy-sa-log-writer-iam-binding",
-                    "custom": true,
-                    "id": "prototype-infra/roles/logging.logWriter/serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
-                    "type": "gcp:projects/iAMMember:IAMMember",
-                    "inputs": {
-                        "__defaults": [],
-                        "member": "serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
-                        "project": "prototype-infra",
-                        "role": "roles/logging.logWriter"
-                    },
-                    "outputs": {
-                        "condition": null,
-                        "etag": "BwXtfIk2w1U=",
-                        "id": "prototype-infra/roles/logging.logWriter/serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
-                        "member": "serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
-                        "project": "prototype-infra",
-                        "role": "roles/logging.logWriter"
-                    },
-                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
-                    "dependencies": [
-                        "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
-                    ],
-                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::912a9c1e-0665-4376-aaa6-df93cf3e2672",
-                    "propertyDependencies": {
-                        "member": [
-                            "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
-                        ],
-                        "project": null,
-                        "role": null
+                        "accountId": null,
+                        "displayName": null
                     }
                 },
                 {
@@ -306,9 +178,9 @@
                     }
                 },
                 {
-                    "urn": "urn:pulumi:dev::infra::gcp:compute/firewall:Firewall::allow-https-firewall",
+                    "urn": "urn:pulumi:dev::infra::gcp:compute/firewall:Firewall::allow-ssh-firewall",
                     "custom": true,
-                    "id": "projects/prototype-infra/global/firewalls/allow-https-firewall-4a1f10b",
+                    "id": "projects/prototype-infra/global/firewalls/allow-ssh-firewall-6f2cd95",
                     "type": "gcp:compute/firewall:Firewall",
                     "inputs": {
                         "__defaults": [
@@ -319,20 +191,20 @@
                             {
                                 "__defaults": [],
                                 "ports": [
-                                    "443"
+                                    "22"
                                 ],
                                 "protocol": "tcp"
                             }
                         ],
                         "direction": "INGRESS",
-                        "name": "allow-https-firewall-4a1f10b",
+                        "name": "allow-ssh-firewall-6f2cd95",
                         "network": "network-ad3e04a",
                         "priority": 1000,
                         "sourceRanges": [
                             "0.0.0.0/0"
                         ],
                         "targetTags": [
-                            "allow-https"
+                            "allow-ssh"
                         ]
                     },
                     "outputs": {
@@ -340,24 +212,24 @@
                         "allows": [
                             {
                                 "ports": [
-                                    "443"
+                                    "22"
                                 ],
                                 "protocol": "tcp"
                             }
                         ],
-                        "creationTimestamp": "2022-11-14T22:33:43.844-08:00",
+                        "creationTimestamp": "2022-11-14T22:33:43.756-08:00",
                         "denies": [],
                         "description": "",
                         "destinationRanges": [],
                         "direction": "INGRESS",
                         "disabled": false,
-                        "id": "projects/prototype-infra/global/firewalls/allow-https-firewall-4a1f10b",
+                        "id": "projects/prototype-infra/global/firewalls/allow-ssh-firewall-6f2cd95",
                         "logConfig": null,
-                        "name": "allow-https-firewall-4a1f10b",
+                        "name": "allow-ssh-firewall-6f2cd95",
                         "network": "https://www.googleapis.com/compute/v1/projects/prototype-infra/global/networks/network-ad3e04a",
                         "priority": 1000,
                         "project": "prototype-infra",
-                        "selfLink": "https://www.googleapis.com/compute/v1/projects/prototype-infra/global/firewalls/allow-https-firewall-4a1f10b",
+                        "selfLink": "https://www.googleapis.com/compute/v1/projects/prototype-infra/global/firewalls/allow-ssh-firewall-6f2cd95",
                         "sourceRanges": [
                             "0.0.0.0/0"
                         ],
@@ -365,7 +237,7 @@
                         "sourceTags": [],
                         "targetServiceAccounts": [],
                         "targetTags": [
-                            "allow-https"
+                            "allow-ssh"
                         ]
                     },
                     "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
@@ -434,9 +306,9 @@
                     }
                 },
                 {
-                    "urn": "urn:pulumi:dev::infra::gcp:compute/firewall:Firewall::node-allow-master-tcp8443-firewall",
+                    "urn": "urn:pulumi:dev::infra::gcp:compute/firewall:Firewall::allow-https-firewall",
                     "custom": true,
-                    "id": "projects/prototype-infra/global/firewalls/node-allow-master-tcp8443-firewall-7c1cc72",
+                    "id": "projects/prototype-infra/global/firewalls/allow-https-firewall-4a1f10b",
                     "type": "gcp:compute/firewall:Firewall",
                     "inputs": {
                         "__defaults": [
@@ -447,20 +319,20 @@
                             {
                                 "__defaults": [],
                                 "ports": [
-                                    "8443"
+                                    "443"
                                 ],
                                 "protocol": "tcp"
                             }
                         ],
                         "direction": "INGRESS",
-                        "name": "node-allow-master-tcp8443-firewall-7c1cc72",
+                        "name": "allow-https-firewall-4a1f10b",
                         "network": "network-ad3e04a",
                         "priority": 1000,
                         "sourceRanges": [
-                            "10.100.0.0/28"
+                            "0.0.0.0/0"
                         ],
                         "targetTags": [
-                            "allow-master-tcp-8334"
+                            "allow-https"
                         ]
                     },
                     "outputs": {
@@ -468,32 +340,32 @@
                         "allows": [
                             {
                                 "ports": [
-                                    "8443"
+                                    "443"
                                 ],
                                 "protocol": "tcp"
                             }
                         ],
-                        "creationTimestamp": "2022-11-14T22:33:43.917-08:00",
+                        "creationTimestamp": "2022-11-14T22:33:43.844-08:00",
                         "denies": [],
                         "description": "",
                         "destinationRanges": [],
                         "direction": "INGRESS",
                         "disabled": false,
-                        "id": "projects/prototype-infra/global/firewalls/node-allow-master-tcp8443-firewall-7c1cc72",
+                        "id": "projects/prototype-infra/global/firewalls/allow-https-firewall-4a1f10b",
                         "logConfig": null,
-                        "name": "node-allow-master-tcp8443-firewall-7c1cc72",
+                        "name": "allow-https-firewall-4a1f10b",
                         "network": "https://www.googleapis.com/compute/v1/projects/prototype-infra/global/networks/network-ad3e04a",
                         "priority": 1000,
                         "project": "prototype-infra",
-                        "selfLink": "https://www.googleapis.com/compute/v1/projects/prototype-infra/global/firewalls/node-allow-master-tcp8443-firewall-7c1cc72",
+                        "selfLink": "https://www.googleapis.com/compute/v1/projects/prototype-infra/global/firewalls/allow-https-firewall-4a1f10b",
                         "sourceRanges": [
-                            "10.100.0.0/28"
+                            "0.0.0.0/0"
                         ],
                         "sourceServiceAccounts": [],
                         "sourceTags": [],
                         "targetServiceAccounts": [],
                         "targetTags": [
-                            "allow-master-tcp-8334"
+                            "allow-https"
                         ]
                     },
                     "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
@@ -590,9 +462,9 @@
                     }
                 },
                 {
-                    "urn": "urn:pulumi:dev::infra::gcp:compute/firewall:Firewall::allow-ssh-firewall",
+                    "urn": "urn:pulumi:dev::infra::gcp:compute/firewall:Firewall::node-allow-master-tcp8443-firewall",
                     "custom": true,
-                    "id": "projects/prototype-infra/global/firewalls/allow-ssh-firewall-6f2cd95",
+                    "id": "projects/prototype-infra/global/firewalls/node-allow-master-tcp8443-firewall-7c1cc72",
                     "type": "gcp:compute/firewall:Firewall",
                     "inputs": {
                         "__defaults": [
@@ -603,20 +475,20 @@
                             {
                                 "__defaults": [],
                                 "ports": [
-                                    "22"
+                                    "8443"
                                 ],
                                 "protocol": "tcp"
                             }
                         ],
                         "direction": "INGRESS",
-                        "name": "allow-ssh-firewall-6f2cd95",
+                        "name": "node-allow-master-tcp8443-firewall-7c1cc72",
                         "network": "network-ad3e04a",
                         "priority": 1000,
                         "sourceRanges": [
-                            "0.0.0.0/0"
+                            "10.100.0.0/28"
                         ],
                         "targetTags": [
-                            "allow-ssh"
+                            "allow-master-tcp-8334"
                         ]
                     },
                     "outputs": {
@@ -624,32 +496,32 @@
                         "allows": [
                             {
                                 "ports": [
-                                    "22"
+                                    "8443"
                                 ],
                                 "protocol": "tcp"
                             }
                         ],
-                        "creationTimestamp": "2022-11-14T22:33:43.756-08:00",
+                        "creationTimestamp": "2022-11-14T22:33:43.917-08:00",
                         "denies": [],
                         "description": "",
                         "destinationRanges": [],
                         "direction": "INGRESS",
                         "disabled": false,
-                        "id": "projects/prototype-infra/global/firewalls/allow-ssh-firewall-6f2cd95",
+                        "id": "projects/prototype-infra/global/firewalls/node-allow-master-tcp8443-firewall-7c1cc72",
                         "logConfig": null,
-                        "name": "allow-ssh-firewall-6f2cd95",
+                        "name": "node-allow-master-tcp8443-firewall-7c1cc72",
                         "network": "https://www.googleapis.com/compute/v1/projects/prototype-infra/global/networks/network-ad3e04a",
                         "priority": 1000,
                         "project": "prototype-infra",
-                        "selfLink": "https://www.googleapis.com/compute/v1/projects/prototype-infra/global/firewalls/allow-ssh-firewall-6f2cd95",
+                        "selfLink": "https://www.googleapis.com/compute/v1/projects/prototype-infra/global/firewalls/node-allow-master-tcp8443-firewall-7c1cc72",
                         "sourceRanges": [
-                            "0.0.0.0/0"
+                            "10.100.0.0/28"
                         ],
                         "sourceServiceAccounts": [],
                         "sourceTags": [],
                         "targetServiceAccounts": [],
                         "targetTags": [
-                            "allow-ssh"
+                            "allow-master-tcp-8334"
                         ]
                     },
                     "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
@@ -665,6 +537,134 @@
                         ],
                         "sourceRanges": null,
                         "targetTags": null
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:dev::infra::gcp:projects/iAMMember:IAMMember::caddy-sa-compute-viewer-iam-binding",
+                    "custom": true,
+                    "id": "prototype-infra/roles/compute.viewer/serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                    "type": "gcp:projects/iAMMember:IAMMember",
+                    "inputs": {
+                        "__defaults": [],
+                        "member": "serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "project": "prototype-infra",
+                        "role": "roles/compute.viewer"
+                    },
+                    "outputs": {
+                        "condition": null,
+                        "etag": "BwXtfIk2w1U=",
+                        "id": "prototype-infra/roles/compute.viewer/serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "member": "serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "project": "prototype-infra",
+                        "role": "roles/compute.viewer"
+                    },
+                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
+                    "dependencies": [
+                        "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
+                    ],
+                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::912a9c1e-0665-4376-aaa6-df93cf3e2672",
+                    "propertyDependencies": {
+                        "member": [
+                            "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
+                        ],
+                        "project": null,
+                        "role": null
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:dev::infra::gcp:projects/iAMMember:IAMMember::caddy-sa-monitoring-viewer-iam-binding",
+                    "custom": true,
+                    "id": "prototype-infra/roles/monitoring.viewer/serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                    "type": "gcp:projects/iAMMember:IAMMember",
+                    "inputs": {
+                        "__defaults": [],
+                        "member": "serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "project": "prototype-infra",
+                        "role": "roles/monitoring.viewer"
+                    },
+                    "outputs": {
+                        "condition": null,
+                        "etag": "BwXtfIk2w1U=",
+                        "id": "prototype-infra/roles/monitoring.viewer/serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "member": "serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "project": "prototype-infra",
+                        "role": "roles/monitoring.viewer"
+                    },
+                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
+                    "dependencies": [
+                        "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
+                    ],
+                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::912a9c1e-0665-4376-aaa6-df93cf3e2672",
+                    "propertyDependencies": {
+                        "member": [
+                            "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
+                        ],
+                        "project": null,
+                        "role": null
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:dev::infra::gcp:projects/iAMMember:IAMMember::caddy-sa-metric-writer-iam-binding",
+                    "custom": true,
+                    "id": "prototype-infra/roles/monitoring.metricWriter/serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                    "type": "gcp:projects/iAMMember:IAMMember",
+                    "inputs": {
+                        "__defaults": [],
+                        "member": "serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "project": "prototype-infra",
+                        "role": "roles/monitoring.metricWriter"
+                    },
+                    "outputs": {
+                        "condition": null,
+                        "etag": "BwXtfIk2w1U=",
+                        "id": "prototype-infra/roles/monitoring.metricWriter/serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "member": "serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "project": "prototype-infra",
+                        "role": "roles/monitoring.metricWriter"
+                    },
+                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
+                    "dependencies": [
+                        "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
+                    ],
+                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::912a9c1e-0665-4376-aaa6-df93cf3e2672",
+                    "propertyDependencies": {
+                        "member": [
+                            "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
+                        ],
+                        "project": null,
+                        "role": null
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:dev::infra::gcp:projects/iAMMember:IAMMember::caddy-sa-log-writer-iam-binding",
+                    "custom": true,
+                    "id": "prototype-infra/roles/logging.logWriter/serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                    "type": "gcp:projects/iAMMember:IAMMember",
+                    "inputs": {
+                        "__defaults": [],
+                        "member": "serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "project": "prototype-infra",
+                        "role": "roles/logging.logWriter"
+                    },
+                    "outputs": {
+                        "condition": null,
+                        "etag": "BwXtfIk2w1U=",
+                        "id": "prototype-infra/roles/logging.logWriter/serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "member": "serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "project": "prototype-infra",
+                        "role": "roles/logging.logWriter"
+                    },
+                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
+                    "dependencies": [
+                        "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
+                    ],
+                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::912a9c1e-0665-4376-aaa6-df93cf3e2672",
+                    "propertyDependencies": {
+                        "member": [
+                            "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
+                        ],
+                        "project": null,
+                        "role": null
                     }
                 },
                 {
@@ -891,7 +891,7 @@
                             },
                             "clientKey": {
                                 "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
-                                "ciphertext": "v1:MPuGUNd+kKIY/A4+:BwnmnkYvi8nNJjZmwSwOjEq2"
+                                "ciphertext": "v1:7YqtDS9VRV4aUihy:2PbRtV8yYd8AL+e/Cu3oKbwQ"
                             },
                             "clusterCaCertificate": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUVMRENDQXBTZ0F3SUJBZ0lRV1NtWTE5U3g0V21IUTJ5MlRQU2NPakFOQmdrcWhraUc5dzBCQVFzRkFEQXYKTVMwd0t3WURWUVFERXlRME9EVTFORGMxT1MxbFptSXhMVFJtTldNdE9UUTJNUzB4WmpKaVl6VTVOR1k0TURJdwpJQmNOTWpJeE1URTFNRFV6TXpVM1doZ1BNakExTWpFeE1EY3dOak16TlRkYU1DOHhMVEFyQmdOVkJBTVRKRFE0Ck5UVTBOelU1TFdWbVlqRXROR1kxWXkwNU5EWXhMVEZtTW1Kak5UazBaamd3TWpDQ0FhSXdEUVlKS29aSWh2Y04KQVFFQkJRQURnZ0dQQURDQ0FZb0NnZ0dCQU9tdjRCck5tSHlEL01CSUFIbEpDandzdGdHWU1ScVpKYnRQVHg5WApKcUxDb3BRZmhnZ0F3YkFJSHh0Y3lFbG5qTU9lRVdiR2g4OUhSMEhqS09IRTlKaXRDT1c1VXU3ekxtaXZjQThLCm9TR2dQYXorMTdOakJVaUVLR213SzJBczBWVHdOSDM2SitPN1B6N2FuZW0rZ0RHbVRjNHlma2dFQmxmRHNYSmIKSXlnVmorUzJTV1VmNVRSVEd1SmQ1bFNZRkNmWE5vd2N5STdlOVJSeHdDWnRJaUk5MVFtU0k3UFlOVlQ2K2RCcApuTEhRMGFybE13QnFicHJFUXZ5NExNdFlYS0NLR1l6UEdMcUE2UG9PUy9pQ1poRnY3Q2N6bmpCTk1BdDFZeU4zClJ2YktLS1FNMGo5SEF3b3JvbkVrL2c5bXFSbTJ6K3huNVg1aFJXQm1hQkFkaThHRk5SOTdYTGpHTnRGOEVvSjMKclp1KzJyci91cFBTT3hiTWRBUHhlNnUxL1poM1AvWVJNOXZlNVVRVzFNUThaM3dqSGVUaDVzRGUxV1Q5dzBPNgpSbjFwUEFNZWRtbkFHVUFiYzR5MFNoMis4ZElhYzB3WFJ5K0Jqa3haNUt0ZlVGVzVTOHZmZ2l1djk2d0xjMDFPCnAxT09OL3hrayszMUM5N1JadEo5RFEzQ2d3SURBUUFCbzBJd1FEQU9CZ05WSFE4QkFmOEVCQU1DQWdRd0R3WUQKVlIwVEFRSC9CQVV3QXdFQi96QWRCZ05WSFE0RUZnUVVnbjgyVHRSSU9BL1Z4Z0swakJmdkQ1Q3V3TDB3RFFZSgpLb1pJaHZjTkFRRUxCUUFEZ2dHQkFDWVorelhkb1BiejJ6LzJkQTZ6UjIvT3N6NzRoVitKQ3oweTk0aHRKSHQ5CkF2TU5iV0I5bitudGQ4MG9yUm9QY3dXRUMyS3NHQ3J5UjZiY0NBZEJ4V1gzeUQ5SXhCTCtmTlRGbXBGOHlmTlAKdG9Cd1NoNS9YM2xiaFBsVXBnRzgzMnl5MFFWcXRBZlRydWdVM2pHR3ZGc0p2N1AzRzM4TGpSOHpweXA4MmxsTwoxS0Uza0x3b21sM0RxK29jR2hVU3VORjJJVlRqcDNsNmNyYWdMY2NJcUQ4c3lZTzgvR2U5MlpmTXRmdWtTbnNrCjdkbGdVOFA3ZkV1bXliQjhrY25mWGhHMFlwYzRxYkxoa2IvZm1zeVNjRWRkTm1FTzh0N3ZmZDNaWDAvZ2VLWlAKTnkwWFZXR01OTlNpZ1ovcHV4YWxWck5sV3p4QVdZdEZocHl0Vy8xWTROYkZGTnEreHNNT0pncTJCRmJZMDMzcgpoS3B2V0NtYzR2MjVjWjFON1V0YnhPNXcxUTlLWnBtK3drU2R1NFFqV282azRQR0JiY3M0VWtoOWtUeWxhRkFxCktteHJhekRLZFRXckJJN2QyK3I5UW9CZTcrZnhJcndnTnhVdG81eEJETDhtTlMwQXI0TGlVUlNuY21BYXBSQ2EKL0cyUEoxT2xCSXVqQlp3RXlhcUFQdz09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K"
                         },
@@ -1064,7 +1064,7 @@
                             "deviceName": "persistent-disk-0",
                             "diskEncryptionKeyRaw": {
                                 "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
-                                "ciphertext": "v1:U/m5zettuDB8JOEx:x3+S8CnkUPjDFWdIdASQPIF1"
+                                "ciphertext": "v1:BlilUwXlwcwrndoM:ptBYuLNoLYGCPnca4LuFBv5Z"
                             },
                             "diskEncryptionKeySha256": "",
                             "initializeParams": {
@@ -1226,7 +1226,7 @@
                         "enableServerSideApply": "true",
                         "kubeconfig": {
                             "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
-                            "ciphertext": "v1:uu+QoQDMawvV+nWI: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"
+                            "ciphertext": "v1:PFEArnJRBckKa4Ct:xYBY2AHhaeZFF6fR2JdvFaBPuNrkhsJdXP/ps4iFdFC1DJAB1a+9rolO4Qk486KcsxMQ7BR+D8rAP0tLNJErdl3F/N0jSYTxLby6Jl3a4XIDRxVNu1Wc09nDmZtCfLENYNYqOsqshNd9ch6cB8Q/J3ppbJGQdKz2IZ4EVWhBgoMPGqgW6O0Wvn9xCoTAPHucLtHYWczrFyf/rkby8SsYdrKVofnGdi8omoje9YEqZplYPdpi9YNGWcbiqJAOzei+G5FPCyamM0ieNpsrliTZQao5ZNyWevB7wkLaZNNmezZgyEvIVrdxIJhu4Lw5P/F2l/2hRFiJ+tUvNvVy6vUX24jl7B5iCTvUWKqJFLxAwl+JemyvOoluA7l/O93e0ZLVJklw9a8a2GIn+Ess8+O7FuYKoRn2UxvLL5h8ZRcByFiguPzDgqTCQdswT/2WVlmQQf0mJFFfTspIyO/r/WdC8TOWOKRoPm/UX7/oHQiuhFcMKWrXpNXiljdFNwOqsdjy/0yTPHq6LvmmassJidI1AK1Rl77zJsuuJEbVRPsB40NklDGnSmKgnkQS+GnIPo6wpKT4JLnHDuDsHeAZQgSwpfEPiO1FD8Ve6oNFpa2HMCru2G1apCKmstyINT6cpDAn5ix6eQpBWqs+JKAqcM4BCbZyABD1k7EUG8me0kQaANFrg+1QrRPmYjK2WO3uqDYxcx9gIFZkj2lTJmeBxDVkDJcR2bBoGtd8M8lGCIYs6KWxVcW4uuGWGTXlAdgE4Hh0Aj2NqY1TBJwaerBhJcbavAEMMI80huxxGGv4IE0izM5Mw5phUbcozwIeAJM1FT5rHz/3P6XcTqfXsI6piHAmyvhUGIqdgpgHzEgYy7E81pj6booYTcoZ8+7fRHWz/dfKYK89lkD85AqDqpkDX+gZEs8AYYGDI9G2SFhIOhqQ99q2rxA//BBhfIxEaOZsJ2bdF0mGxJEh9ED6Aow8zhinmWsmhnJoXSW1axswf8IgZEnl+S5rAR4XwLWmCmgbt2DFNfSA3kj0/KvkVE+4l0L6BVyQuGF4ujAf64d++rabpSekviCEd34UBzpz59DNTSnqYREQmWjIjxfbTuuUKFiklMQRkHdZKfyybjcoqbcIemEC77dUzzngAfSgvv4GI0XIZjJtHhwfgMoNZXchE4C6i5d503izS1IkyzcjeUDxRafpSAzhQXxGIitmEjnfvKZxazFT7xxKEtQjj63HuI9sd661G9Mum3cwx6d0VkUbYHzASu9vnMbDrYKd8so6Qss9GoIt4786itfF7FaGfOvSX43PPURYtmINq1cQN/ibqfZgzYrj5KkRstDiNi3MU3Dy9WC9Gktm7FNvcvzi1Wn+OtjqLcWtFAHdMEAGqTL1qV2Hik1b0Jur8b28gw9c7aYYKD68uxBTkO7bMb+U846f0XVxHtCbvVmD4qixn8kLTUGFnpHJ870KWgnIfzwV3oX9psPAjywnqPZwyA+7dXjo+df+Ox3Fat51r4eO7nOs8YAzzLHBYRHC+rRZhFv5Gcgj4rNNLwOvPnFv6gkfrH9Htavjv4sDG96YGjrAtrkzEBtO2KogHGDdd80uSE1n5uLIFMtbzfUkTZhEIV15dXInZXgyq+YzlCEjR/tqqDf+4yOj5GdvcsnvKkxYkpIod3U8CvoaSKamCMYGzugzpuf/MW20Um1mR1kggmP1CodMuFMBk4VMNTKRjh1QxXTYbPfAgQYXibIKyBRsDXOLWkklTo9TWkYx2Eu1jLVPHUGwc9pV6H+FKtoWdsX4//w0zM2pg2NaPtvAOAG8ZHKzeT61N2qOPJFwSKQi3WB6izy/wqlySFQcbJd2JmiN8O9XKI6MX2cAIkKYh709HX5x1CPMrq4RssHfdWmlvxO6h1QOz6ecnr9Ru0/mWj2cfaHN7JNYruYj7F20buki/wTm29mBrG7SFRGBi5hyVK3QLTBV2zvwE6Nf1VPFNAuLlNmqoyiB/E8UwV26K2tr0bTrq9EbW4JVAAsmw64xwVxWrYI4orUvp0PSOniZHxrKpKu4OtEEEOLz1ulONgTINLoJTJlMvbyTf4uFPT6mafSwKFBa4iG6LcD96KcpjtA70bdiDoZS8hbs+4dGb6RQ45d+wuxbq8F+N0koUkekxt6ZTgk14BC8vdeGv3GG5Sw9U5F2/0v5RWKbWQ9w4wnmErZOxncoIoUcA6pM7nOsifshTMjdEutsEuRjxiNWIKLh9wvLJrvZe7ti/PxqkCF0Dcbc2ROYzpkBi7lYj6CQzAAvwwkhkg1Bg//5TKNU8GxHXcDjWYFj1IVk83DoixTMnsdkNgJwCCq+Sv2L9gjLCkkUfGMSOEgkB4KIM1EO1Nit/AO3MHFkhVePjnFO11WOwxeuMc1LpdwRuLPny+obdA3m51v9e9lu4BaTqyGF82AvrefvTXRhZsAN59XqGnIYasXnlt+2zOPxGPIO8LkhJdFUtciL4r4ZwkiopBBUQU9OfaQxatFGf6BXJ22OzPF4e7HYOLBGI7EUXDhblxtvluDDVE86Oh4Sjv44XqALYJNjZwZ9s5KvWhBffuynFA3VfPq7xx49Xook2PZu/ijVw74BooREi917b+TRbCrTeDZhYBpchQ+qsqPzmDruoVR88xrNQuZ6NOBR60UclGTpXVxmQx5FRdXHQGTc2v8S8hZrTyTZcmvfMkOogMDVz8bhNq6ENUmJN1bSTTyC2J5x+GDhYSXql80A8QoclubRhKJqaq6dvwV1TwjrQDEii5wgoMZNj7rjt4lMXTLy2F0xVFQ3TuHR4VhMdo7vV/SFCqU6W+jtc+V7LXIfuW2Dkwma+HLMjSTCQzagnGflAYt9Oq1w40sFo0Bq9Hetp7gNI3wpPRPxV0AG9EWPmebCrJW/eoe5AIW9i0IR5gi58Kw/iz70WMEfCfOoVHiYBa92vhX+9ZF5HXfB/LsPWhsq5vNWaRJ66WyfIIj28G3Rwts/viPes81eH08NtVyk3CF6iLlU+bgKh+UdsefYQS4XGsWhmGEBsUuV1xaWZ5DfBlK40IHCveIId10WbQ3HTeDAybzPT/PCYCgL2qQ5Qz4WWFp4ihzIb7e/p4FmH4aUwSdU24KMa5HUgVhR340rW1T65bMQWBexd1S+2M4fvPyyPtlDP0/AjTaQi26cxNbhQwJQdFBcJpOX5jcbs5I+5ZS9r52gwLEnG2UpJqIf81oHcrOhrDDtke3RMFlAik0IOBRdCXOaXMLESTQVy4H0jKTpT7krYo92uj8e92p9U4wTjUFzUeS+mEKpJ1xzYVX6PMrSxMDL9LgDqiYEXQYf/zNCNpk9UMC64cZUGXFQYhPiRB9E6RNBeXj4lHRhOtAzaOX1cednelT9d66ImfVtYDs6skPUKyExhOO1fNS9C1G/q4Hqwi58u0x3yDFfXDEBlh2Jx/vRCNUg/pivqPyBiy4fmzHKS6WW+pdEGfrkSBNAwuQ+2uRwaYmQnlChas5sCvi7wnUyZveoZDwL//gD2VK3m2DoLtpr8UrDv76QqKpBv4gZNXsNgwJKODvOv3QnYHQpyBVeLCehLkYTvyH4aWZOKB0eTkeucPVLN/c9ckJ047Y="
                         },
                         "version": "3.22.1"
                     },
@@ -1234,7 +1234,7 @@
                         "enableServerSideApply": "true",
                         "kubeconfig": {
                             "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
-                            "ciphertext": "v1:4fW+rj5wkDU6QO3s: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"
+                            "ciphertext": "v1:hbA3WPeKfJlHB4Pl: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"
                         },
                         "version": "3.22.1"
                     },
@@ -1402,6 +1402,106 @@
                     }
                 },
                 {
+                    "urn": "urn:pulumi:dev::infra::kubernetes:core/v1:Namespace::flux2-namespace",
+                    "custom": true,
+                    "id": "flux2",
+                    "type": "kubernetes:core/v1:Namespace",
+                    "inputs": {
+                        "apiVersion": "v1",
+                        "kind": "Namespace",
+                        "metadata": {
+                            "name": "flux2"
+                        }
+                    },
+                    "outputs": {
+                        "__fieldManager": "pulumi-kubernetes-78278233",
+                        "__initialApiVersion": "v1",
+                        "__inputs": {
+                            "apiVersion": "v1",
+                            "kind": "Namespace",
+                            "metadata": {
+                                "name": "flux2"
+                            }
+                        },
+                        "apiVersion": "v1",
+                        "kind": "Namespace",
+                        "metadata": {
+                            "creationTimestamp": "2022-11-16T00:41:53Z",
+                            "labels": {
+                                "kubernetes.io/metadata.name": "flux2"
+                            },
+                            "name": "flux2",
+                            "resourceVersion": "424256",
+                            "uid": "04ea4974-2ba4-430b-8c23-5aff13f5e9e4"
+                        },
+                        "spec": {
+                            "finalizers": [
+                                "kubernetes"
+                            ]
+                        },
+                        "status": {
+                            "phase": "Active"
+                        }
+                    },
+                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
+                    "provider": "urn:pulumi:dev::infra::pulumi:providers:kubernetes::k8s-provider::ab36b933-4a0f-4716-9397-bd873b3aaf69",
+                    "propertyDependencies": {
+                        "apiVersion": null,
+                        "kind": null,
+                        "metadata": null
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:dev::infra::kubernetes:core/v1:Namespace::nginx-namespace",
+                    "custom": true,
+                    "id": "ingress-nginx",
+                    "type": "kubernetes:core/v1:Namespace",
+                    "inputs": {
+                        "apiVersion": "v1",
+                        "kind": "Namespace",
+                        "metadata": {
+                            "name": "ingress-nginx"
+                        }
+                    },
+                    "outputs": {
+                        "__fieldManager": "pulumi-kubernetes-9c41d7b5",
+                        "__initialApiVersion": "v1",
+                        "__inputs": {
+                            "apiVersion": "v1",
+                            "kind": "Namespace",
+                            "metadata": {
+                                "name": "ingress-nginx"
+                            }
+                        },
+                        "apiVersion": "v1",
+                        "kind": "Namespace",
+                        "metadata": {
+                            "creationTimestamp": "2022-11-15T06:57:56Z",
+                            "labels": {
+                                "kubernetes.io/metadata.name": "ingress-nginx"
+                            },
+                            "name": "ingress-nginx",
+                            "resourceVersion": "9111",
+                            "uid": "0e8935b1-ba7d-43ed-8d5a-77e03db92147"
+                        },
+                        "spec": {
+                            "finalizers": [
+                                "kubernetes"
+                            ]
+                        },
+                        "status": {
+                            "phase": "Active"
+                        }
+                    },
+                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
+                    "provider": "urn:pulumi:dev::infra::pulumi:providers:kubernetes::k8s-provider::ab36b933-4a0f-4716-9397-bd873b3aaf69",
+                    "propertyDependencies": {
+                        "apiVersion": null,
+                        "kind": null,
+                        "metadata": null
+                    }
+                },
+                {
                     "urn": "urn:pulumi:dev::infra::kubernetes:core/v1:Service::sample-app-service",
                     "custom": true,
                     "id": "default/sample-app",
@@ -1514,6 +1614,751 @@
                         "kind": null,
                         "metadata": null,
                         "spec": null
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:dev::infra::kubernetes:apps/v1:Deployment::sample-app-deployment",
+                    "custom": true,
+                    "id": "default/sample-app",
+                    "type": "kubernetes:apps/v1:Deployment",
+                    "inputs": {
+                        "apiVersion": "apps/v1",
+                        "kind": "Deployment",
+                        "metadata": {
+                            "name": "sample-app",
+                            "namespace": "default"
+                        },
+                        "spec": {
+                            "replicas": 3,
+                            "selector": {
+                                "matchLabels": {
+                                    "app": "sample-app"
+                                }
+                            },
+                            "template": {
+                                "metadata": {
+                                    "labels": {
+                                        "app": "sample-app"
+                                    }
+                                },
+                                "spec": {
+                                    "containers": [
+                                        {
+                                            "env": [
+                                                {
+                                                    "name": "MESSAGE",
+                                                    "value": "Hello K8s!"
+                                                }
+                                            ],
+                                            "image": "paulbouwer/hello-kubernetes:1.8",
+                                            "name": "sample-app",
+                                            "ports": [
+                                                {
+                                                    "containerPort": 8080
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "outputs": {
+                        "__fieldManager": "pulumi-kubernetes-e492c5b0",
+                        "__initialApiVersion": "apps/v1",
+                        "__inputs": {
+                            "apiVersion": "apps/v1",
+                            "kind": "Deployment",
+                            "metadata": {
+                                "name": "sample-app",
+                                "namespace": "default"
+                            },
+                            "spec": {
+                                "replicas": 3,
+                                "selector": {
+                                    "matchLabels": {
+                                        "app": "sample-app"
+                                    }
+                                },
+                                "template": {
+                                    "metadata": {
+                                        "labels": {
+                                            "app": "sample-app"
+                                        }
+                                    },
+                                    "spec": {
+                                        "containers": [
+                                            {
+                                                "env": [
+                                                    {
+                                                        "name": "MESSAGE",
+                                                        "value": "Hello K8s!"
+                                                    }
+                                                ],
+                                                "image": "paulbouwer/hello-kubernetes:1.8",
+                                                "name": "sample-app",
+                                                "ports": [
+                                                    {
+                                                        "containerPort": 8080
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "apiVersion": "apps/v1",
+                        "kind": "Deployment",
+                        "metadata": {
+                            "annotations": {
+                                "deployment.kubernetes.io/revision": "1"
+                            },
+                            "creationTimestamp": "2022-11-15T06:44:27Z",
+                            "generation": 1,
+                            "managedFields": [
+                                {
+                                    "apiVersion": "apps/v1",
+                                    "fieldsType": "FieldsV1",
+                                    "fieldsV1": {
+                                        "f:spec": {
+                                            "f:replicas": {},
+                                            "f:selector": {},
+                                            "f:template": {
+                                                "f:metadata": {
+                                                    "f:labels": {
+                                                        "f:app": {}
+                                                    }
+                                                },
+                                                "f:spec": {
+                                                    "f:containers": {
+                                                        "k:{\"name\":\"sample-app\"}": {
+                                                            ".": {},
+                                                            "f:env": {
+                                                                "k:{\"name\":\"MESSAGE\"}": {
+                                                                    ".": {},
+                                                                    "f:name": {},
+                                                                    "f:value": {}
+                                                                }
+                                                            },
+                                                            "f:image": {},
+                                                            "f:name": {},
+                                                            "f:ports": {
+                                                                "k:{\"containerPort\":8080,\"protocol\":\"TCP\"}": {
+                                                                    ".": {},
+                                                                    "f:containerPort": {}
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "manager": "pulumi-kubernetes-e492c5b0",
+                                    "operation": "Apply",
+                                    "time": "2022-11-15T06:44:27Z"
+                                },
+                                {
+                                    "apiVersion": "apps/v1",
+                                    "fieldsType": "FieldsV1",
+                                    "fieldsV1": {
+                                        "f:metadata": {
+                                            "f:annotations": {
+                                                ".": {},
+                                                "f:deployment.kubernetes.io/revision": {}
+                                            }
+                                        },
+                                        "f:status": {
+                                            "f:availableReplicas": {},
+                                            "f:conditions": {
+                                                ".": {},
+                                                "k:{\"type\":\"Available\"}": {
+                                                    ".": {},
+                                                    "f:lastTransitionTime": {},
+                                                    "f:lastUpdateTime": {},
+                                                    "f:message": {},
+                                                    "f:reason": {},
+                                                    "f:status": {},
+                                                    "f:type": {}
+                                                },
+                                                "k:{\"type\":\"Progressing\"}": {
+                                                    ".": {},
+                                                    "f:lastTransitionTime": {},
+                                                    "f:lastUpdateTime": {},
+                                                    "f:message": {},
+                                                    "f:reason": {},
+                                                    "f:status": {},
+                                                    "f:type": {}
+                                                }
+                                            },
+                                            "f:observedGeneration": {},
+                                            "f:readyReplicas": {},
+                                            "f:replicas": {},
+                                            "f:updatedReplicas": {}
+                                        }
+                                    },
+                                    "manager": "kube-controller-manager",
+                                    "operation": "Update",
+                                    "subresource": "status",
+                                    "time": "2022-11-15T06:47:12Z"
+                                }
+                            ],
+                            "name": "sample-app",
+                            "namespace": "default",
+                            "resourceVersion": "4976",
+                            "uid": "aec0814c-9244-4267-abe5-f12617f898e3"
+                        },
+                        "spec": {
+                            "progressDeadlineSeconds": 600,
+                            "replicas": 3,
+                            "revisionHistoryLimit": 10,
+                            "selector": {
+                                "matchLabels": {
+                                    "app": "sample-app"
+                                }
+                            },
+                            "strategy": {
+                                "rollingUpdate": {
+                                    "maxSurge": "25%",
+                                    "maxUnavailable": "25%"
+                                },
+                                "type": "RollingUpdate"
+                            },
+                            "template": {
+                                "metadata": {
+                                    "labels": {
+                                        "app": "sample-app"
+                                    }
+                                },
+                                "spec": {
+                                    "containers": [
+                                        {
+                                            "env": [
+                                                {
+                                                    "name": "MESSAGE",
+                                                    "value": "Hello K8s!"
+                                                }
+                                            ],
+                                            "image": "paulbouwer/hello-kubernetes:1.8",
+                                            "imagePullPolicy": "IfNotPresent",
+                                            "name": "sample-app",
+                                            "ports": [
+                                                {
+                                                    "containerPort": 8080,
+                                                    "protocol": "TCP"
+                                                }
+                                            ],
+                                            "resources": {},
+                                            "terminationMessagePath": "/dev/termination-log",
+                                            "terminationMessagePolicy": "File"
+                                        }
+                                    ],
+                                    "dnsPolicy": "ClusterFirst",
+                                    "restartPolicy": "Always",
+                                    "schedulerName": "default-scheduler",
+                                    "securityContext": {},
+                                    "terminationGracePeriodSeconds": 30
+                                }
+                            }
+                        },
+                        "status": {
+                            "availableReplicas": 3,
+                            "conditions": [
+                                {
+                                    "lastTransitionTime": "2022-11-15T06:47:12Z",
+                                    "lastUpdateTime": "2022-11-15T06:47:12Z",
+                                    "message": "Deployment has minimum availability.",
+                                    "reason": "MinimumReplicasAvailable",
+                                    "status": "True",
+                                    "type": "Available"
+                                },
+                                {
+                                    "lastTransitionTime": "2022-11-15T06:44:27Z",
+                                    "lastUpdateTime": "2022-11-15T06:47:12Z",
+                                    "message": "ReplicaSet \"sample-app-57c864bd\" has successfully progressed.",
+                                    "reason": "NewReplicaSetAvailable",
+                                    "status": "True",
+                                    "type": "Progressing"
+                                }
+                            ],
+                            "observedGeneration": 1,
+                            "readyReplicas": 3,
+                            "replicas": 3,
+                            "updatedReplicas": 3
+                        }
+                    },
+                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
+                    "provider": "urn:pulumi:dev::infra::pulumi:providers:kubernetes::k8s-provider::ab36b933-4a0f-4716-9397-bd873b3aaf69",
+                    "propertyDependencies": {
+                        "apiVersion": null,
+                        "kind": null,
+                        "metadata": null,
+                        "spec": null
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:dev::infra::kubernetes:apps/v1:DeploymentPatch::disable-kube-dns-autoscaler-patch",
+                    "custom": true,
+                    "id": "kube-system/kube-dns-autoscaler",
+                    "type": "kubernetes:apps/v1:DeploymentPatch",
+                    "inputs": {
+                        "apiVersion": "apps/v1",
+                        "kind": "Deployment",
+                        "metadata": {
+                            "name": "kube-dns-autoscaler",
+                            "namespace": "kube-system"
+                        },
+                        "spec": {
+                            "replicas": 0
+                        }
+                    },
+                    "outputs": {
+                        "__fieldManager": "pulumi-kubernetes-38d27cba",
+                        "__initialApiVersion": "apps/v1",
+                        "__inputs": {
+                            "apiVersion": "apps/v1",
+                            "kind": "Deployment",
+                            "metadata": {
+                                "name": "kube-dns-autoscaler",
+                                "namespace": "kube-system"
+                            },
+                            "spec": {
+                                "replicas": 0
+                            }
+                        },
+                        "apiVersion": "apps/v1",
+                        "kind": "Deployment",
+                        "metadata": {
+                            "annotations": {
+                                "deployment.kubernetes.io/revision": "1"
+                            },
+                            "creationTimestamp": "2022-11-15T06:38:06Z",
+                            "generation": 2,
+                            "labels": {
+                                "addonmanager.kubernetes.io/mode": "Reconcile",
+                                "k8s-app": "kube-dns-autoscaler",
+                                "kubernetes.io/cluster-service": "true"
+                            },
+                            "managedFields": [
+                                {
+                                    "apiVersion": "apps/v1",
+                                    "fieldsType": "FieldsV1",
+                                    "fieldsV1": {
+                                        "f:metadata": {
+                                            "f:labels": {
+                                                "f:addonmanager.kubernetes.io/mode": {},
+                                                "f:k8s-app": {},
+                                                "f:kubernetes.io/cluster-service": {}
+                                            }
+                                        },
+                                        "f:spec": {
+                                            "f:selector": {},
+                                            "f:template": {
+                                                "f:metadata": {
+                                                    "f:labels": {
+                                                        "f:k8s-app": {}
+                                                    }
+                                                },
+                                                "f:spec": {
+                                                    "f:containers": {
+                                                        "k:{\"name\":\"autoscaler\"}": {
+                                                            ".": {},
+                                                            "f:command": {},
+                                                            "f:image": {},
+                                                            "f:name": {},
+                                                            "f:resources": {
+                                                                "f:requests": {
+                                                                    "f:cpu": {},
+                                                                    "f:memory": {}
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    "f:nodeSelector": {},
+                                                    "f:priorityClassName": {},
+                                                    "f:securityContext": {
+                                                        "f:fsGroup": {},
+                                                        "f:seccompProfile": {
+                                                            "f:type": {}
+                                                        },
+                                                        "f:supplementalGroups": {}
+                                                    },
+                                                    "f:serviceAccountName": {},
+                                                    "f:tolerations": {}
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "manager": "kube-addon-manager",
+                                    "operation": "Apply",
+                                    "time": "2022-11-15T06:38:06Z"
+                                },
+                                {
+                                    "apiVersion": "apps/v1",
+                                    "fieldsType": "FieldsV1",
+                                    "fieldsV1": {
+                                        "f:spec": {
+                                            "f:replicas": {}
+                                        }
+                                    },
+                                    "manager": "pulumi-kubernetes-38d27cba",
+                                    "operation": "Apply",
+                                    "time": "2022-11-15T06:44:27Z"
+                                },
+                                {
+                                    "apiVersion": "apps/v1",
+                                    "fieldsType": "FieldsV1",
+                                    "fieldsV1": {
+                                        "f:metadata": {
+                                            "f:annotations": {
+                                                ".": {},
+                                                "f:deployment.kubernetes.io/revision": {}
+                                            }
+                                        },
+                                        "f:status": {
+                                            "f:conditions": {
+                                                ".": {},
+                                                "k:{\"type\":\"Available\"}": {
+                                                    ".": {},
+                                                    "f:lastTransitionTime": {},
+                                                    "f:lastUpdateTime": {},
+                                                    "f:message": {},
+                                                    "f:reason": {},
+                                                    "f:status": {},
+                                                    "f:type": {}
+                                                },
+                                                "k:{\"type\":\"Progressing\"}": {
+                                                    ".": {},
+                                                    "f:lastTransitionTime": {},
+                                                    "f:lastUpdateTime": {},
+                                                    "f:message": {},
+                                                    "f:reason": {},
+                                                    "f:status": {},
+                                                    "f:type": {}
+                                                }
+                                            },
+                                            "f:observedGeneration": {}
+                                        }
+                                    },
+                                    "manager": "kube-controller-manager",
+                                    "operation": "Update",
+                                    "subresource": "status",
+                                    "time": "2022-11-15T06:44:27Z"
+                                }
+                            ],
+                            "name": "kube-dns-autoscaler",
+                            "namespace": "kube-system",
+                            "resourceVersion": "3632",
+                            "uid": "88ebf6ab-e453-4bf9-9509-0ee368614787"
+                        },
+                        "spec": {
+                            "progressDeadlineSeconds": 600,
+                            "replicas": 0,
+                            "revisionHistoryLimit": 10,
+                            "selector": {
+                                "matchLabels": {
+                                    "k8s-app": "kube-dns-autoscaler"
+                                }
+                            },
+                            "strategy": {
+                                "rollingUpdate": {
+                                    "maxSurge": "25%",
+                                    "maxUnavailable": "25%"
+                                },
+                                "type": "RollingUpdate"
+                            },
+                            "template": {
+                                "metadata": {
+                                    "labels": {
+                                        "k8s-app": "kube-dns-autoscaler"
+                                    }
+                                },
+                                "spec": {
+                                    "containers": [
+                                        {
+                                            "command": [
+                                                "/cluster-proportional-autoscaler",
+                                                "--namespace=kube-system",
+                                                "--configmap=kube-dns-autoscaler",
+                                                "--target=Deployment/kube-dns",
+                                                "--default-params={\"linear\":{\"coresPerReplica\":256,\"nodesPerReplica\":16,\"preventSinglePointFailure\":true,\"includeUnschedulableNodes\":true}}",
+                                                "--logtostderr=true",
+                                                "--v=2"
+                                            ],
+                                            "image": "gke.gcr.io/cluster-proportional-autoscaler:1.8.4-gke.1",
+                                            "imagePullPolicy": "IfNotPresent",
+                                            "name": "autoscaler",
+                                            "resources": {
+                                                "requests": {
+                                                    "cpu": "20m",
+                                                    "memory": "10Mi"
+                                                }
+                                            },
+                                            "terminationMessagePath": "/dev/termination-log",
+                                            "terminationMessagePolicy": "File"
+                                        }
+                                    ],
+                                    "dnsPolicy": "ClusterFirst",
+                                    "nodeSelector": {
+                                        "kubernetes.io/os": "linux"
+                                    },
+                                    "priorityClassName": "system-cluster-critical",
+                                    "restartPolicy": "Always",
+                                    "schedulerName": "default-scheduler",
+                                    "securityContext": {
+                                        "fsGroup": 65534,
+                                        "seccompProfile": {
+                                            "type": "RuntimeDefault"
+                                        },
+                                        "supplementalGroups": [
+                                            65534
+                                        ]
+                                    },
+                                    "serviceAccount": "kube-dns-autoscaler",
+                                    "serviceAccountName": "kube-dns-autoscaler",
+                                    "terminationGracePeriodSeconds": 30,
+                                    "tolerations": [
+                                        {
+                                            "key": "CriticalAddonsOnly",
+                                            "operator": "Exists"
+                                        },
+                                        {
+                                            "key": "components.gke.io/gke-managed-components",
+                                            "operator": "Exists"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "status": {
+                            "conditions": [
+                                {
+                                    "lastTransitionTime": "2022-11-15T06:44:27Z",
+                                    "lastUpdateTime": "2022-11-15T06:44:27Z",
+                                    "message": "Deployment has minimum availability.",
+                                    "reason": "MinimumReplicasAvailable",
+                                    "status": "True",
+                                    "type": "Available"
+                                },
+                                {
+                                    "lastTransitionTime": "2022-11-15T06:38:06Z",
+                                    "lastUpdateTime": "2022-11-15T06:44:27Z",
+                                    "message": "ReplicaSet \"kube-dns-autoscaler-f4d55555\" has successfully progressed.",
+                                    "reason": "NewReplicaSetAvailable",
+                                    "status": "True",
+                                    "type": "Progressing"
+                                }
+                            ],
+                            "observedGeneration": 2
+                        }
+                    },
+                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
+                    "provider": "urn:pulumi:dev::infra::pulumi:providers:kubernetes::k8s-provider::ab36b933-4a0f-4716-9397-bd873b3aaf69",
+                    "propertyDependencies": {
+                        "apiVersion": null,
+                        "kind": null,
+                        "metadata": null,
+                        "spec": null
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:dev::infra::kubernetes:helm.sh/v3:Release::ingress-nginx",
+                    "custom": true,
+                    "id": "ingress-nginx/ingress-nginx-9d1de3b1",
+                    "type": "kubernetes:helm.sh/v3:Release",
+                    "inputs": {
+                        "atomic": false,
+                        "chart": "ingress-nginx",
+                        "cleanupOnFail": false,
+                        "createNamespace": false,
+                        "dependencyUpdate": false,
+                        "description": "",
+                        "devel": false,
+                        "disableCRDHooks": false,
+                        "disableOpenapiValidation": false,
+                        "disableWebhooks": false,
+                        "forceUpdate": false,
+                        "keyring": "",
+                        "lint": false,
+                        "name": "ingress-nginx-9d1de3b1",
+                        "namespace": "ingress-nginx",
+                        "postrender": "",
+                        "recreatePods": false,
+                        "renderSubchartNotes": false,
+                        "replace": false,
+                        "repositoryOpts": {
+                            "caFile": "",
+                            "certFile": "",
+                            "keyFile": "",
+                            "password": "",
+                            "repo": "https://kubernetes.github.io/ingress-nginx",
+                            "username": ""
+                        },
+                        "resetValues": false,
+                        "resourceNames": {
+                            "ClusterRole.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
+                                "ingress-nginx-9d1de3b1",
+                                "ingress-nginx-9d1de3b1-admission"
+                            ],
+                            "ClusterRoleBinding.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
+                                "ingress-nginx-9d1de3b1",
+                                "ingress-nginx-9d1de3b1-admission"
+                            ],
+                            "ConfigMap/v1": [
+                                "ingress-nginx/ingress-nginx-9d1de3b1-controller"
+                            ],
+                            "Deployment.apps/apps/v1": [
+                                "ingress-nginx/ingress-nginx-9d1de3b1-controller"
+                            ],
+                            "IngressClass.networking.k8s.io/networking.k8s.io/v1": [
+                                "nginx"
+                            ],
+                            "Job.batch/batch/v1": [
+                                "ingress-nginx/ingress-nginx-9d1de3b1-admission-create",
+                                "ingress-nginx/ingress-nginx-9d1de3b1-admission-patch"
+                            ],
+                            "Role.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
+                                "ingress-nginx/ingress-nginx-9d1de3b1",
+                                "ingress-nginx/ingress-nginx-9d1de3b1-admission"
+                            ],
+                            "RoleBinding.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
+                                "ingress-nginx/ingress-nginx-9d1de3b1",
+                                "ingress-nginx/ingress-nginx-9d1de3b1-admission"
+                            ],
+                            "Service/v1": [
+                                "ingress-nginx/ingress-nginx-9d1de3b1-controller",
+                                "ingress-nginx/ingress-nginx-9d1de3b1-controller-admission"
+                            ],
+                            "ServiceAccount/v1": [
+                                "ingress-nginx/ingress-nginx-9d1de3b1",
+                                "ingress-nginx/ingress-nginx-9d1de3b1-admission"
+                            ],
+                            "ValidatingWebhookConfiguration.admissionregistration.k8s.io/admissionregistration.k8s.io/v1": [
+                                "ingress-nginx-9d1de3b1-admission"
+                            ]
+                        },
+                        "reuseValues": false,
+                        "skipAwait": false,
+                        "skipCrds": false,
+                        "timeout": 300,
+                        "values": {
+                            "controller": {
+                                "service": {
+                                    "nodePorts": {
+                                        "http": 32080,
+                                        "https": 32443
+                                    },
+                                    "type": "NodePort"
+                                }
+                            }
+                        },
+                        "verify": false,
+                        "version": "",
+                        "waitForJobs": false
+                    },
+                    "outputs": {
+                        "__inputs": {
+                            "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
+                            "ciphertext": "v1:icXc91yQC03yUCja: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"
+                        },
+                        "atomic": false,
+                        "chart": "ingress-nginx",
+                        "cleanupOnFail": false,
+                        "createNamespace": false,
+                        "dependencyUpdate": false,
+                        "description": "",
+                        "devel": false,
+                        "disableCRDHooks": false,
+                        "disableOpenapiValidation": false,
+                        "disableWebhooks": false,
+                        "forceUpdate": false,
+                        "keyring": "",
+                        "lint": false,
+                        "name": "ingress-nginx-9d1de3b1",
+                        "namespace": "ingress-nginx",
+                        "postrender": "",
+                        "recreatePods": false,
+                        "renderSubchartNotes": false,
+                        "replace": false,
+                        "repositoryOpts": {
+                            "caFile": "",
+                            "certFile": "",
+                            "keyFile": "",
+                            "password": "",
+                            "repo": "https://kubernetes.github.io/ingress-nginx",
+                            "username": ""
+                        },
+                        "resetValues": false,
+                        "resourceNames": {
+                            "ClusterRole.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
+                                "ingress-nginx-9d1de3b1"
+                            ],
+                            "ClusterRoleBinding.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
+                                "ingress-nginx-9d1de3b1"
+                            ],
+                            "ConfigMap/v1": [
+                                "ingress-nginx/ingress-nginx-9d1de3b1-controller"
+                            ],
+                            "Deployment.apps/apps/v1": [
+                                "ingress-nginx/ingress-nginx-9d1de3b1-controller"
+                            ],
+                            "IngressClass.networking.k8s.io/networking.k8s.io/v1": [
+                                "nginx"
+                            ],
+                            "Role.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
+                                "ingress-nginx/ingress-nginx-9d1de3b1"
+                            ],
+                            "RoleBinding.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
+                                "ingress-nginx/ingress-nginx-9d1de3b1"
+                            ],
+                            "Service/v1": [
+                                "ingress-nginx/ingress-nginx-9d1de3b1-controller",
+                                "ingress-nginx/ingress-nginx-9d1de3b1-controller-admission"
+                            ],
+                            "ServiceAccount/v1": [
+                                "ingress-nginx/ingress-nginx-9d1de3b1"
+                            ],
+                            "ValidatingWebhookConfiguration.admissionregistration.k8s.io/admissionregistration.k8s.io/v1": [
+                                "ingress-nginx-9d1de3b1-admission"
+                            ]
+                        },
+                        "reuseValues": false,
+                        "skipAwait": false,
+                        "skipCrds": false,
+                        "status": {
+                            "appVersion": "1.5.1",
+                            "chart": "ingress-nginx",
+                            "name": "ingress-nginx-9d1de3b1",
+                            "namespace": "ingress-nginx",
+                            "revision": 1,
+                            "status": "deployed",
+                            "version": "4.4.0"
+                        },
+                        "timeout": 300,
+                        "values": {
+                            "controller": {
+                                "service": {
+                                    "nodePorts": {
+                                        "http": 32080,
+                                        "https": 32443
+                                    },
+                                    "type": "NodePort"
+                                }
+                            }
+                        },
+                        "verify": false,
+                        "version": "4.4.0",
+                        "waitForJobs": false
+                    },
+                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
+                    "provider": "urn:pulumi:dev::infra::pulumi:providers:kubernetes::k8s-provider::ab36b933-4a0f-4716-9397-bd873b3aaf69",
+                    "propertyDependencies": {
+                        "chart": null,
+                        "compat": null,
+                        "namespace": null,
+                        "repositoryOpts": null,
+                        "values": null
                     }
                 },
                 {
@@ -2407,344 +3252,13 @@
                     }
                 },
                 {
-                    "urn": "urn:pulumi:dev::infra::kubernetes:core/v1:Namespace::flux2-namespace",
+                    "urn": "urn:pulumi:dev::infra::kubernetes:helm.sh/v3:Release::flux2",
                     "custom": true,
-                    "id": "flux2",
-                    "type": "kubernetes:core/v1:Namespace",
-                    "inputs": {
-                        "apiVersion": "v1",
-                        "kind": "Namespace",
-                        "metadata": {
-                            "name": "flux2"
-                        }
-                    },
-                    "outputs": {
-                        "__fieldManager": "pulumi-kubernetes-78278233",
-                        "__initialApiVersion": "v1",
-                        "__inputs": {
-                            "apiVersion": "v1",
-                            "kind": "Namespace",
-                            "metadata": {
-                                "name": "flux2"
-                            }
-                        },
-                        "apiVersion": "v1",
-                        "kind": "Namespace",
-                        "metadata": {
-                            "creationTimestamp": "2022-11-16T00:41:53Z",
-                            "labels": {
-                                "kubernetes.io/metadata.name": "flux2"
-                            },
-                            "name": "flux2",
-                            "resourceVersion": "424256",
-                            "uid": "04ea4974-2ba4-430b-8c23-5aff13f5e9e4"
-                        },
-                        "spec": {
-                            "finalizers": [
-                                "kubernetes"
-                            ]
-                        },
-                        "status": {
-                            "phase": "Active"
-                        }
-                    },
-                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
-                    "provider": "urn:pulumi:dev::infra::pulumi:providers:kubernetes::k8s-provider::ab36b933-4a0f-4716-9397-bd873b3aaf69",
-                    "propertyDependencies": {
-                        "apiVersion": null,
-                        "kind": null,
-                        "metadata": null
-                    }
-                },
-                {
-                    "urn": "urn:pulumi:dev::infra::kubernetes:apps/v1:Deployment::sample-app-deployment",
-                    "custom": true,
-                    "id": "default/sample-app",
-                    "type": "kubernetes:apps/v1:Deployment",
-                    "inputs": {
-                        "apiVersion": "apps/v1",
-                        "kind": "Deployment",
-                        "metadata": {
-                            "name": "sample-app",
-                            "namespace": "default"
-                        },
-                        "spec": {
-                            "replicas": 3,
-                            "selector": {
-                                "matchLabels": {
-                                    "app": "sample-app"
-                                }
-                            },
-                            "template": {
-                                "metadata": {
-                                    "labels": {
-                                        "app": "sample-app"
-                                    }
-                                },
-                                "spec": {
-                                    "containers": [
-                                        {
-                                            "env": [
-                                                {
-                                                    "name": "MESSAGE",
-                                                    "value": "Hello K8s!"
-                                                }
-                                            ],
-                                            "image": "paulbouwer/hello-kubernetes:1.8",
-                                            "name": "sample-app",
-                                            "ports": [
-                                                {
-                                                    "containerPort": 8080
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                }
-                            }
-                        }
-                    },
-                    "outputs": {
-                        "__fieldManager": "pulumi-kubernetes-e492c5b0",
-                        "__initialApiVersion": "apps/v1",
-                        "__inputs": {
-                            "apiVersion": "apps/v1",
-                            "kind": "Deployment",
-                            "metadata": {
-                                "name": "sample-app",
-                                "namespace": "default"
-                            },
-                            "spec": {
-                                "replicas": 3,
-                                "selector": {
-                                    "matchLabels": {
-                                        "app": "sample-app"
-                                    }
-                                },
-                                "template": {
-                                    "metadata": {
-                                        "labels": {
-                                            "app": "sample-app"
-                                        }
-                                    },
-                                    "spec": {
-                                        "containers": [
-                                            {
-                                                "env": [
-                                                    {
-                                                        "name": "MESSAGE",
-                                                        "value": "Hello K8s!"
-                                                    }
-                                                ],
-                                                "image": "paulbouwer/hello-kubernetes:1.8",
-                                                "name": "sample-app",
-                                                "ports": [
-                                                    {
-                                                        "containerPort": 8080
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    }
-                                }
-                            }
-                        },
-                        "apiVersion": "apps/v1",
-                        "kind": "Deployment",
-                        "metadata": {
-                            "annotations": {
-                                "deployment.kubernetes.io/revision": "1"
-                            },
-                            "creationTimestamp": "2022-11-15T06:44:27Z",
-                            "generation": 1,
-                            "managedFields": [
-                                {
-                                    "apiVersion": "apps/v1",
-                                    "fieldsType": "FieldsV1",
-                                    "fieldsV1": {
-                                        "f:spec": {
-                                            "f:replicas": {},
-                                            "f:selector": {},
-                                            "f:template": {
-                                                "f:metadata": {
-                                                    "f:labels": {
-                                                        "f:app": {}
-                                                    }
-                                                },
-                                                "f:spec": {
-                                                    "f:containers": {
-                                                        "k:{\"name\":\"sample-app\"}": {
-                                                            ".": {},
-                                                            "f:env": {
-                                                                "k:{\"name\":\"MESSAGE\"}": {
-                                                                    ".": {},
-                                                                    "f:name": {},
-                                                                    "f:value": {}
-                                                                }
-                                                            },
-                                                            "f:image": {},
-                                                            "f:name": {},
-                                                            "f:ports": {
-                                                                "k:{\"containerPort\":8080,\"protocol\":\"TCP\"}": {
-                                                                    ".": {},
-                                                                    "f:containerPort": {}
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "manager": "pulumi-kubernetes-e492c5b0",
-                                    "operation": "Apply",
-                                    "time": "2022-11-15T06:44:27Z"
-                                },
-                                {
-                                    "apiVersion": "apps/v1",
-                                    "fieldsType": "FieldsV1",
-                                    "fieldsV1": {
-                                        "f:metadata": {
-                                            "f:annotations": {
-                                                ".": {},
-                                                "f:deployment.kubernetes.io/revision": {}
-                                            }
-                                        },
-                                        "f:status": {
-                                            "f:availableReplicas": {},
-                                            "f:conditions": {
-                                                ".": {},
-                                                "k:{\"type\":\"Available\"}": {
-                                                    ".": {},
-                                                    "f:lastTransitionTime": {},
-                                                    "f:lastUpdateTime": {},
-                                                    "f:message": {},
-                                                    "f:reason": {},
-                                                    "f:status": {},
-                                                    "f:type": {}
-                                                },
-                                                "k:{\"type\":\"Progressing\"}": {
-                                                    ".": {},
-                                                    "f:lastTransitionTime": {},
-                                                    "f:lastUpdateTime": {},
-                                                    "f:message": {},
-                                                    "f:reason": {},
-                                                    "f:status": {},
-                                                    "f:type": {}
-                                                }
-                                            },
-                                            "f:observedGeneration": {},
-                                            "f:readyReplicas": {},
-                                            "f:replicas": {},
-                                            "f:updatedReplicas": {}
-                                        }
-                                    },
-                                    "manager": "kube-controller-manager",
-                                    "operation": "Update",
-                                    "subresource": "status",
-                                    "time": "2022-11-15T06:47:12Z"
-                                }
-                            ],
-                            "name": "sample-app",
-                            "namespace": "default",
-                            "resourceVersion": "4976",
-                            "uid": "aec0814c-9244-4267-abe5-f12617f898e3"
-                        },
-                        "spec": {
-                            "progressDeadlineSeconds": 600,
-                            "replicas": 3,
-                            "revisionHistoryLimit": 10,
-                            "selector": {
-                                "matchLabels": {
-                                    "app": "sample-app"
-                                }
-                            },
-                            "strategy": {
-                                "rollingUpdate": {
-                                    "maxSurge": "25%",
-                                    "maxUnavailable": "25%"
-                                },
-                                "type": "RollingUpdate"
-                            },
-                            "template": {
-                                "metadata": {
-                                    "labels": {
-                                        "app": "sample-app"
-                                    }
-                                },
-                                "spec": {
-                                    "containers": [
-                                        {
-                                            "env": [
-                                                {
-                                                    "name": "MESSAGE",
-                                                    "value": "Hello K8s!"
-                                                }
-                                            ],
-                                            "image": "paulbouwer/hello-kubernetes:1.8",
-                                            "imagePullPolicy": "IfNotPresent",
-                                            "name": "sample-app",
-                                            "ports": [
-                                                {
-                                                    "containerPort": 8080,
-                                                    "protocol": "TCP"
-                                                }
-                                            ],
-                                            "resources": {},
-                                            "terminationMessagePath": "/dev/termination-log",
-                                            "terminationMessagePolicy": "File"
-                                        }
-                                    ],
-                                    "dnsPolicy": "ClusterFirst",
-                                    "restartPolicy": "Always",
-                                    "schedulerName": "default-scheduler",
-                                    "securityContext": {},
-                                    "terminationGracePeriodSeconds": 30
-                                }
-                            }
-                        },
-                        "status": {
-                            "availableReplicas": 3,
-                            "conditions": [
-                                {
-                                    "lastTransitionTime": "2022-11-15T06:47:12Z",
-                                    "lastUpdateTime": "2022-11-15T06:47:12Z",
-                                    "message": "Deployment has minimum availability.",
-                                    "reason": "MinimumReplicasAvailable",
-                                    "status": "True",
-                                    "type": "Available"
-                                },
-                                {
-                                    "lastTransitionTime": "2022-11-15T06:44:27Z",
-                                    "lastUpdateTime": "2022-11-15T06:47:12Z",
-                                    "message": "ReplicaSet \"sample-app-57c864bd\" has successfully progressed.",
-                                    "reason": "NewReplicaSetAvailable",
-                                    "status": "True",
-                                    "type": "Progressing"
-                                }
-                            ],
-                            "observedGeneration": 1,
-                            "readyReplicas": 3,
-                            "replicas": 3,
-                            "updatedReplicas": 3
-                        }
-                    },
-                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
-                    "provider": "urn:pulumi:dev::infra::pulumi:providers:kubernetes::k8s-provider::ab36b933-4a0f-4716-9397-bd873b3aaf69",
-                    "propertyDependencies": {
-                        "apiVersion": null,
-                        "kind": null,
-                        "metadata": null,
-                        "spec": null
-                    }
-                },
-                {
-                    "urn": "urn:pulumi:dev::infra::kubernetes:helm.sh/v3:Release::ingress-nginx",
-                    "custom": true,
-                    "id": "ingress-nginx/ingress-nginx-9d1de3b1",
+                    "id": "flux2/flux2-4db3506c",
                     "type": "kubernetes:helm.sh/v3:Release",
                     "inputs": {
                         "atomic": false,
-                        "chart": "ingress-nginx",
+                        "chart": "flux2",
                         "cleanupOnFail": false,
                         "createNamespace": false,
                         "dependencyUpdate": false,
@@ -2756,8 +3270,8 @@
                         "forceUpdate": false,
                         "keyring": "",
                         "lint": false,
-                        "name": "ingress-nginx-9d1de3b1",
-                        "namespace": "ingress-nginx",
+                        "name": "flux2-4db3506c",
+                        "namespace": "flux2",
                         "postrender": "",
                         "recreatePods": false,
                         "renderSubchartNotes": false,
@@ -2767,67 +3281,69 @@
                             "certFile": "",
                             "keyFile": "",
                             "password": "",
-                            "repo": "https://kubernetes.github.io/ingress-nginx",
+                            "repo": "https://fluxcd-community.github.io/helm-charts/",
                             "username": ""
                         },
                         "resetValues": false,
                         "resourceNames": {
                             "ClusterRole.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
-                                "ingress-nginx-9d1de3b1",
-                                "ingress-nginx-9d1de3b1-admission"
+                                "crd-controller"
                             ],
                             "ClusterRoleBinding.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
-                                "ingress-nginx-9d1de3b1",
-                                "ingress-nginx-9d1de3b1-admission"
+                                "cluster-reconciler",
+                                "crd-controller"
                             ],
-                            "ConfigMap/v1": [
-                                "ingress-nginx/ingress-nginx-9d1de3b1-controller"
+                            "CustomResourceDefinition.apiextensions.k8s.io/apiextensions.k8s.io/v1": [
+                                "alerts.notification.toolkit.fluxcd.io",
+                                "buckets.source.toolkit.fluxcd.io",
+                                "gitrepositories.source.toolkit.fluxcd.io",
+                                "helmcharts.source.toolkit.fluxcd.io",
+                                "helmreleases.helm.toolkit.fluxcd.io",
+                                "helmrepositories.source.toolkit.fluxcd.io",
+                                "imagepolicies.image.toolkit.fluxcd.io",
+                                "imagerepositories.image.toolkit.fluxcd.io",
+                                "imageupdateautomations.image.toolkit.fluxcd.io",
+                                "kustomizations.kustomize.toolkit.fluxcd.io",
+                                "ocirepositories.source.toolkit.fluxcd.io",
+                                "providers.notification.toolkit.fluxcd.io",
+                                "receivers.notification.toolkit.fluxcd.io"
                             ],
                             "Deployment.apps/apps/v1": [
-                                "ingress-nginx/ingress-nginx-9d1de3b1-controller"
-                            ],
-                            "IngressClass.networking.k8s.io/networking.k8s.io/v1": [
-                                "nginx"
+                                "helm-controller",
+                                "image-automation-controller",
+                                "image-reflector-controller",
+                                "kustomize-controller",
+                                "notification-controller",
+                                "source-controller"
                             ],
                             "Job.batch/batch/v1": [
-                                "ingress-nginx/ingress-nginx-9d1de3b1-admission-create",
-                                "ingress-nginx/ingress-nginx-9d1de3b1-admission-patch"
+                                "flux2-4db3506c-flux-check"
                             ],
-                            "Role.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
-                                "ingress-nginx/ingress-nginx-9d1de3b1",
-                                "ingress-nginx/ingress-nginx-9d1de3b1-admission"
-                            ],
-                            "RoleBinding.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
-                                "ingress-nginx/ingress-nginx-9d1de3b1",
-                                "ingress-nginx/ingress-nginx-9d1de3b1-admission"
+                            "NetworkPolicy.networking.k8s.io/networking.k8s.io/v1": [
+                                "allow-egress",
+                                "allow-scraping",
+                                "allow-webhooks"
                             ],
                             "Service/v1": [
-                                "ingress-nginx/ingress-nginx-9d1de3b1-controller",
-                                "ingress-nginx/ingress-nginx-9d1de3b1-controller-admission"
+                                "notification-controller",
+                                "source-controller",
+                                "webhook-receiver"
                             ],
                             "ServiceAccount/v1": [
-                                "ingress-nginx/ingress-nginx-9d1de3b1",
-                                "ingress-nginx/ingress-nginx-9d1de3b1-admission"
-                            ],
-                            "ValidatingWebhookConfiguration.admissionregistration.k8s.io/admissionregistration.k8s.io/v1": [
-                                "ingress-nginx-9d1de3b1-admission"
+                                "flux2-4db3506c-flux-check",
+                                "helm-controller",
+                                "image-automation-controller",
+                                "image-reflector-controller",
+                                "kustomize-controller",
+                                "notification-controller",
+                                "source-controller"
                             ]
                         },
                         "reuseValues": false,
                         "skipAwait": false,
                         "skipCrds": false,
                         "timeout": 300,
-                        "values": {
-                            "controller": {
-                                "service": {
-                                    "nodePorts": {
-                                        "http": 32080,
-                                        "https": 32443
-                                    },
-                                    "type": "NodePort"
-                                }
-                            }
-                        },
+                        "values": {},
                         "verify": false,
                         "version": "",
                         "waitForJobs": false
@@ -2835,10 +3351,10 @@
                     "outputs": {
                         "__inputs": {
                             "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
-                            "ciphertext": "v1:ZExyBJEpk4fJwhHX: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"
+                            "ciphertext": "v1:t+i2qsHCadaDGiyP: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"
                         },
                         "atomic": false,
-                        "chart": "ingress-nginx",
+                        "chart": "flux2",
                         "cleanupOnFail": false,
                         "createNamespace": false,
                         "dependencyUpdate": false,
@@ -2850,8 +3366,8 @@
                         "forceUpdate": false,
                         "keyring": "",
                         "lint": false,
-                        "name": "ingress-nginx-9d1de3b1",
-                        "namespace": "ingress-nginx",
+                        "name": "flux2-4db3506c",
+                        "namespace": "flux2",
                         "postrender": "",
                         "recreatePods": false,
                         "renderSubchartNotes": false,
@@ -2861,69 +3377,76 @@
                             "certFile": "",
                             "keyFile": "",
                             "password": "",
-                            "repo": "https://kubernetes.github.io/ingress-nginx",
+                            "repo": "https://fluxcd-community.github.io/helm-charts/",
                             "username": ""
                         },
                         "resetValues": false,
                         "resourceNames": {
                             "ClusterRole.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
-                                "ingress-nginx-9d1de3b1"
+                                "crd-controller"
                             ],
                             "ClusterRoleBinding.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
-                                "ingress-nginx-9d1de3b1"
+                                "cluster-reconciler",
+                                "crd-controller"
                             ],
-                            "ConfigMap/v1": [
-                                "ingress-nginx/ingress-nginx-9d1de3b1-controller"
+                            "CustomResourceDefinition.apiextensions.k8s.io/apiextensions.k8s.io/v1": [
+                                "alerts.notification.toolkit.fluxcd.io",
+                                "buckets.source.toolkit.fluxcd.io",
+                                "gitrepositories.source.toolkit.fluxcd.io",
+                                "helmcharts.source.toolkit.fluxcd.io",
+                                "helmreleases.helm.toolkit.fluxcd.io",
+                                "helmrepositories.source.toolkit.fluxcd.io",
+                                "imagepolicies.image.toolkit.fluxcd.io",
+                                "imagerepositories.image.toolkit.fluxcd.io",
+                                "imageupdateautomations.image.toolkit.fluxcd.io",
+                                "kustomizations.kustomize.toolkit.fluxcd.io",
+                                "ocirepositories.source.toolkit.fluxcd.io",
+                                "providers.notification.toolkit.fluxcd.io",
+                                "receivers.notification.toolkit.fluxcd.io"
                             ],
                             "Deployment.apps/apps/v1": [
-                                "ingress-nginx/ingress-nginx-9d1de3b1-controller"
+                                "helm-controller",
+                                "image-automation-controller",
+                                "image-reflector-controller",
+                                "kustomize-controller",
+                                "notification-controller",
+                                "source-controller"
                             ],
-                            "IngressClass.networking.k8s.io/networking.k8s.io/v1": [
-                                "nginx"
-                            ],
-                            "Role.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
-                                "ingress-nginx/ingress-nginx-9d1de3b1"
-                            ],
-                            "RoleBinding.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
-                                "ingress-nginx/ingress-nginx-9d1de3b1"
+                            "NetworkPolicy.networking.k8s.io/networking.k8s.io/v1": [
+                                "allow-egress",
+                                "allow-scraping",
+                                "allow-webhooks"
                             ],
                             "Service/v1": [
-                                "ingress-nginx/ingress-nginx-9d1de3b1-controller",
-                                "ingress-nginx/ingress-nginx-9d1de3b1-controller-admission"
+                                "notification-controller",
+                                "source-controller",
+                                "webhook-receiver"
                             ],
                             "ServiceAccount/v1": [
-                                "ingress-nginx/ingress-nginx-9d1de3b1"
-                            ],
-                            "ValidatingWebhookConfiguration.admissionregistration.k8s.io/admissionregistration.k8s.io/v1": [
-                                "ingress-nginx-9d1de3b1-admission"
+                                "helm-controller",
+                                "image-automation-controller",
+                                "image-reflector-controller",
+                                "kustomize-controller",
+                                "notification-controller",
+                                "source-controller"
                             ]
                         },
                         "reuseValues": false,
                         "skipAwait": false,
                         "skipCrds": false,
                         "status": {
-                            "appVersion": "1.5.1",
-                            "chart": "ingress-nginx",
-                            "name": "ingress-nginx-9d1de3b1",
-                            "namespace": "ingress-nginx",
+                            "appVersion": "0.36.0",
+                            "chart": "flux2",
+                            "name": "flux2-4db3506c",
+                            "namespace": "flux2",
                             "revision": 1,
                             "status": "deployed",
-                            "version": "4.4.0"
+                            "version": "2.0.0"
                         },
                         "timeout": 300,
-                        "values": {
-                            "controller": {
-                                "service": {
-                                    "nodePorts": {
-                                        "http": 32080,
-                                        "https": 32443
-                                    },
-                                    "type": "NodePort"
-                                }
-                            }
-                        },
+                        "values": {},
                         "verify": false,
-                        "version": "4.4.0",
+                        "version": "2.0.0",
                         "waitForJobs": false
                     },
                     "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
@@ -2932,323 +3455,7 @@
                         "chart": null,
                         "compat": null,
                         "namespace": null,
-                        "repositoryOpts": null,
-                        "values": null
-                    }
-                },
-                {
-                    "urn": "urn:pulumi:dev::infra::kubernetes:apps/v1:DeploymentPatch::disable-kube-dns-autoscaler-patch",
-                    "custom": true,
-                    "id": "kube-system/kube-dns-autoscaler",
-                    "type": "kubernetes:apps/v1:DeploymentPatch",
-                    "inputs": {
-                        "apiVersion": "apps/v1",
-                        "kind": "Deployment",
-                        "metadata": {
-                            "name": "kube-dns-autoscaler",
-                            "namespace": "kube-system"
-                        },
-                        "spec": {
-                            "replicas": 0
-                        }
-                    },
-                    "outputs": {
-                        "__fieldManager": "pulumi-kubernetes-38d27cba",
-                        "__initialApiVersion": "apps/v1",
-                        "__inputs": {
-                            "apiVersion": "apps/v1",
-                            "kind": "Deployment",
-                            "metadata": {
-                                "name": "kube-dns-autoscaler",
-                                "namespace": "kube-system"
-                            },
-                            "spec": {
-                                "replicas": 0
-                            }
-                        },
-                        "apiVersion": "apps/v1",
-                        "kind": "Deployment",
-                        "metadata": {
-                            "annotations": {
-                                "deployment.kubernetes.io/revision": "1"
-                            },
-                            "creationTimestamp": "2022-11-15T06:38:06Z",
-                            "generation": 2,
-                            "labels": {
-                                "addonmanager.kubernetes.io/mode": "Reconcile",
-                                "k8s-app": "kube-dns-autoscaler",
-                                "kubernetes.io/cluster-service": "true"
-                            },
-                            "managedFields": [
-                                {
-                                    "apiVersion": "apps/v1",
-                                    "fieldsType": "FieldsV1",
-                                    "fieldsV1": {
-                                        "f:metadata": {
-                                            "f:labels": {
-                                                "f:addonmanager.kubernetes.io/mode": {},
-                                                "f:k8s-app": {},
-                                                "f:kubernetes.io/cluster-service": {}
-                                            }
-                                        },
-                                        "f:spec": {
-                                            "f:selector": {},
-                                            "f:template": {
-                                                "f:metadata": {
-                                                    "f:labels": {
-                                                        "f:k8s-app": {}
-                                                    }
-                                                },
-                                                "f:spec": {
-                                                    "f:containers": {
-                                                        "k:{\"name\":\"autoscaler\"}": {
-                                                            ".": {},
-                                                            "f:command": {},
-                                                            "f:image": {},
-                                                            "f:name": {},
-                                                            "f:resources": {
-                                                                "f:requests": {
-                                                                    "f:cpu": {},
-                                                                    "f:memory": {}
-                                                                }
-                                                            }
-                                                        }
-                                                    },
-                                                    "f:nodeSelector": {},
-                                                    "f:priorityClassName": {},
-                                                    "f:securityContext": {
-                                                        "f:fsGroup": {},
-                                                        "f:seccompProfile": {
-                                                            "f:type": {}
-                                                        },
-                                                        "f:supplementalGroups": {}
-                                                    },
-                                                    "f:serviceAccountName": {},
-                                                    "f:tolerations": {}
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "manager": "kube-addon-manager",
-                                    "operation": "Apply",
-                                    "time": "2022-11-15T06:38:06Z"
-                                },
-                                {
-                                    "apiVersion": "apps/v1",
-                                    "fieldsType": "FieldsV1",
-                                    "fieldsV1": {
-                                        "f:spec": {
-                                            "f:replicas": {}
-                                        }
-                                    },
-                                    "manager": "pulumi-kubernetes-38d27cba",
-                                    "operation": "Apply",
-                                    "time": "2022-11-15T06:44:27Z"
-                                },
-                                {
-                                    "apiVersion": "apps/v1",
-                                    "fieldsType": "FieldsV1",
-                                    "fieldsV1": {
-                                        "f:metadata": {
-                                            "f:annotations": {
-                                                ".": {},
-                                                "f:deployment.kubernetes.io/revision": {}
-                                            }
-                                        },
-                                        "f:status": {
-                                            "f:conditions": {
-                                                ".": {},
-                                                "k:{\"type\":\"Available\"}": {
-                                                    ".": {},
-                                                    "f:lastTransitionTime": {},
-                                                    "f:lastUpdateTime": {},
-                                                    "f:message": {},
-                                                    "f:reason": {},
-                                                    "f:status": {},
-                                                    "f:type": {}
-                                                },
-                                                "k:{\"type\":\"Progressing\"}": {
-                                                    ".": {},
-                                                    "f:lastTransitionTime": {},
-                                                    "f:lastUpdateTime": {},
-                                                    "f:message": {},
-                                                    "f:reason": {},
-                                                    "f:status": {},
-                                                    "f:type": {}
-                                                }
-                                            },
-                                            "f:observedGeneration": {}
-                                        }
-                                    },
-                                    "manager": "kube-controller-manager",
-                                    "operation": "Update",
-                                    "subresource": "status",
-                                    "time": "2022-11-15T06:44:27Z"
-                                }
-                            ],
-                            "name": "kube-dns-autoscaler",
-                            "namespace": "kube-system",
-                            "resourceVersion": "3632",
-                            "uid": "88ebf6ab-e453-4bf9-9509-0ee368614787"
-                        },
-                        "spec": {
-                            "progressDeadlineSeconds": 600,
-                            "replicas": 0,
-                            "revisionHistoryLimit": 10,
-                            "selector": {
-                                "matchLabels": {
-                                    "k8s-app": "kube-dns-autoscaler"
-                                }
-                            },
-                            "strategy": {
-                                "rollingUpdate": {
-                                    "maxSurge": "25%",
-                                    "maxUnavailable": "25%"
-                                },
-                                "type": "RollingUpdate"
-                            },
-                            "template": {
-                                "metadata": {
-                                    "labels": {
-                                        "k8s-app": "kube-dns-autoscaler"
-                                    }
-                                },
-                                "spec": {
-                                    "containers": [
-                                        {
-                                            "command": [
-                                                "/cluster-proportional-autoscaler",
-                                                "--namespace=kube-system",
-                                                "--configmap=kube-dns-autoscaler",
-                                                "--target=Deployment/kube-dns",
-                                                "--default-params={\"linear\":{\"coresPerReplica\":256,\"nodesPerReplica\":16,\"preventSinglePointFailure\":true,\"includeUnschedulableNodes\":true}}",
-                                                "--logtostderr=true",
-                                                "--v=2"
-                                            ],
-                                            "image": "gke.gcr.io/cluster-proportional-autoscaler:1.8.4-gke.1",
-                                            "imagePullPolicy": "IfNotPresent",
-                                            "name": "autoscaler",
-                                            "resources": {
-                                                "requests": {
-                                                    "cpu": "20m",
-                                                    "memory": "10Mi"
-                                                }
-                                            },
-                                            "terminationMessagePath": "/dev/termination-log",
-                                            "terminationMessagePolicy": "File"
-                                        }
-                                    ],
-                                    "dnsPolicy": "ClusterFirst",
-                                    "nodeSelector": {
-                                        "kubernetes.io/os": "linux"
-                                    },
-                                    "priorityClassName": "system-cluster-critical",
-                                    "restartPolicy": "Always",
-                                    "schedulerName": "default-scheduler",
-                                    "securityContext": {
-                                        "fsGroup": 65534,
-                                        "seccompProfile": {
-                                            "type": "RuntimeDefault"
-                                        },
-                                        "supplementalGroups": [
-                                            65534
-                                        ]
-                                    },
-                                    "serviceAccount": "kube-dns-autoscaler",
-                                    "serviceAccountName": "kube-dns-autoscaler",
-                                    "terminationGracePeriodSeconds": 30,
-                                    "tolerations": [
-                                        {
-                                            "key": "CriticalAddonsOnly",
-                                            "operator": "Exists"
-                                        },
-                                        {
-                                            "key": "components.gke.io/gke-managed-components",
-                                            "operator": "Exists"
-                                        }
-                                    ]
-                                }
-                            }
-                        },
-                        "status": {
-                            "conditions": [
-                                {
-                                    "lastTransitionTime": "2022-11-15T06:44:27Z",
-                                    "lastUpdateTime": "2022-11-15T06:44:27Z",
-                                    "message": "Deployment has minimum availability.",
-                                    "reason": "MinimumReplicasAvailable",
-                                    "status": "True",
-                                    "type": "Available"
-                                },
-                                {
-                                    "lastTransitionTime": "2022-11-15T06:38:06Z",
-                                    "lastUpdateTime": "2022-11-15T06:44:27Z",
-                                    "message": "ReplicaSet \"kube-dns-autoscaler-f4d55555\" has successfully progressed.",
-                                    "reason": "NewReplicaSetAvailable",
-                                    "status": "True",
-                                    "type": "Progressing"
-                                }
-                            ],
-                            "observedGeneration": 2
-                        }
-                    },
-                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
-                    "provider": "urn:pulumi:dev::infra::pulumi:providers:kubernetes::k8s-provider::ab36b933-4a0f-4716-9397-bd873b3aaf69",
-                    "propertyDependencies": {
-                        "apiVersion": null,
-                        "kind": null,
-                        "metadata": null,
-                        "spec": null
-                    }
-                },
-                {
-                    "urn": "urn:pulumi:dev::infra::kubernetes:core/v1:Namespace::nginx-namespace",
-                    "custom": true,
-                    "id": "ingress-nginx",
-                    "type": "kubernetes:core/v1:Namespace",
-                    "inputs": {
-                        "apiVersion": "v1",
-                        "kind": "Namespace",
-                        "metadata": {
-                            "name": "ingress-nginx"
-                        }
-                    },
-                    "outputs": {
-                        "__fieldManager": "pulumi-kubernetes-9c41d7b5",
-                        "__initialApiVersion": "v1",
-                        "__inputs": {
-                            "apiVersion": "v1",
-                            "kind": "Namespace",
-                            "metadata": {
-                                "name": "ingress-nginx"
-                            }
-                        },
-                        "apiVersion": "v1",
-                        "kind": "Namespace",
-                        "metadata": {
-                            "creationTimestamp": "2022-11-15T06:57:56Z",
-                            "labels": {
-                                "kubernetes.io/metadata.name": "ingress-nginx"
-                            },
-                            "name": "ingress-nginx",
-                            "resourceVersion": "9111",
-                            "uid": "0e8935b1-ba7d-43ed-8d5a-77e03db92147"
-                        },
-                        "spec": {
-                            "finalizers": [
-                                "kubernetes"
-                            ]
-                        },
-                        "status": {
-                            "phase": "Active"
-                        }
-                    },
-                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
-                    "provider": "urn:pulumi:dev::infra::pulumi:providers:kubernetes::k8s-provider::ab36b933-4a0f-4716-9397-bd873b3aaf69",
-                    "propertyDependencies": {
-                        "apiVersion": null,
-                        "kind": null,
-                        "metadata": null
+                        "repositoryOpts": null
                     }
                 }
             ],
@@ -3345,7 +3552,56 @@
                             "skipAwait": false,
                             "skipCrds": false,
                             "timeout": 300,
-                            "values": {},
+                            "values": {
+                                "helmController": {
+                                    "resources": {
+                                        "requests": {
+                                            "cpu": "50m",
+                                            "memory": "48Mi"
+                                        }
+                                    }
+                                },
+                                "imageAutomationController": {
+                                    "resources": {
+                                        "requests": {
+                                            "cpu": "50m",
+                                            "memory": "48Mi"
+                                        }
+                                    }
+                                },
+                                "imageReflectionController": {
+                                    "resources": {
+                                        "requests": {
+                                            "cpu": "50m",
+                                            "memory": "48Mi"
+                                        }
+                                    }
+                                },
+                                "kustomizeController": {
+                                    "resources": {
+                                        "requests": {
+                                            "cpu": "50m",
+                                            "memory": "48Mi"
+                                        }
+                                    }
+                                },
+                                "notificationController": {
+                                    "resources": {
+                                        "requests": {
+                                            "cpu": "50m",
+                                            "memory": "48Mi"
+                                        }
+                                    }
+                                },
+                                "sourceController": {
+                                    "resources": {
+                                        "requests": {
+                                            "cpu": "50m",
+                                            "memory": "48Mi"
+                                        }
+                                    }
+                                }
+                            },
                             "verify": false,
                             "version": "",
                             "waitForJobs": false
@@ -3356,10 +3612,11 @@
                             "chart": null,
                             "compat": null,
                             "namespace": null,
-                            "repositoryOpts": null
+                            "repositoryOpts": null,
+                            "values": null
                         }
                     },
-                    "type": "creating"
+                    "type": "updating"
                 }
             ]
         }
