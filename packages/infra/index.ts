@@ -4,7 +4,7 @@ import * as k8s from '@pulumi/kubernetes'
 
 const providerCfg = new pulumi.Config('gcp')
 const project = providerCfg.require('project')
-const gcpRegion = providerCfg.get('region')
+const region = providerCfg.get('region')
 const cfg = new pulumi.Config()
 const nodesPerZone = cfg.requireNumber('nodesPerZone')
 const githubToken = cfg.requireSecret('githubToken')
@@ -288,7 +288,68 @@ const flux2 = new k8s.helm.v3.Release(
   },
 )
 
+const arAdminSA = new gcp.serviceaccount.Account('artifact-resistry-admin-sa', {
+  accountId: pulumi.interpolate`${cluster.name}-ar-admin-sa`,
+  displayName: 'Artifact Resistry Admin SA',
+})
+
+const arAdminSARoles = [
+  {
+    name: 'ar-repo-admin',
+    role: 'roles/artifactregistry.repoAdmin',
+  },
+]
+arAdminSARoles.map((x) => {
+  new gcp.projects.IAMMember(`ar-admin-sa-${x.name}-iam-binding`, {
+    project: project,
+    role: x.role,
+    member: pulumi.interpolate`serviceAccount:${arAdminSA.email}`,
+  })
+})
+
+const arAdminWIP = new gcp.iam.WorkloadIdentityPool('ar-admin-wip', {
+  workloadIdentityPoolId: pulumi.interpolate`${cluster.name}-ar-admin-pool`,
+})
+
+const arAdminWIPGithubProvider = new gcp.iam.WorkloadIdentityPoolProvider(
+  'github-provider',
+  {
+    workloadIdentityPoolId: arAdminWIP.workloadIdentityPoolId,
+    workloadIdentityPoolProviderId: pulumi.interpolate`${cluster.name}-github`,
+    displayName: 'github',
+    attributeMapping: {
+      'google.subject': 'assertion.sub',
+      'attribute.actor': 'assertion.actor',
+      'attribute.aud': 'assertion.aud',
+      'attribute.repository': 'assertion.repository',
+    },
+    oidc: {
+      issuerUri: 'https://token.actions.githubusercontent.com',
+    },
+  },
+)
+
 gitOpsConfigs.map((x) => {
+  const repositoryPath = new URL(x.repository.url).pathname.slice(0, -1)
+  const arAdminSAWorkloadIdentityIAMBinding = new gcp.projects.IAMMember(
+    `ar-admin-wi-iam-binding-${x.name}`,
+    {
+      project: project,
+      role: 'roles/iam.workloadIdentityUser',
+      member: pulumi.interpolate`principalSet://iam.googleapis.com/${arAdminWIP.name}/attribute.repository/${repositoryPath}`,
+    },
+  )
+
+  const artifactRegistry = new gcp.artifactregistry.Repository(
+    `artifact-registry-${x.name}`,
+    {
+      description: x.name,
+      format: 'DOCKER',
+      location: region,
+      repositoryId: x.name,
+    },
+  )
+
   const secretName = `git-secret-${x.name}`
   new k8s.core.v1.Secret(
     secretName,
