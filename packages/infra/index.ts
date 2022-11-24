@@ -331,12 +331,12 @@ const arAdminWIPGithubProvider = new gcp.iam.WorkloadIdentityPoolProvider(
 
 const registories = gitOpsConfigs.map((x) => {
   const repositoryPath = new URL(x.repository.url).pathname.slice(0, -1)
-  const arAdminSAWorkloadIdentityIAMBinding = new gcp.projects.IAMMember(
+  const arAdminSAWorkloadIdentityIAMBinding = new gcp.serviceaccount.IAMMember(
     `ar-admin-wi-iam-binding-${x.name}`,
     {
-      project: project,
+      serviceAccountId: arAdminSA.name,
       role: 'roles/iam.workloadIdentityUser',
-      member: pulumi.interpolate`principalSet://iam.googleapis.com/${arAdminWIP.name}/attribute.repository/${repositoryPath}`,
+      member: pulumi.interpolate`principalSet://iam.googleapis.com/${arAdminWIP.name}/attribute.repository${repositoryPath}`,
     },
   )
 
@@ -553,7 +553,8 @@ const caddy = new gcp.compute.Instance(
 )
 
 export const projectId = project
-export const artifactRegistryAdminWorkloadIdentityPoolId = arAdminWIP.id
+export const artifactRegistryAdminWorkloadIdentityPoolGithubProvierName =
+  arAdminWIPGithubProvider.name
 export const artifactRegistryAdminServiceAccountEmail = arAdminSA.email
 export const artifactRegistryDomain = `${region}-docker.pkg.dev`
 export const artifactResistryTagPrefixs = registories.map(
