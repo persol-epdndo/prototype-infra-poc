@@ -4,7 +4,7 @@
         "stack": "dev",
         "latest": {
             "manifest": {
-                "time": "2022-11-24T01:26:10.0124731Z",
+                "time": "2022-11-24T02:23:36.9942802Z",
                 "magic": "f852c58d1e02f14fd640de693ca0bcf7b9fd3e30050516a6b14224664d827aae",
                 "version": "v3.46.1"
             },
@@ -18,7 +18,16 @@
                 {
                     "urn": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
                     "custom": false,
-                    "type": "pulumi:pulumi:Stack"
+                    "type": "pulumi:pulumi:Stack",
+                    "outputs": {
+                        "artifactRegistryAdminServiceAccountEmail": "cluster-c5fe837-ar-admin-sa@prototype-infra.iam.gserviceaccount.com",
+                        "artifactRegistryAdminWorkloadIdentityPoolId": "projects/prototype-infra/locations/global/workloadIdentityPools/cluster-c5fe837-ar-admin-pool",
+                        "artifactRegistryDomain": "us-central1-docker.pkg.dev",
+                        "artifactResistryTagPrefixs": [
+                            "us-central1-docker.pkg.dev/prototype-infra/proto3rd"
+                        ],
+                        "projectId": "prototype-infra"
+                    }
                 },
                 {
                     "urn": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0",
@@ -37,38 +46,39 @@
                     }
                 },
                 {
-                    "urn": "urn:pulumi:dev::infra::gcp:compute/network:Network::network",
+                    "urn": "urn:pulumi:dev::infra::gcp:artifactregistry/repository:Repository::artifact-registry-proto3rd",
                     "custom": true,
-                    "id": "projects/prototype-infra/global/networks/network-ad3e04a",
-                    "type": "gcp:compute/network:Network",
+                    "id": "projects/prototype-infra/locations/us-central1/repositories/proto3rd",
+                    "type": "gcp:artifactregistry/repository:Repository",
                     "inputs": {
-                        "__defaults": [
-                            "deleteDefaultRoutesOnCreate",
-                            "name"
-                        ],
-                        "autoCreateSubnetworks": false,
-                        "deleteDefaultRoutesOnCreate": false,
-                        "name": "network-ad3e04a"
+                        "__defaults": [],
+                        "description": "proto3rd",
+                        "format": "DOCKER",
+                        "location": "us-central1",
+                        "repositoryId": "proto3rd"
                     },
                     "outputs": {
                         "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
-                        "autoCreateSubnetworks": false,
-                        "deleteDefaultRoutesOnCreate": false,
-                        "description": "",
-                        "enableUlaInternalIpv6": false,
-                        "gatewayIpv4": "",
-                        "id": "projects/prototype-infra/global/networks/network-ad3e04a",
-                        "internalIpv6Range": "",
-                        "mtu": 0,
-                        "name": "network-ad3e04a",
+                        "createTime": "2022-11-24T01:25:59.825117Z",
+                        "description": "proto3rd",
+                        "format": "DOCKER",
+                        "id": "projects/prototype-infra/locations/us-central1/repositories/proto3rd",
+                        "kmsKeyName": "",
+                        "labels": {},
+                        "location": "us-central1",
+                        "mavenConfig": null,
+                        "name": "proto3rd",
                         "project": "prototype-infra",
-                        "routingMode": "REGIONAL",
-                        "selfLink": "https://www.googleapis.com/compute/v1/projects/prototype-infra/global/networks/network-ad3e04a"
+                        "repositoryId": "proto3rd",
+                        "updateTime": "2022-11-24T01:25:59.825117Z"
                     },
                     "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
                     "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::912a9c1e-0665-4376-aaa6-df93cf3e2672",
                     "propertyDependencies": {
-                        "autoCreateSubnetworks": null
+                        "description": null,
+                        "format": null,
+                        "location": null,
+                        "repositoryId": null
                     }
                 },
                 {
@@ -108,6 +118,41 @@
                     "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::912a9c1e-0665-4376-aaa6-df93cf3e2672"
                 },
                 {
+                    "urn": "urn:pulumi:dev::infra::gcp:compute/network:Network::network",
+                    "custom": true,
+                    "id": "projects/prototype-infra/global/networks/network-ad3e04a",
+                    "type": "gcp:compute/network:Network",
+                    "inputs": {
+                        "__defaults": [
+                            "deleteDefaultRoutesOnCreate",
+                            "name"
+                        ],
+                        "autoCreateSubnetworks": false,
+                        "deleteDefaultRoutesOnCreate": false,
+                        "name": "network-ad3e04a"
+                    },
+                    "outputs": {
+                        "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
+                        "autoCreateSubnetworks": false,
+                        "deleteDefaultRoutesOnCreate": false,
+                        "description": "",
+                        "enableUlaInternalIpv6": false,
+                        "gatewayIpv4": "",
+                        "id": "projects/prototype-infra/global/networks/network-ad3e04a",
+                        "internalIpv6Range": "",
+                        "mtu": 0,
+                        "name": "network-ad3e04a",
+                        "project": "prototype-infra",
+                        "routingMode": "REGIONAL",
+                        "selfLink": "https://www.googleapis.com/compute/v1/projects/prototype-infra/global/networks/network-ad3e04a"
+                    },
+                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
+                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::912a9c1e-0665-4376-aaa6-df93cf3e2672",
+                    "propertyDependencies": {
+                        "autoCreateSubnetworks": null
+                    }
+                },
+                {
                     "urn": "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa",
                     "custom": true,
                     "id": "projects/prototype-infra/serviceAccounts/caddy-sa@prototype-infra.iam.gserviceaccount.com",
@@ -138,6 +183,92 @@
                     "propertyDependencies": {
                         "accountId": null,
                         "displayName": null
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:dev::infra::gcp:compute/router:Router::nat-router",
+                    "custom": true,
+                    "id": "projects/prototype-infra/regions/us-central1/routers/nat-router-f2be212",
+                    "type": "gcp:compute/router:Router",
+                    "inputs": {
+                        "__defaults": [
+                            "name"
+                        ],
+                        "name": "nat-router-f2be212",
+                        "network": "projects/prototype-infra/global/networks/network-ad3e04a"
+                    },
+                    "outputs": {
+                        "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
+                        "bgp": null,
+                        "creationTimestamp": "2022-11-14T22:33:44.607-08:00",
+                        "description": "",
+                        "encryptedInterconnectRouter": false,
+                        "id": "projects/prototype-infra/regions/us-central1/routers/nat-router-f2be212",
+                        "name": "nat-router-f2be212",
+                        "network": "https://www.googleapis.com/compute/v1/projects/prototype-infra/global/networks/network-ad3e04a",
+                        "project": "prototype-infra",
+                        "region": "us-central1",
+                        "selfLink": "https://www.googleapis.com/compute/v1/projects/prototype-infra/regions/us-central1/routers/nat-router-f2be212"
+                    },
+                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
+                    "dependencies": [
+                        "urn:pulumi:dev::infra::gcp:compute/network:Network::network"
+                    ],
+                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::912a9c1e-0665-4376-aaa6-df93cf3e2672",
+                    "propertyDependencies": {
+                        "network": [
+                            "urn:pulumi:dev::infra::gcp:compute/network:Network::network"
+                        ]
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:dev::infra::gcp:compute/subnetwork:Subnetwork::subnet",
+                    "custom": true,
+                    "id": "projects/prototype-infra/regions/us-central1/subnetworks/subnet-89b3175",
+                    "type": "gcp:compute/subnetwork:Subnetwork",
+                    "inputs": {
+                        "__defaults": [
+                            "name"
+                        ],
+                        "ipCidrRange": "10.128.0.0/12",
+                        "name": "subnet-89b3175",
+                        "network": "projects/prototype-infra/global/networks/network-ad3e04a",
+                        "privateIpGoogleAccess": true
+                    },
+                    "outputs": {
+                        "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
+                        "creationTimestamp": "2022-11-14T22:33:43.972-08:00",
+                        "description": "",
+                        "externalIpv6Prefix": "",
+                        "gatewayAddress": "10.128.0.1",
+                        "id": "projects/prototype-infra/regions/us-central1/subnetworks/subnet-89b3175",
+                        "ipCidrRange": "10.128.0.0/12",
+                        "ipv6AccessType": "",
+                        "ipv6CidrRange": "",
+                        "logConfig": null,
+                        "name": "subnet-89b3175",
+                        "network": "https://www.googleapis.com/compute/v1/projects/prototype-infra/global/networks/network-ad3e04a",
+                        "privateIpGoogleAccess": true,
+                        "privateIpv6GoogleAccess": "DISABLE_GOOGLE_ACCESS",
+                        "project": "prototype-infra",
+                        "purpose": "PRIVATE",
+                        "region": "us-central1",
+                        "role": "",
+                        "secondaryIpRanges": [],
+                        "selfLink": "https://www.googleapis.com/compute/v1/projects/prototype-infra/regions/us-central1/subnetworks/subnet-89b3175",
+                        "stackType": "IPV4_ONLY"
+                    },
+                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
+                    "dependencies": [
+                        "urn:pulumi:dev::infra::gcp:compute/network:Network::network"
+                    ],
+                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::912a9c1e-0665-4376-aaa6-df93cf3e2672",
+                    "propertyDependencies": {
+                        "ipCidrRange": null,
+                        "network": [
+                            "urn:pulumi:dev::infra::gcp:compute/network:Network::network"
+                        ],
+                        "privateIpGoogleAccess": null
                     }
                 },
                 {
@@ -297,56 +428,6 @@
                     }
                 },
                 {
-                    "urn": "urn:pulumi:dev::infra::gcp:compute/subnetwork:Subnetwork::subnet",
-                    "custom": true,
-                    "id": "projects/prototype-infra/regions/us-central1/subnetworks/subnet-89b3175",
-                    "type": "gcp:compute/subnetwork:Subnetwork",
-                    "inputs": {
-                        "__defaults": [
-                            "name"
-                        ],
-                        "ipCidrRange": "10.128.0.0/12",
-                        "name": "subnet-89b3175",
-                        "network": "projects/prototype-infra/global/networks/network-ad3e04a",
-                        "privateIpGoogleAccess": true
-                    },
-                    "outputs": {
-                        "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
-                        "creationTimestamp": "2022-11-14T22:33:43.972-08:00",
-                        "description": "",
-                        "externalIpv6Prefix": "",
-                        "gatewayAddress": "10.128.0.1",
-                        "id": "projects/prototype-infra/regions/us-central1/subnetworks/subnet-89b3175",
-                        "ipCidrRange": "10.128.0.0/12",
-                        "ipv6AccessType": "",
-                        "ipv6CidrRange": "",
-                        "logConfig": null,
-                        "name": "subnet-89b3175",
-                        "network": "https://www.googleapis.com/compute/v1/projects/prototype-infra/global/networks/network-ad3e04a",
-                        "privateIpGoogleAccess": true,
-                        "privateIpv6GoogleAccess": "DISABLE_GOOGLE_ACCESS",
-                        "project": "prototype-infra",
-                        "purpose": "PRIVATE",
-                        "region": "us-central1",
-                        "role": "",
-                        "secondaryIpRanges": [],
-                        "selfLink": "https://www.googleapis.com/compute/v1/projects/prototype-infra/regions/us-central1/subnetworks/subnet-89b3175",
-                        "stackType": "IPV4_ONLY"
-                    },
-                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
-                    "dependencies": [
-                        "urn:pulumi:dev::infra::gcp:compute/network:Network::network"
-                    ],
-                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::912a9c1e-0665-4376-aaa6-df93cf3e2672",
-                    "propertyDependencies": {
-                        "ipCidrRange": null,
-                        "network": [
-                            "urn:pulumi:dev::infra::gcp:compute/network:Network::network"
-                        ],
-                        "privateIpGoogleAccess": null
-                    }
-                },
-                {
                     "urn": "urn:pulumi:dev::infra::gcp:compute/firewall:Firewall::node-allow-master-tcp8443-firewall",
                     "custom": true,
                     "id": "projects/prototype-infra/global/firewalls/node-allow-master-tcp8443-firewall-7c1cc72",
@@ -503,74 +584,6 @@
                     }
                 },
                 {
-                    "urn": "urn:pulumi:dev::infra::gcp:compute/router:Router::nat-router",
-                    "custom": true,
-                    "id": "projects/prototype-infra/regions/us-central1/routers/nat-router-f2be212",
-                    "type": "gcp:compute/router:Router",
-                    "inputs": {
-                        "__defaults": [
-                            "name"
-                        ],
-                        "name": "nat-router-f2be212",
-                        "network": "projects/prototype-infra/global/networks/network-ad3e04a"
-                    },
-                    "outputs": {
-                        "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
-                        "bgp": null,
-                        "creationTimestamp": "2022-11-14T22:33:44.607-08:00",
-                        "description": "",
-                        "encryptedInterconnectRouter": false,
-                        "id": "projects/prototype-infra/regions/us-central1/routers/nat-router-f2be212",
-                        "name": "nat-router-f2be212",
-                        "network": "https://www.googleapis.com/compute/v1/projects/prototype-infra/global/networks/network-ad3e04a",
-                        "project": "prototype-infra",
-                        "region": "us-central1",
-                        "selfLink": "https://www.googleapis.com/compute/v1/projects/prototype-infra/regions/us-central1/routers/nat-router-f2be212"
-                    },
-                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
-                    "dependencies": [
-                        "urn:pulumi:dev::infra::gcp:compute/network:Network::network"
-                    ],
-                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::912a9c1e-0665-4376-aaa6-df93cf3e2672",
-                    "propertyDependencies": {
-                        "network": [
-                            "urn:pulumi:dev::infra::gcp:compute/network:Network::network"
-                        ]
-                    }
-                },
-                {
-                    "urn": "urn:pulumi:dev::infra::gcp:projects/iAMMember:IAMMember::caddy-sa-log-writer-iam-binding",
-                    "custom": true,
-                    "id": "prototype-infra/roles/logging.logWriter/serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
-                    "type": "gcp:projects/iAMMember:IAMMember",
-                    "inputs": {
-                        "__defaults": [],
-                        "member": "serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
-                        "project": "prototype-infra",
-                        "role": "roles/logging.logWriter"
-                    },
-                    "outputs": {
-                        "condition": null,
-                        "etag": "BwXtfIk2w1U=",
-                        "id": "prototype-infra/roles/logging.logWriter/serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
-                        "member": "serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
-                        "project": "prototype-infra",
-                        "role": "roles/logging.logWriter"
-                    },
-                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
-                    "dependencies": [
-                        "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
-                    ],
-                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::912a9c1e-0665-4376-aaa6-df93cf3e2672",
-                    "propertyDependencies": {
-                        "member": [
-                            "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
-                        ],
-                        "project": null,
-                        "role": null
-                    }
-                },
-                {
                     "urn": "urn:pulumi:dev::infra::gcp:projects/iAMMember:IAMMember::caddy-sa-monitoring-viewer-iam-binding",
                     "custom": true,
                     "id": "prototype-infra/roles/monitoring.viewer/serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
@@ -620,6 +633,38 @@
                         "member": "serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
                         "project": "prototype-infra",
                         "role": "roles/compute.viewer"
+                    },
+                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
+                    "dependencies": [
+                        "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
+                    ],
+                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::912a9c1e-0665-4376-aaa6-df93cf3e2672",
+                    "propertyDependencies": {
+                        "member": [
+                            "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
+                        ],
+                        "project": null,
+                        "role": null
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:dev::infra::gcp:projects/iAMMember:IAMMember::caddy-sa-log-writer-iam-binding",
+                    "custom": true,
+                    "id": "prototype-infra/roles/logging.logWriter/serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                    "type": "gcp:projects/iAMMember:IAMMember",
+                    "inputs": {
+                        "__defaults": [],
+                        "member": "serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "project": "prototype-infra",
+                        "role": "roles/logging.logWriter"
+                    },
+                    "outputs": {
+                        "condition": null,
+                        "etag": "BwXtfIk2w1U=",
+                        "id": "prototype-infra/roles/logging.logWriter/serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "member": "serviceAccount:caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                        "project": "prototype-infra",
+                        "role": "roles/logging.logWriter"
                     },
                     "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
                     "dependencies": [
@@ -732,192 +777,6 @@
                             "urn:pulumi:dev::infra::gcp:compute/router:Router::nat-router"
                         ],
                         "sourceSubnetworkIpRangesToNat": null
-                    }
-                },
-                {
-                    "urn": "urn:pulumi:dev::infra::gcp:compute/instance:Instance::caddy",
-                    "custom": true,
-                    "id": "projects/prototype-infra/zones/us-central1-a/instances/caddy-8a4ef8b",
-                    "type": "gcp:compute/instance:Instance",
-                    "inputs": {
-                        "__defaults": [
-                            "canIpForward",
-                            "deletionProtection",
-                            "name"
-                        ],
-                        "bootDisk": {
-                            "__defaults": [
-                                "autoDelete",
-                                "mode"
-                            ],
-                            "autoDelete": true,
-                            "initializeParams": {
-                                "__defaults": [],
-                                "image": "projects/cos-cloud/global/images/family/cos-stable",
-                                "size": 10,
-                                "type": "pd-standard"
-                            },
-                            "mode": "READ_WRITE"
-                        },
-                        "canIpForward": false,
-                        "deletionProtection": false,
-                        "machineType": "e2-small",
-                        "metadata": {
-                            "__defaults": [],
-                            "gce-container-declaration": "spec:\n  containers:\n  - image: ghcr.io/persol-epdndo/prototype-infra-poc/caddy:8\n    name: caddy\n    env:\n    - name: DOMAIN_NAMES\n      value: v3.poc.epdndo.com, v4.poc.epdndo.com\n    securityContext:\n      privileged: false\n    stdin: false\n    tty: false\n    volumeMounts: []\n  volumes: []\n  restartPolicy: Always\n",
-                            "google-logging-enabled": "true",
-                            "google-monitoring-enabled": "true"
-                        },
-                        "name": "caddy-8a4ef8b",
-                        "networkInterfaces": [
-                            {
-                                "__defaults": [],
-                                "accessConfigs": [
-                                    {
-                                        "__defaults": [],
-                                        "natIp": "34.28.183.164"
-                                    }
-                                ],
-                                "network": "projects/prototype-infra/global/networks/network-ad3e04a",
-                                "subnetwork": "projects/prototype-infra/regions/us-central1/subnetworks/subnet-89b3175"
-                            }
-                        ],
-                        "serviceAccount": {
-                            "__defaults": [],
-                            "email": "caddy-sa@prototype-infra.iam.gserviceaccount.com",
-                            "scopes": [
-                                "cloud-platform"
-                            ]
-                        },
-                        "tags": [
-                            "allow-http",
-                            "allow-https",
-                            "allow-ssh"
-                        ],
-                        "zone": "us-central1-a"
-                    },
-                    "outputs": {
-                        "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000},\"schema_version\":\"6\"}",
-                        "advancedMachineFeatures": null,
-                        "attachedDisks": [],
-                        "bootDisk": {
-                            "autoDelete": true,
-                            "deviceName": "persistent-disk-0",
-                            "diskEncryptionKeyRaw": {
-                                "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
-                                "ciphertext": "v1:PuUCYK+6DhtlW7tc:qH2EXpAGrhGqMD3OvfM1gikX"
-                            },
-                            "diskEncryptionKeySha256": "",
-                            "initializeParams": {
-                                "image": "https://www.googleapis.com/compute/beta/projects/cos-cloud/global/images/cos-stable-101-17162-40-34",
-                                "labels": {},
-                                "size": 10,
-                                "type": "pd-standard"
-                            },
-                            "kmsKeySelfLink": "",
-                            "mode": "READ_WRITE",
-                            "source": "https://www.googleapis.com/compute/v1/projects/prototype-infra/zones/us-central1-a/disks/caddy-8a4ef8b"
-                        },
-                        "canIpForward": false,
-                        "confidentialInstanceConfig": null,
-                        "cpuPlatform": "Intel Broadwell",
-                        "currentStatus": "RUNNING",
-                        "deletionProtection": false,
-                        "description": "",
-                        "enableDisplay": false,
-                        "guestAccelerators": [],
-                        "hostname": "",
-                        "id": "projects/prototype-infra/zones/us-central1-a/instances/caddy-8a4ef8b",
-                        "instanceId": "1292448201917238329",
-                        "labelFingerprint": "42WmSpB8rSM=",
-                        "labels": {},
-                        "machineType": "e2-small",
-                        "metadata": {
-                            "gce-container-declaration": "spec:\n  containers:\n  - image: ghcr.io/persol-epdndo/prototype-infra-poc/caddy:8\n    name: caddy\n    env:\n    - name: DOMAIN_NAMES\n      value: v3.poc.epdndo.com, v4.poc.epdndo.com\n    securityContext:\n      privileged: false\n    stdin: false\n    tty: false\n    volumeMounts: []\n  volumes: []\n  restartPolicy: Always\n",
-                            "google-logging-enabled": "true",
-                            "google-monitoring-enabled": "true"
-                        },
-                        "metadataFingerprint": "ht0CFqlgSqM=",
-                        "minCpuPlatform": "",
-                        "name": "caddy-8a4ef8b",
-                        "networkInterfaces": [
-                            {
-                                "accessConfigs": [
-                                    {
-                                        "natIp": "34.28.183.164",
-                                        "networkTier": "PREMIUM",
-                                        "publicPtrDomainName": ""
-                                    }
-                                ],
-                                "aliasIpRanges": [],
-                                "ipv6AccessConfigs": [],
-                                "ipv6AccessType": "",
-                                "name": "nic0",
-                                "network": "https://www.googleapis.com/compute/v1/projects/prototype-infra/global/networks/network-ad3e04a",
-                                "networkIp": "10.128.0.2",
-                                "nicType": "",
-                                "queueCount": 0,
-                                "stackType": "IPV4_ONLY",
-                                "subnetwork": "https://www.googleapis.com/compute/v1/projects/prototype-infra/regions/us-central1/subnetworks/subnet-89b3175",
-                                "subnetworkProject": "prototype-infra"
-                            }
-                        ],
-                        "networkPerformanceConfig": null,
-                        "project": "prototype-infra",
-                        "reservationAffinity": null,
-                        "resourcePolicies": null,
-                        "scheduling": {
-                            "automaticRestart": true,
-                            "instanceTerminationAction": "",
-                            "minNodeCpus": 0,
-                            "nodeAffinities": [],
-                            "onHostMaintenance": "MIGRATE",
-                            "preemptible": false,
-                            "provisioningModel": "STANDARD"
-                        },
-                        "scratchDisks": [],
-                        "selfLink": "https://www.googleapis.com/compute/v1/projects/prototype-infra/zones/us-central1-a/instances/caddy-8a4ef8b",
-                        "serviceAccount": {
-                            "email": "caddy-sa@prototype-infra.iam.gserviceaccount.com",
-                            "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform"
-                            ]
-                        },
-                        "shieldedInstanceConfig": {
-                            "enableIntegrityMonitoring": true,
-                            "enableSecureBoot": false,
-                            "enableVtpm": true
-                        },
-                        "tags": [
-                            "allow-ssh",
-                            "allow-https",
-                            "allow-http"
-                        ],
-                        "tagsFingerprint": "sEn_6wOAnyk=",
-                        "zone": "us-central1-a"
-                    },
-                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
-                    "dependencies": [
-                        "urn:pulumi:dev::infra::gcp:compute/address:Address::caddy-ip",
-                        "urn:pulumi:dev::infra::gcp:compute/network:Network::network",
-                        "urn:pulumi:dev::infra::gcp:compute/subnetwork:Subnetwork::subnet",
-                        "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
-                    ],
-                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::912a9c1e-0665-4376-aaa6-df93cf3e2672",
-                    "propertyDependencies": {
-                        "bootDisk": null,
-                        "machineType": null,
-                        "metadata": null,
-                        "networkInterfaces": [
-                            "urn:pulumi:dev::infra::gcp:compute/network:Network::network",
-                            "urn:pulumi:dev::infra::gcp:compute/subnetwork:Subnetwork::subnet",
-                            "urn:pulumi:dev::infra::gcp:compute/address:Address::caddy-ip"
-                        ],
-                        "serviceAccount": [
-                            "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
-                        ],
-                        "tags": null,
-                        "zone": null
                     }
                 },
                 {
@@ -1076,7 +935,7 @@
                             },
                             "clientKey": {
                                 "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
-                                "ciphertext": "v1:LC68JGtsZEmD0sCZ:/MlFq6yM+8SE3EdWTmUbhh9m"
+                                "ciphertext": "v1:3teke2t8c3sgD2tA:xzB+98apFQ3CPRgZV9pnZKRr"
                             },
                             "clusterCaCertificate": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUVMRENDQXBTZ0F3SUJBZ0lRV1NtWTE5U3g0V21IUTJ5MlRQU2NPakFOQmdrcWhraUc5dzBCQVFzRkFEQXYKTVMwd0t3WURWUVFERXlRME9EVTFORGMxT1MxbFptSXhMVFJtTldNdE9UUTJNUzB4WmpKaVl6VTVOR1k0TURJdwpJQmNOTWpJeE1URTFNRFV6TXpVM1doZ1BNakExTWpFeE1EY3dOak16TlRkYU1DOHhMVEFyQmdOVkJBTVRKRFE0Ck5UVTBOelU1TFdWbVlqRXROR1kxWXkwNU5EWXhMVEZtTW1Kak5UazBaamd3TWpDQ0FhSXdEUVlKS29aSWh2Y04KQVFFQkJRQURnZ0dQQURDQ0FZb0NnZ0dCQU9tdjRCck5tSHlEL01CSUFIbEpDandzdGdHWU1ScVpKYnRQVHg5WApKcUxDb3BRZmhnZ0F3YkFJSHh0Y3lFbG5qTU9lRVdiR2g4OUhSMEhqS09IRTlKaXRDT1c1VXU3ekxtaXZjQThLCm9TR2dQYXorMTdOakJVaUVLR213SzJBczBWVHdOSDM2SitPN1B6N2FuZW0rZ0RHbVRjNHlma2dFQmxmRHNYSmIKSXlnVmorUzJTV1VmNVRSVEd1SmQ1bFNZRkNmWE5vd2N5STdlOVJSeHdDWnRJaUk5MVFtU0k3UFlOVlQ2K2RCcApuTEhRMGFybE13QnFicHJFUXZ5NExNdFlYS0NLR1l6UEdMcUE2UG9PUy9pQ1poRnY3Q2N6bmpCTk1BdDFZeU4zClJ2YktLS1FNMGo5SEF3b3JvbkVrL2c5bXFSbTJ6K3huNVg1aFJXQm1hQkFkaThHRk5SOTdYTGpHTnRGOEVvSjMKclp1KzJyci91cFBTT3hiTWRBUHhlNnUxL1poM1AvWVJNOXZlNVVRVzFNUThaM3dqSGVUaDVzRGUxV1Q5dzBPNgpSbjFwUEFNZWRtbkFHVUFiYzR5MFNoMis4ZElhYzB3WFJ5K0Jqa3haNUt0ZlVGVzVTOHZmZ2l1djk2d0xjMDFPCnAxT09OL3hrayszMUM5N1JadEo5RFEzQ2d3SURBUUFCbzBJd1FEQU9CZ05WSFE4QkFmOEVCQU1DQWdRd0R3WUQKVlIwVEFRSC9CQVV3QXdFQi96QWRCZ05WSFE0RUZnUVVnbjgyVHRSSU9BL1Z4Z0swakJmdkQ1Q3V3TDB3RFFZSgpLb1pJaHZjTkFRRUxCUUFEZ2dHQkFDWVorelhkb1BiejJ6LzJkQTZ6UjIvT3N6NzRoVitKQ3oweTk0aHRKSHQ5CkF2TU5iV0I5bitudGQ4MG9yUm9QY3dXRUMyS3NHQ3J5UjZiY0NBZEJ4V1gzeUQ5SXhCTCtmTlRGbXBGOHlmTlAKdG9Cd1NoNS9YM2xiaFBsVXBnRzgzMnl5MFFWcXRBZlRydWdVM2pHR3ZGc0p2N1AzRzM4TGpSOHpweXA4MmxsTwoxS0Uza0x3b21sM0RxK29jR2hVU3VORjJJVlRqcDNsNmNyYWdMY2NJcUQ4c3lZTzgvR2U5MlpmTXRmdWtTbnNrCjdkbGdVOFA3ZkV1bXliQjhrY25mWGhHMFlwYzRxYkxoa2IvZm1zeVNjRWRkTm1FTzh0N3ZmZDNaWDAvZ2VLWlAKTnkwWFZXR01OTlNpZ1ovcHV4YWxWck5sV3p4QVdZdEZocHl0Vy8xWTROYkZGTnEreHNNT0pncTJCRmJZMDMzcgpoS3B2V0NtYzR2MjVjWjFON1V0YnhPNXcxUTlLWnBtK3drU2R1NFFqV282azRQR0JiY3M0VWtoOWtUeWxhRkFxCktteHJhekRLZFRXckJJN2QyK3I5UW9CZTcrZnhJcndnTnhVdG81eEJETDhtTlMwQXI0TGlVUlNuY21BYXBSQ2EKL0cyUEoxT2xCSXVqQlp3RXlhcUFQdz09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K"
                         },
@@ -1176,6 +1035,192 @@
                             "urn:pulumi:dev::infra::gcp:compute/subnetwork:Subnetwork::subnet"
                         ],
                         "workloadIdentityConfig": null
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:dev::infra::gcp:compute/instance:Instance::caddy",
+                    "custom": true,
+                    "id": "projects/prototype-infra/zones/us-central1-a/instances/caddy-8a4ef8b",
+                    "type": "gcp:compute/instance:Instance",
+                    "inputs": {
+                        "__defaults": [
+                            "canIpForward",
+                            "deletionProtection",
+                            "name"
+                        ],
+                        "bootDisk": {
+                            "__defaults": [
+                                "autoDelete",
+                                "mode"
+                            ],
+                            "autoDelete": true,
+                            "initializeParams": {
+                                "__defaults": [],
+                                "image": "projects/cos-cloud/global/images/family/cos-stable",
+                                "size": 10,
+                                "type": "pd-standard"
+                            },
+                            "mode": "READ_WRITE"
+                        },
+                        "canIpForward": false,
+                        "deletionProtection": false,
+                        "machineType": "e2-small",
+                        "metadata": {
+                            "__defaults": [],
+                            "gce-container-declaration": "spec:\n  containers:\n  - image: ghcr.io/persol-epdndo/prototype-infra-poc/caddy:8\n    name: caddy\n    env:\n    - name: DOMAIN_NAMES\n      value: v3.poc.epdndo.com, v4.poc.epdndo.com\n    securityContext:\n      privileged: false\n    stdin: false\n    tty: false\n    volumeMounts: []\n  volumes: []\n  restartPolicy: Always\n",
+                            "google-logging-enabled": "true",
+                            "google-monitoring-enabled": "true"
+                        },
+                        "name": "caddy-8a4ef8b",
+                        "networkInterfaces": [
+                            {
+                                "__defaults": [],
+                                "accessConfigs": [
+                                    {
+                                        "__defaults": [],
+                                        "natIp": "34.28.183.164"
+                                    }
+                                ],
+                                "network": "projects/prototype-infra/global/networks/network-ad3e04a",
+                                "subnetwork": "projects/prototype-infra/regions/us-central1/subnetworks/subnet-89b3175"
+                            }
+                        ],
+                        "serviceAccount": {
+                            "__defaults": [],
+                            "email": "caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                            "scopes": [
+                                "cloud-platform"
+                            ]
+                        },
+                        "tags": [
+                            "allow-http",
+                            "allow-https",
+                            "allow-ssh"
+                        ],
+                        "zone": "us-central1-a"
+                    },
+                    "outputs": {
+                        "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000},\"schema_version\":\"6\"}",
+                        "advancedMachineFeatures": null,
+                        "attachedDisks": [],
+                        "bootDisk": {
+                            "autoDelete": true,
+                            "deviceName": "persistent-disk-0",
+                            "diskEncryptionKeyRaw": {
+                                "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
+                                "ciphertext": "v1:hP3MLCz3izNU3v3B:xAojvS3gS6GssiaAX+OeI2s8"
+                            },
+                            "diskEncryptionKeySha256": "",
+                            "initializeParams": {
+                                "image": "https://www.googleapis.com/compute/beta/projects/cos-cloud/global/images/cos-stable-101-17162-40-34",
+                                "labels": {},
+                                "size": 10,
+                                "type": "pd-standard"
+                            },
+                            "kmsKeySelfLink": "",
+                            "mode": "READ_WRITE",
+                            "source": "https://www.googleapis.com/compute/v1/projects/prototype-infra/zones/us-central1-a/disks/caddy-8a4ef8b"
+                        },
+                        "canIpForward": false,
+                        "confidentialInstanceConfig": null,
+                        "cpuPlatform": "Intel Broadwell",
+                        "currentStatus": "RUNNING",
+                        "deletionProtection": false,
+                        "description": "",
+                        "enableDisplay": false,
+                        "guestAccelerators": [],
+                        "hostname": "",
+                        "id": "projects/prototype-infra/zones/us-central1-a/instances/caddy-8a4ef8b",
+                        "instanceId": "1292448201917238329",
+                        "labelFingerprint": "42WmSpB8rSM=",
+                        "labels": {},
+                        "machineType": "e2-small",
+                        "metadata": {
+                            "gce-container-declaration": "spec:\n  containers:\n  - image: ghcr.io/persol-epdndo/prototype-infra-poc/caddy:8\n    name: caddy\n    env:\n    - name: DOMAIN_NAMES\n      value: v3.poc.epdndo.com, v4.poc.epdndo.com\n    securityContext:\n      privileged: false\n    stdin: false\n    tty: false\n    volumeMounts: []\n  volumes: []\n  restartPolicy: Always\n",
+                            "google-logging-enabled": "true",
+                            "google-monitoring-enabled": "true"
+                        },
+                        "metadataFingerprint": "ht0CFqlgSqM=",
+                        "minCpuPlatform": "",
+                        "name": "caddy-8a4ef8b",
+                        "networkInterfaces": [
+                            {
+                                "accessConfigs": [
+                                    {
+                                        "natIp": "34.28.183.164",
+                                        "networkTier": "PREMIUM",
+                                        "publicPtrDomainName": ""
+                                    }
+                                ],
+                                "aliasIpRanges": [],
+                                "ipv6AccessConfigs": [],
+                                "ipv6AccessType": "",
+                                "name": "nic0",
+                                "network": "https://www.googleapis.com/compute/v1/projects/prototype-infra/global/networks/network-ad3e04a",
+                                "networkIp": "10.128.0.2",
+                                "nicType": "",
+                                "queueCount": 0,
+                                "stackType": "IPV4_ONLY",
+                                "subnetwork": "https://www.googleapis.com/compute/v1/projects/prototype-infra/regions/us-central1/subnetworks/subnet-89b3175",
+                                "subnetworkProject": "prototype-infra"
+                            }
+                        ],
+                        "networkPerformanceConfig": null,
+                        "project": "prototype-infra",
+                        "reservationAffinity": null,
+                        "resourcePolicies": null,
+                        "scheduling": {
+                            "automaticRestart": true,
+                            "instanceTerminationAction": "",
+                            "minNodeCpus": 0,
+                            "nodeAffinities": [],
+                            "onHostMaintenance": "MIGRATE",
+                            "preemptible": false,
+                            "provisioningModel": "STANDARD"
+                        },
+                        "scratchDisks": [],
+                        "selfLink": "https://www.googleapis.com/compute/v1/projects/prototype-infra/zones/us-central1-a/instances/caddy-8a4ef8b",
+                        "serviceAccount": {
+                            "email": "caddy-sa@prototype-infra.iam.gserviceaccount.com",
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "shieldedInstanceConfig": {
+                            "enableIntegrityMonitoring": true,
+                            "enableSecureBoot": false,
+                            "enableVtpm": true
+                        },
+                        "tags": [
+                            "allow-ssh",
+                            "allow-https",
+                            "allow-http"
+                        ],
+                        "tagsFingerprint": "sEn_6wOAnyk=",
+                        "zone": "us-central1-a"
+                    },
+                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
+                    "dependencies": [
+                        "urn:pulumi:dev::infra::gcp:compute/address:Address::caddy-ip",
+                        "urn:pulumi:dev::infra::gcp:compute/network:Network::network",
+                        "urn:pulumi:dev::infra::gcp:compute/subnetwork:Subnetwork::subnet",
+                        "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
+                    ],
+                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::912a9c1e-0665-4376-aaa6-df93cf3e2672",
+                    "propertyDependencies": {
+                        "bootDisk": null,
+                        "machineType": null,
+                        "metadata": null,
+                        "networkInterfaces": [
+                            "urn:pulumi:dev::infra::gcp:compute/network:Network::network",
+                            "urn:pulumi:dev::infra::gcp:compute/subnetwork:Subnetwork::subnet",
+                            "urn:pulumi:dev::infra::gcp:compute/address:Address::caddy-ip"
+                        ],
+                        "serviceAccount": [
+                            "urn:pulumi:dev::infra::gcp:serviceAccount/account:Account::caddy-sa"
+                        ],
+                        "tags": null,
+                        "zone": null
                     }
                 },
                 {
@@ -1294,7 +1339,7 @@
                         "enableServerSideApply": "true",
                         "kubeconfig": {
                             "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
-                            "ciphertext": "v1:HT09/QgcqqmEbARs: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"
+                            "ciphertext": "v1:EzKD8csmdKZeGWbi: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"
                         },
                         "version": "3.22.1"
                     },
@@ -1302,7 +1347,7 @@
                         "enableServerSideApply": "true",
                         "kubeconfig": {
                             "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
-                            "ciphertext": "v1:tvRgMhUtaT5fg5SN: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"
+                            "ciphertext": "v1:hIkxtokAcynxsi79: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"
                         },
                         "version": "3.22.1"
                     },
@@ -1598,236 +1643,37 @@
                     }
                 },
                 {
-                    "urn": "urn:pulumi:dev::infra::kubernetes:helm.sh/v3:Release::ingress-nginx",
+                    "urn": "urn:pulumi:dev::infra::kubernetes:core/v1:Namespace::nginx-namespace",
                     "custom": true,
-                    "id": "ingress-nginx/ingress-nginx-9d1de3b1",
-                    "type": "kubernetes:helm.sh/v3:Release",
-                    "inputs": {
-                        "atomic": false,
-                        "chart": "ingress-nginx",
-                        "cleanupOnFail": false,
-                        "createNamespace": false,
-                        "dependencyUpdate": false,
-                        "description": "",
-                        "devel": false,
-                        "disableCRDHooks": false,
-                        "disableOpenapiValidation": false,
-                        "disableWebhooks": false,
-                        "forceUpdate": false,
-                        "keyring": "",
-                        "lint": false,
-                        "name": "ingress-nginx-9d1de3b1",
-                        "namespace": "ingress-nginx",
-                        "postrender": "",
-                        "recreatePods": false,
-                        "renderSubchartNotes": false,
-                        "replace": false,
-                        "repositoryOpts": {
-                            "caFile": "",
-                            "certFile": "",
-                            "keyFile": "",
-                            "password": "",
-                            "repo": "https://kubernetes.github.io/ingress-nginx",
-                            "username": ""
-                        },
-                        "resetValues": false,
-                        "resourceNames": {
-                            "ClusterRole.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
-                                "ingress-nginx-9d1de3b1",
-                                "ingress-nginx-9d1de3b1-admission"
-                            ],
-                            "ClusterRoleBinding.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
-                                "ingress-nginx-9d1de3b1",
-                                "ingress-nginx-9d1de3b1-admission"
-                            ],
-                            "ConfigMap/v1": [
-                                "ingress-nginx/ingress-nginx-9d1de3b1-controller"
-                            ],
-                            "Deployment.apps/apps/v1": [
-                                "ingress-nginx/ingress-nginx-9d1de3b1-controller"
-                            ],
-                            "IngressClass.networking.k8s.io/networking.k8s.io/v1": [
-                                "nginx"
-                            ],
-                            "Job.batch/batch/v1": [
-                                "ingress-nginx/ingress-nginx-9d1de3b1-admission-create",
-                                "ingress-nginx/ingress-nginx-9d1de3b1-admission-patch"
-                            ],
-                            "Role.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
-                                "ingress-nginx/ingress-nginx-9d1de3b1",
-                                "ingress-nginx/ingress-nginx-9d1de3b1-admission"
-                            ],
-                            "RoleBinding.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
-                                "ingress-nginx/ingress-nginx-9d1de3b1",
-                                "ingress-nginx/ingress-nginx-9d1de3b1-admission"
-                            ],
-                            "Service/v1": [
-                                "ingress-nginx/ingress-nginx-9d1de3b1-controller",
-                                "ingress-nginx/ingress-nginx-9d1de3b1-controller-admission"
-                            ],
-                            "ServiceAccount/v1": [
-                                "ingress-nginx/ingress-nginx-9d1de3b1",
-                                "ingress-nginx/ingress-nginx-9d1de3b1-admission"
-                            ],
-                            "ValidatingWebhookConfiguration.admissionregistration.k8s.io/admissionregistration.k8s.io/v1": [
-                                "ingress-nginx-9d1de3b1-admission"
-                            ]
-                        },
-                        "reuseValues": false,
-                        "skipAwait": false,
-                        "skipCrds": false,
-                        "timeout": 300,
-                        "values": {
-                            "controller": {
-                                "service": {
-                                    "nodePorts": {
-                                        "http": 32080,
-                                        "https": 32443
-                                    },
-                                    "type": "NodePort"
-                                }
-                            }
-                        },
-                        "verify": false,
-                        "version": "",
-                        "waitForJobs": false
-                    },
-                    "outputs": {
-                        "__inputs": {
-                            "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
-                            "ciphertext": "v1:p6+mSLnRKR19+HMi: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"
-                        },
-                        "atomic": false,
-                        "chart": "ingress-nginx",
-                        "cleanupOnFail": false,
-                        "createNamespace": false,
-                        "dependencyUpdate": false,
-                        "description": "",
-                        "devel": false,
-                        "disableCRDHooks": false,
-                        "disableOpenapiValidation": false,
-                        "disableWebhooks": false,
-                        "forceUpdate": false,
-                        "keyring": "",
-                        "lint": false,
-                        "name": "ingress-nginx-9d1de3b1",
-                        "namespace": "ingress-nginx",
-                        "postrender": "",
-                        "recreatePods": false,
-                        "renderSubchartNotes": false,
-                        "replace": false,
-                        "repositoryOpts": {
-                            "caFile": "",
-                            "certFile": "",
-                            "keyFile": "",
-                            "password": "",
-                            "repo": "https://kubernetes.github.io/ingress-nginx",
-                            "username": ""
-                        },
-                        "resetValues": false,
-                        "resourceNames": {
-                            "ClusterRole.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
-                                "ingress-nginx-9d1de3b1"
-                            ],
-                            "ClusterRoleBinding.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
-                                "ingress-nginx-9d1de3b1"
-                            ],
-                            "ConfigMap/v1": [
-                                "ingress-nginx/ingress-nginx-9d1de3b1-controller"
-                            ],
-                            "Deployment.apps/apps/v1": [
-                                "ingress-nginx/ingress-nginx-9d1de3b1-controller"
-                            ],
-                            "IngressClass.networking.k8s.io/networking.k8s.io/v1": [
-                                "nginx"
-                            ],
-                            "Role.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
-                                "ingress-nginx/ingress-nginx-9d1de3b1"
-                            ],
-                            "RoleBinding.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
-                                "ingress-nginx/ingress-nginx-9d1de3b1"
-                            ],
-                            "Service/v1": [
-                                "ingress-nginx/ingress-nginx-9d1de3b1-controller",
-                                "ingress-nginx/ingress-nginx-9d1de3b1-controller-admission"
-                            ],
-                            "ServiceAccount/v1": [
-                                "ingress-nginx/ingress-nginx-9d1de3b1"
-                            ],
-                            "ValidatingWebhookConfiguration.admissionregistration.k8s.io/admissionregistration.k8s.io/v1": [
-                                "ingress-nginx-9d1de3b1-admission"
-                            ]
-                        },
-                        "reuseValues": false,
-                        "skipAwait": false,
-                        "skipCrds": false,
-                        "status": {
-                            "appVersion": "1.5.1",
-                            "chart": "ingress-nginx",
-                            "name": "ingress-nginx-9d1de3b1",
-                            "namespace": "ingress-nginx",
-                            "revision": 1,
-                            "status": "deployed",
-                            "version": "4.4.0"
-                        },
-                        "timeout": 300,
-                        "values": {
-                            "controller": {
-                                "service": {
-                                    "nodePorts": {
-                                        "http": 32080,
-                                        "https": 32443
-                                    },
-                                    "type": "NodePort"
-                                }
-                            }
-                        },
-                        "verify": false,
-                        "version": "4.4.0",
-                        "waitForJobs": false
-                    },
-                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
-                    "provider": "urn:pulumi:dev::infra::pulumi:providers:kubernetes::k8s-provider::ab36b933-4a0f-4716-9397-bd873b3aaf69",
-                    "propertyDependencies": {
-                        "chart": null,
-                        "compat": null,
-                        "namespace": null,
-                        "repositoryOpts": null,
-                        "values": null
-                    }
-                },
-                {
-                    "urn": "urn:pulumi:dev::infra::kubernetes:core/v1:Namespace::flux2-namespace",
-                    "custom": true,
-                    "id": "flux2",
+                    "id": "ingress-nginx",
                     "type": "kubernetes:core/v1:Namespace",
                     "inputs": {
                         "apiVersion": "v1",
                         "kind": "Namespace",
                         "metadata": {
-                            "name": "flux2"
+                            "name": "ingress-nginx"
                         }
                     },
                     "outputs": {
-                        "__fieldManager": "pulumi-kubernetes-78278233",
+                        "__fieldManager": "pulumi-kubernetes-9c41d7b5",
                         "__initialApiVersion": "v1",
                         "__inputs": {
                             "apiVersion": "v1",
                             "kind": "Namespace",
                             "metadata": {
-                                "name": "flux2"
+                                "name": "ingress-nginx"
                             }
                         },
                         "apiVersion": "v1",
                         "kind": "Namespace",
                         "metadata": {
-                            "creationTimestamp": "2022-11-16T00:41:53Z",
+                            "creationTimestamp": "2022-11-15T06:57:56Z",
                             "labels": {
-                                "kubernetes.io/metadata.name": "flux2"
+                                "kubernetes.io/metadata.name": "ingress-nginx"
                             },
-                            "name": "flux2",
-                            "resourceVersion": "424256",
-                            "uid": "04ea4974-2ba4-430b-8c23-5aff13f5e9e4"
+                            "name": "ingress-nginx",
+                            "resourceVersion": "9111",
+                            "uid": "0e8935b1-ba7d-43ed-8d5a-77e03db92147"
                         },
                         "spec": {
                             "finalizers": [
@@ -1844,42 +1690,6 @@
                         "apiVersion": null,
                         "kind": null,
                         "metadata": null
-                    }
-                },
-                {
-                    "urn": "urn:pulumi:dev::infra::gcp:artifactregistry/repository:Repository::artifact-registry-proto3rd",
-                    "custom": true,
-                    "id": "projects/prototype-infra/locations/us-central1/repositories/proto3rd",
-                    "type": "gcp:artifactregistry/repository:Repository",
-                    "inputs": {
-                        "__defaults": [],
-                        "description": "proto3rd",
-                        "format": "DOCKER",
-                        "location": "us-central1",
-                        "repositoryId": "proto3rd"
-                    },
-                    "outputs": {
-                        "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
-                        "createTime": "2022-11-24T01:25:59.825117Z",
-                        "description": "proto3rd",
-                        "format": "DOCKER",
-                        "id": "projects/prototype-infra/locations/us-central1/repositories/proto3rd",
-                        "kmsKeyName": "",
-                        "labels": {},
-                        "location": "us-central1",
-                        "mavenConfig": null,
-                        "name": "proto3rd",
-                        "project": "prototype-infra",
-                        "repositoryId": "proto3rd",
-                        "updateTime": "2022-11-24T01:25:59.825117Z"
-                    },
-                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
-                    "provider": "urn:pulumi:dev::infra::pulumi:providers:gcp::default_6_42_0::912a9c1e-0665-4376-aaa6-df93cf3e2672",
-                    "propertyDependencies": {
-                        "description": null,
-                        "format": null,
-                        "location": null,
-                        "repositoryId": null
                     }
                 },
                 {
@@ -2618,6 +2428,56 @@
                     }
                 },
                 {
+                    "urn": "urn:pulumi:dev::infra::kubernetes:core/v1:Namespace::flux2-namespace",
+                    "custom": true,
+                    "id": "flux2",
+                    "type": "kubernetes:core/v1:Namespace",
+                    "inputs": {
+                        "apiVersion": "v1",
+                        "kind": "Namespace",
+                        "metadata": {
+                            "name": "flux2"
+                        }
+                    },
+                    "outputs": {
+                        "__fieldManager": "pulumi-kubernetes-78278233",
+                        "__initialApiVersion": "v1",
+                        "__inputs": {
+                            "apiVersion": "v1",
+                            "kind": "Namespace",
+                            "metadata": {
+                                "name": "flux2"
+                            }
+                        },
+                        "apiVersion": "v1",
+                        "kind": "Namespace",
+                        "metadata": {
+                            "creationTimestamp": "2022-11-16T00:41:53Z",
+                            "labels": {
+                                "kubernetes.io/metadata.name": "flux2"
+                            },
+                            "name": "flux2",
+                            "resourceVersion": "424256",
+                            "uid": "04ea4974-2ba4-430b-8c23-5aff13f5e9e4"
+                        },
+                        "spec": {
+                            "finalizers": [
+                                "kubernetes"
+                            ]
+                        },
+                        "status": {
+                            "phase": "Active"
+                        }
+                    },
+                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
+                    "provider": "urn:pulumi:dev::infra::pulumi:providers:kubernetes::k8s-provider::ab36b933-4a0f-4716-9397-bd873b3aaf69",
+                    "propertyDependencies": {
+                        "apiVersion": null,
+                        "kind": null,
+                        "metadata": null
+                    }
+                },
+                {
                     "urn": "urn:pulumi:dev::infra::kubernetes:apps/v1:DeploymentPatch::disable-kube-dns-autoscaler-patch",
                     "custom": true,
                     "id": "kube-system/kube-dns-autoscaler",
@@ -2883,56 +2743,6 @@
                     }
                 },
                 {
-                    "urn": "urn:pulumi:dev::infra::kubernetes:core/v1:Namespace::nginx-namespace",
-                    "custom": true,
-                    "id": "ingress-nginx",
-                    "type": "kubernetes:core/v1:Namespace",
-                    "inputs": {
-                        "apiVersion": "v1",
-                        "kind": "Namespace",
-                        "metadata": {
-                            "name": "ingress-nginx"
-                        }
-                    },
-                    "outputs": {
-                        "__fieldManager": "pulumi-kubernetes-9c41d7b5",
-                        "__initialApiVersion": "v1",
-                        "__inputs": {
-                            "apiVersion": "v1",
-                            "kind": "Namespace",
-                            "metadata": {
-                                "name": "ingress-nginx"
-                            }
-                        },
-                        "apiVersion": "v1",
-                        "kind": "Namespace",
-                        "metadata": {
-                            "creationTimestamp": "2022-11-15T06:57:56Z",
-                            "labels": {
-                                "kubernetes.io/metadata.name": "ingress-nginx"
-                            },
-                            "name": "ingress-nginx",
-                            "resourceVersion": "9111",
-                            "uid": "0e8935b1-ba7d-43ed-8d5a-77e03db92147"
-                        },
-                        "spec": {
-                            "finalizers": [
-                                "kubernetes"
-                            ]
-                        },
-                        "status": {
-                            "phase": "Active"
-                        }
-                    },
-                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
-                    "provider": "urn:pulumi:dev::infra::pulumi:providers:kubernetes::k8s-provider::ab36b933-4a0f-4716-9397-bd873b3aaf69",
-                    "propertyDependencies": {
-                        "apiVersion": null,
-                        "kind": null,
-                        "metadata": null
-                    }
-                },
-                {
                     "urn": "urn:pulumi:dev::infra::kubernetes:core/v1:Namespace::proto3rd-production-namespace",
                     "custom": true,
                     "id": "proto3rd-production",
@@ -2983,236 +2793,13 @@
                     }
                 },
                 {
-                    "urn": "urn:pulumi:dev::infra::kubernetes:core/v1:Secret::git-secret-proto3rd",
+                    "urn": "urn:pulumi:dev::infra::kubernetes:helm.sh/v3:Release::ingress-nginx",
                     "custom": true,
-                    "id": "flux2/git-secret-proto3rd",
-                    "type": "kubernetes:core/v1:Secret",
-                    "inputs": {
-                        "apiVersion": "v1",
-                        "kind": "Secret",
-                        "metadata": {
-                            "name": "git-secret-proto3rd",
-                            "namespace": "flux2"
-                        },
-                        "stringData": {
-                            "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
-                            "ciphertext": "v1:vfHgrA4leh1bIQwF:619RfNUGWwYi4OUGCNqxa2vWl8nOWg8KD+WmJVI1yVkjLcLFrQvT6g5C5IMSv3ZC5nZsT4dDr+z2Ib9zqDa0SBvB8UuW6DaasM2lXwqv54I1q8jzkHCUfPt6kL119sY="
-                        }
-                    },
-                    "outputs": {
-                        "__fieldManager": "pulumi-kubernetes-a3c66e60",
-                        "__initialApiVersion": "v1",
-                        "__inputs": {
-                            "apiVersion": "v1",
-                            "kind": "Secret",
-                            "metadata": {
-                                "name": "git-secret-proto3rd",
-                                "namespace": "flux2"
-                            },
-                            "stringData": {
-                                "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
-                                "ciphertext": "v1:ka0ieudTNaAwwFs1:blUcmajt5knRII+m3uF3L1cs4RTIMpPkdKC8Hxxcb7LTFl4xfeOOuxCk9nSSuhl0q+c1zK5nSXYhq3RT4sRcjmUkzJGfBzKIjIaw5YmS7MFUCeTuC8pNcFdG8cIE7Do="
-                            }
-                        },
-                        "apiVersion": "v1",
-                        "data": {
-                            "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
-                            "ciphertext": "v1:LnSqa05mDACFAh9D:/3N+PvjWn54afRGOpO4Lxs3NdtewvVjVYVn3YF2g0cdJNouqiWYC0he18ZpRhJYiIScig6jz/zwcQxsdIqrlrB3iIgGO7xO0HMKJHjtGwDQz0LRrP3g8m6f31/VDOuqD/V76Sa1YVig4L8nic4tksBIzeWMs"
-                        },
-                        "kind": "Secret",
-                        "metadata": {
-                            "creationTimestamp": "2022-11-16T02:46:47Z",
-                            "managedFields": [
-                                {
-                                    "apiVersion": "v1",
-                                    "fieldsType": "FieldsV1",
-                                    "fieldsV1": {
-                                        "f:stringData": {
-                                            "f:password": {},
-                                            "f:username": {}
-                                        }
-                                    },
-                                    "manager": "pulumi-kubernetes-a3c66e60",
-                                    "operation": "Apply",
-                                    "time": "2022-11-16T02:46:47Z"
-                                }
-                            ],
-                            "name": "git-secret-proto3rd",
-                            "namespace": "flux2",
-                            "resourceVersion": "482697",
-                            "uid": "74924b9a-cb5d-46e6-b1bd-3f79b0348a72"
-                        },
-                        "type": "Opaque"
-                    },
-                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
-                    "dependencies": [
-                        "urn:pulumi:dev::infra::kubernetes:core/v1:Namespace::flux2-namespace"
-                    ],
-                    "provider": "urn:pulumi:dev::infra::pulumi:providers:kubernetes::k8s-provider::ab36b933-4a0f-4716-9397-bd873b3aaf69",
-                    "propertyDependencies": {
-                        "apiVersion": null,
-                        "kind": null,
-                        "metadata": [
-                            "urn:pulumi:dev::infra::kubernetes:core/v1:Namespace::flux2-namespace"
-                        ],
-                        "stringData": null
-                    },
-                    "additionalSecretOutputs": [
-                        "data",
-                        "stringData"
-                    ]
-                },
-                {
-                    "urn": "urn:pulumi:dev::infra::kubernetes:kustomize.toolkit.fluxcd.io/v1beta2:Kustomization::git-ops-proto3rd",
-                    "custom": true,
-                    "id": "flux2/git-ops-proto3rd",
-                    "type": "kubernetes:kustomize.toolkit.fluxcd.io/v1beta2:Kustomization",
-                    "inputs": {
-                        "apiVersion": "kustomize.toolkit.fluxcd.io/v1beta2",
-                        "kind": "Kustomization",
-                        "metadata": {
-                            "name": "git-ops-proto3rd",
-                            "namespace": "flux2"
-                        },
-                        "spec": {
-                            "force": false,
-                            "interval": "60m0s",
-                            "path": "./deploy",
-                            "prune": true,
-                            "retryInterval": "2m0s",
-                            "sourceRef": {
-                                "kind": "GitRepository",
-                                "name": "git-repository-proto3rd",
-                                "namespace": "flux2"
-                            },
-                            "targetNamespace": "proto3rd-production",
-                            "timeout": "3m0s",
-                            "wait": true
-                        }
-                    },
-                    "outputs": {
-                        "__fieldManager": "pulumi-kubernetes-fc11b182",
-                        "__initialApiVersion": "kustomize.toolkit.fluxcd.io/v1beta2",
-                        "__inputs": {
-                            "apiVersion": "kustomize.toolkit.fluxcd.io/v1beta2",
-                            "kind": "Kustomization",
-                            "metadata": {
-                                "name": "git-ops-proto3rd",
-                                "namespace": "flux2"
-                            },
-                            "spec": {
-                                "force": false,
-                                "interval": "60m0s",
-                                "path": "./deploy",
-                                "prune": true,
-                                "retryInterval": "2m0s",
-                                "sourceRef": {
-                                    "kind": "GitRepository",
-                                    "name": "git-repository-proto3rd",
-                                    "namespace": "flux2"
-                                },
-                                "targetNamespace": "proto3rd-production",
-                                "timeout": "3m0s",
-                                "wait": true
-                            }
-                        },
-                        "apiVersion": "kustomize.toolkit.fluxcd.io/v1beta2",
-                        "kind": "Kustomization",
-                        "metadata": {
-                            "creationTimestamp": "2022-11-16T02:10:45Z",
-                            "finalizers": [
-                                "finalizers.fluxcd.io"
-                            ],
-                            "generation": 1,
-                            "managedFields": [
-                                {
-                                    "apiVersion": "kustomize.toolkit.fluxcd.io/v1beta2",
-                                    "fieldsType": "FieldsV1",
-                                    "fieldsV1": {
-                                        "f:spec": {
-                                            "f:force": {},
-                                            "f:interval": {},
-                                            "f:path": {},
-                                            "f:prune": {},
-                                            "f:retryInterval": {},
-                                            "f:sourceRef": {
-                                                "f:kind": {},
-                                                "f:name": {},
-                                                "f:namespace": {}
-                                            },
-                                            "f:targetNamespace": {},
-                                            "f:timeout": {},
-                                            "f:wait": {}
-                                        }
-                                    },
-                                    "manager": "pulumi-kubernetes-fc11b182",
-                                    "operation": "Apply",
-                                    "time": "2022-11-16T02:10:45Z"
-                                },
-                                {
-                                    "apiVersion": "kustomize.toolkit.fluxcd.io/v1beta2",
-                                    "fieldsType": "FieldsV1",
-                                    "fieldsV1": {
-                                        "f:metadata": {
-                                            "f:finalizers": {
-                                                ".": {},
-                                                "v:\"finalizers.fluxcd.io\"": {}
-                                            }
-                                        }
-                                    },
-                                    "manager": "gotk-kustomize-controller",
-                                    "operation": "Update",
-                                    "time": "2022-11-16T02:10:45Z"
-                                }
-                            ],
-                            "name": "git-ops-proto3rd",
-                            "namespace": "flux2",
-                            "resourceVersion": "466007",
-                            "uid": "af642c80-518b-4152-839b-a2fca9e1edea"
-                        },
-                        "spec": {
-                            "force": false,
-                            "interval": "60m0s",
-                            "path": "./deploy",
-                            "prune": true,
-                            "retryInterval": "2m0s",
-                            "sourceRef": {
-                                "kind": "GitRepository",
-                                "name": "git-repository-proto3rd",
-                                "namespace": "flux2"
-                            },
-                            "targetNamespace": "proto3rd-production",
-                            "timeout": "3m0s",
-                            "wait": true
-                        },
-                        "status": {
-                            "observedGeneration": -1
-                        }
-                    },
-                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
-                    "dependencies": [
-                        "urn:pulumi:dev::infra::kubernetes:core/v1:Namespace::flux2-namespace"
-                    ],
-                    "provider": "urn:pulumi:dev::infra::pulumi:providers:kubernetes::k8s-provider::ab36b933-4a0f-4716-9397-bd873b3aaf69",
-                    "propertyDependencies": {
-                        "apiVersion": null,
-                        "kind": null,
-                        "metadata": [
-                            "urn:pulumi:dev::infra::kubernetes:core/v1:Namespace::flux2-namespace"
-                        ],
-                        "spec": [
-                            "urn:pulumi:dev::infra::kubernetes:core/v1:Namespace::flux2-namespace"
-                        ]
-                    }
-                },
-                {
-                    "urn": "urn:pulumi:dev::infra::kubernetes:helm.sh/v3:Release::flux2",
-                    "custom": true,
-                    "id": "flux2/flux2-4db3506c",
+                    "id": "ingress-nginx/ingress-nginx-9d1de3b1",
                     "type": "kubernetes:helm.sh/v3:Release",
                     "inputs": {
                         "atomic": false,
-                        "chart": "flux2",
+                        "chart": "ingress-nginx",
                         "cleanupOnFail": false,
                         "createNamespace": false,
                         "dependencyUpdate": false,
@@ -3224,8 +2811,8 @@
                         "forceUpdate": false,
                         "keyring": "",
                         "lint": false,
-                        "name": "flux2-4db3506c",
-                        "namespace": "flux2",
+                        "name": "ingress-nginx-9d1de3b1",
+                        "namespace": "ingress-nginx",
                         "postrender": "",
                         "recreatePods": false,
                         "renderSubchartNotes": false,
@@ -3235,62 +2822,50 @@
                             "certFile": "",
                             "keyFile": "",
                             "password": "",
-                            "repo": "https://fluxcd-community.github.io/helm-charts/",
+                            "repo": "https://kubernetes.github.io/ingress-nginx",
                             "username": ""
                         },
                         "resetValues": false,
                         "resourceNames": {
                             "ClusterRole.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
-                                "crd-controller"
+                                "ingress-nginx-9d1de3b1",
+                                "ingress-nginx-9d1de3b1-admission"
                             ],
                             "ClusterRoleBinding.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
-                                "cluster-reconciler",
-                                "crd-controller"
+                                "ingress-nginx-9d1de3b1",
+                                "ingress-nginx-9d1de3b1-admission"
                             ],
-                            "CustomResourceDefinition.apiextensions.k8s.io/apiextensions.k8s.io/v1": [
-                                "alerts.notification.toolkit.fluxcd.io",
-                                "buckets.source.toolkit.fluxcd.io",
-                                "gitrepositories.source.toolkit.fluxcd.io",
-                                "helmcharts.source.toolkit.fluxcd.io",
-                                "helmreleases.helm.toolkit.fluxcd.io",
-                                "helmrepositories.source.toolkit.fluxcd.io",
-                                "imagepolicies.image.toolkit.fluxcd.io",
-                                "imagerepositories.image.toolkit.fluxcd.io",
-                                "imageupdateautomations.image.toolkit.fluxcd.io",
-                                "kustomizations.kustomize.toolkit.fluxcd.io",
-                                "ocirepositories.source.toolkit.fluxcd.io",
-                                "providers.notification.toolkit.fluxcd.io",
-                                "receivers.notification.toolkit.fluxcd.io"
+                            "ConfigMap/v1": [
+                                "ingress-nginx/ingress-nginx-9d1de3b1-controller"
                             ],
                             "Deployment.apps/apps/v1": [
-                                "helm-controller",
-                                "image-automation-controller",
-                                "image-reflector-controller",
-                                "kustomize-controller",
-                                "notification-controller",
-                                "source-controller"
+                                "ingress-nginx/ingress-nginx-9d1de3b1-controller"
+                            ],
+                            "IngressClass.networking.k8s.io/networking.k8s.io/v1": [
+                                "nginx"
                             ],
                             "Job.batch/batch/v1": [
-                                "flux2-4db3506c-flux-check"
+                                "ingress-nginx/ingress-nginx-9d1de3b1-admission-create",
+                                "ingress-nginx/ingress-nginx-9d1de3b1-admission-patch"
                             ],
-                            "NetworkPolicy.networking.k8s.io/networking.k8s.io/v1": [
-                                "allow-egress",
-                                "allow-scraping",
-                                "allow-webhooks"
+                            "Role.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
+                                "ingress-nginx/ingress-nginx-9d1de3b1",
+                                "ingress-nginx/ingress-nginx-9d1de3b1-admission"
+                            ],
+                            "RoleBinding.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
+                                "ingress-nginx/ingress-nginx-9d1de3b1",
+                                "ingress-nginx/ingress-nginx-9d1de3b1-admission"
                             ],
                             "Service/v1": [
-                                "notification-controller",
-                                "source-controller",
-                                "webhook-receiver"
+                                "ingress-nginx/ingress-nginx-9d1de3b1-controller",
+                                "ingress-nginx/ingress-nginx-9d1de3b1-controller-admission"
                             ],
                             "ServiceAccount/v1": [
-                                "flux2-4db3506c-flux-check",
-                                "helm-controller",
-                                "image-automation-controller",
-                                "image-reflector-controller",
-                                "kustomize-controller",
-                                "notification-controller",
-                                "source-controller"
+                                "ingress-nginx/ingress-nginx-9d1de3b1",
+                                "ingress-nginx/ingress-nginx-9d1de3b1-admission"
+                            ],
+                            "ValidatingWebhookConfiguration.admissionregistration.k8s.io/admissionregistration.k8s.io/v1": [
+                                "ingress-nginx-9d1de3b1-admission"
                             ]
                         },
                         "reuseValues": false,
@@ -3298,52 +2873,13 @@
                         "skipCrds": false,
                         "timeout": 300,
                         "values": {
-                            "helmController": {
-                                "resources": {
-                                    "requests": {
-                                        "cpu": "50m",
-                                        "memory": "48Mi"
-                                    }
-                                }
-                            },
-                            "imageAutomationController": {
-                                "resources": {
-                                    "requests": {
-                                        "cpu": "50m",
-                                        "memory": "48Mi"
-                                    }
-                                }
-                            },
-                            "imageReflectionController": {
-                                "resources": {
-                                    "requests": {
-                                        "cpu": "50m",
-                                        "memory": "48Mi"
-                                    }
-                                }
-                            },
-                            "kustomizeController": {
-                                "resources": {
-                                    "requests": {
-                                        "cpu": "50m",
-                                        "memory": "48Mi"
-                                    }
-                                }
-                            },
-                            "notificationController": {
-                                "resources": {
-                                    "requests": {
-                                        "cpu": "50m",
-                                        "memory": "48Mi"
-                                    }
-                                }
-                            },
-                            "sourceController": {
-                                "resources": {
-                                    "requests": {
-                                        "cpu": "50m",
-                                        "memory": "48Mi"
-                                    }
+                            "controller": {
+                                "service": {
+                                    "nodePorts": {
+                                        "http": 32080,
+                                        "https": 32443
+                                    },
+                                    "type": "NodePort"
                                 }
                             }
                         },
@@ -3354,10 +2890,10 @@
                     "outputs": {
                         "__inputs": {
                             "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
-                            "ciphertext": "v1:sDKkKWL3/oBTlo4G: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"
+                            "ciphertext": "v1:nDsYXmSZM0w/qadJ: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"
                         },
                         "atomic": false,
-                        "chart": "flux2",
+                        "chart": "ingress-nginx",
                         "cleanupOnFail": false,
                         "createNamespace": false,
                         "dependencyUpdate": false,
@@ -3369,8 +2905,8 @@
                         "forceUpdate": false,
                         "keyring": "",
                         "lint": false,
-                        "name": "flux2-4db3506c",
-                        "namespace": "flux2",
+                        "name": "ingress-nginx-9d1de3b1",
+                        "namespace": "ingress-nginx",
                         "postrender": "",
                         "recreatePods": false,
                         "renderSubchartNotes": false,
@@ -3380,138 +2916,77 @@
                             "certFile": "",
                             "keyFile": "",
                             "password": "",
-                            "repo": "https://fluxcd-community.github.io/helm-charts/",
+                            "repo": "https://kubernetes.github.io/ingress-nginx",
                             "username": ""
                         },
                         "resetValues": false,
                         "resourceNames": {
                             "ClusterRole.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
-                                "crd-controller"
+                                "ingress-nginx-9d1de3b1"
                             ],
                             "ClusterRoleBinding.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
-                                "cluster-reconciler",
-                                "crd-controller"
+                                "ingress-nginx-9d1de3b1"
                             ],
-                            "CustomResourceDefinition.apiextensions.k8s.io/apiextensions.k8s.io/v1": [
-                                "alerts.notification.toolkit.fluxcd.io",
-                                "buckets.source.toolkit.fluxcd.io",
-                                "gitrepositories.source.toolkit.fluxcd.io",
-                                "helmcharts.source.toolkit.fluxcd.io",
-                                "helmreleases.helm.toolkit.fluxcd.io",
-                                "helmrepositories.source.toolkit.fluxcd.io",
-                                "imagepolicies.image.toolkit.fluxcd.io",
-                                "imagerepositories.image.toolkit.fluxcd.io",
-                                "imageupdateautomations.image.toolkit.fluxcd.io",
-                                "kustomizations.kustomize.toolkit.fluxcd.io",
-                                "ocirepositories.source.toolkit.fluxcd.io",
-                                "providers.notification.toolkit.fluxcd.io",
-                                "receivers.notification.toolkit.fluxcd.io"
+                            "ConfigMap/v1": [
+                                "ingress-nginx/ingress-nginx-9d1de3b1-controller"
                             ],
                             "Deployment.apps/apps/v1": [
-                                "helm-controller",
-                                "image-automation-controller",
-                                "image-reflector-controller",
-                                "kustomize-controller",
-                                "notification-controller",
-                                "source-controller"
+                                "ingress-nginx/ingress-nginx-9d1de3b1-controller"
                             ],
-                            "NetworkPolicy.networking.k8s.io/networking.k8s.io/v1": [
-                                "allow-egress",
-                                "allow-scraping",
-                                "allow-webhooks"
+                            "IngressClass.networking.k8s.io/networking.k8s.io/v1": [
+                                "nginx"
+                            ],
+                            "Role.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
+                                "ingress-nginx/ingress-nginx-9d1de3b1"
+                            ],
+                            "RoleBinding.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
+                                "ingress-nginx/ingress-nginx-9d1de3b1"
                             ],
                             "Service/v1": [
-                                "notification-controller",
-                                "source-controller",
-                                "webhook-receiver"
+                                "ingress-nginx/ingress-nginx-9d1de3b1-controller",
+                                "ingress-nginx/ingress-nginx-9d1de3b1-controller-admission"
                             ],
                             "ServiceAccount/v1": [
-                                "helm-controller",
-                                "image-automation-controller",
-                                "image-reflector-controller",
-                                "kustomize-controller",
-                                "notification-controller",
-                                "source-controller"
+                                "ingress-nginx/ingress-nginx-9d1de3b1"
+                            ],
+                            "ValidatingWebhookConfiguration.admissionregistration.k8s.io/admissionregistration.k8s.io/v1": [
+                                "ingress-nginx-9d1de3b1-admission"
                             ]
                         },
                         "reuseValues": false,
                         "skipAwait": false,
                         "skipCrds": false,
                         "status": {
-                            "appVersion": "0.36.0",
-                            "chart": "flux2",
-                            "name": "flux2-4db3506c",
-                            "namespace": "flux2",
-                            "revision": 2,
+                            "appVersion": "1.5.1",
+                            "chart": "ingress-nginx",
+                            "name": "ingress-nginx-9d1de3b1",
+                            "namespace": "ingress-nginx",
+                            "revision": 1,
                             "status": "deployed",
-                            "version": "2.0.0"
+                            "version": "4.4.0"
                         },
                         "timeout": 300,
                         "values": {
-                            "helmController": {
-                                "resources": {
-                                    "requests": {
-                                        "cpu": "50m",
-                                        "memory": "48Mi"
-                                    }
-                                }
-                            },
-                            "imageAutomationController": {
-                                "resources": {
-                                    "requests": {
-                                        "cpu": "50m",
-                                        "memory": "48Mi"
-                                    }
-                                }
-                            },
-                            "imageReflectionController": {
-                                "resources": {
-                                    "requests": {
-                                        "cpu": "50m",
-                                        "memory": "48Mi"
-                                    }
-                                }
-                            },
-                            "kustomizeController": {
-                                "resources": {
-                                    "requests": {
-                                        "cpu": "50m",
-                                        "memory": "48Mi"
-                                    }
-                                }
-                            },
-                            "notificationController": {
-                                "resources": {
-                                    "requests": {
-                                        "cpu": "50m",
-                                        "memory": "48Mi"
-                                    }
-                                }
-                            },
-                            "sourceController": {
-                                "resources": {
-                                    "requests": {
-                                        "cpu": "50m",
-                                        "memory": "48Mi"
-                                    }
+                            "controller": {
+                                "service": {
+                                    "nodePorts": {
+                                        "http": 32080,
+                                        "https": 32443
+                                    },
+                                    "type": "NodePort"
                                 }
                             }
                         },
                         "verify": false,
-                        "version": "2.0.0",
+                        "version": "4.4.0",
                         "waitForJobs": false
                     },
                     "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
-                    "dependencies": [
-                        "urn:pulumi:dev::infra::kubernetes:core/v1:Namespace::flux2-namespace"
-                    ],
                     "provider": "urn:pulumi:dev::infra::pulumi:providers:kubernetes::k8s-provider::ab36b933-4a0f-4716-9397-bd873b3aaf69",
                     "propertyDependencies": {
                         "chart": null,
                         "compat": null,
-                        "namespace": [
-                            "urn:pulumi:dev::infra::kubernetes:core/v1:Namespace::flux2-namespace"
-                        ],
+                        "namespace": null,
                         "repositoryOpts": null,
                         "values": null
                     }
@@ -3676,6 +3151,540 @@
                             "urn:pulumi:dev::infra::kubernetes:core/v1:Namespace::flux2-namespace"
                         ],
                         "spec": null
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:dev::infra::kubernetes:kustomize.toolkit.fluxcd.io/v1beta2:Kustomization::git-ops-proto3rd",
+                    "custom": true,
+                    "id": "flux2/git-ops-proto3rd",
+                    "type": "kubernetes:kustomize.toolkit.fluxcd.io/v1beta2:Kustomization",
+                    "inputs": {
+                        "apiVersion": "kustomize.toolkit.fluxcd.io/v1beta2",
+                        "kind": "Kustomization",
+                        "metadata": {
+                            "name": "git-ops-proto3rd",
+                            "namespace": "flux2"
+                        },
+                        "spec": {
+                            "force": false,
+                            "interval": "60m0s",
+                            "path": "./deploy",
+                            "prune": true,
+                            "retryInterval": "2m0s",
+                            "sourceRef": {
+                                "kind": "GitRepository",
+                                "name": "git-repository-proto3rd",
+                                "namespace": "flux2"
+                            },
+                            "targetNamespace": "proto3rd-production",
+                            "timeout": "3m0s",
+                            "wait": true
+                        }
+                    },
+                    "outputs": {
+                        "__fieldManager": "pulumi-kubernetes-fc11b182",
+                        "__initialApiVersion": "kustomize.toolkit.fluxcd.io/v1beta2",
+                        "__inputs": {
+                            "apiVersion": "kustomize.toolkit.fluxcd.io/v1beta2",
+                            "kind": "Kustomization",
+                            "metadata": {
+                                "name": "git-ops-proto3rd",
+                                "namespace": "flux2"
+                            },
+                            "spec": {
+                                "force": false,
+                                "interval": "60m0s",
+                                "path": "./deploy",
+                                "prune": true,
+                                "retryInterval": "2m0s",
+                                "sourceRef": {
+                                    "kind": "GitRepository",
+                                    "name": "git-repository-proto3rd",
+                                    "namespace": "flux2"
+                                },
+                                "targetNamespace": "proto3rd-production",
+                                "timeout": "3m0s",
+                                "wait": true
+                            }
+                        },
+                        "apiVersion": "kustomize.toolkit.fluxcd.io/v1beta2",
+                        "kind": "Kustomization",
+                        "metadata": {
+                            "creationTimestamp": "2022-11-16T02:10:45Z",
+                            "finalizers": [
+                                "finalizers.fluxcd.io"
+                            ],
+                            "generation": 1,
+                            "managedFields": [
+                                {
+                                    "apiVersion": "kustomize.toolkit.fluxcd.io/v1beta2",
+                                    "fieldsType": "FieldsV1",
+                                    "fieldsV1": {
+                                        "f:spec": {
+                                            "f:force": {},
+                                            "f:interval": {},
+                                            "f:path": {},
+                                            "f:prune": {},
+                                            "f:retryInterval": {},
+                                            "f:sourceRef": {
+                                                "f:kind": {},
+                                                "f:name": {},
+                                                "f:namespace": {}
+                                            },
+                                            "f:targetNamespace": {},
+                                            "f:timeout": {},
+                                            "f:wait": {}
+                                        }
+                                    },
+                                    "manager": "pulumi-kubernetes-fc11b182",
+                                    "operation": "Apply",
+                                    "time": "2022-11-16T02:10:45Z"
+                                },
+                                {
+                                    "apiVersion": "kustomize.toolkit.fluxcd.io/v1beta2",
+                                    "fieldsType": "FieldsV1",
+                                    "fieldsV1": {
+                                        "f:metadata": {
+                                            "f:finalizers": {
+                                                ".": {},
+                                                "v:\"finalizers.fluxcd.io\"": {}
+                                            }
+                                        }
+                                    },
+                                    "manager": "gotk-kustomize-controller",
+                                    "operation": "Update",
+                                    "time": "2022-11-16T02:10:45Z"
+                                }
+                            ],
+                            "name": "git-ops-proto3rd",
+                            "namespace": "flux2",
+                            "resourceVersion": "466007",
+                            "uid": "af642c80-518b-4152-839b-a2fca9e1edea"
+                        },
+                        "spec": {
+                            "force": false,
+                            "interval": "60m0s",
+                            "path": "./deploy",
+                            "prune": true,
+                            "retryInterval": "2m0s",
+                            "sourceRef": {
+                                "kind": "GitRepository",
+                                "name": "git-repository-proto3rd",
+                                "namespace": "flux2"
+                            },
+                            "targetNamespace": "proto3rd-production",
+                            "timeout": "3m0s",
+                            "wait": true
+                        },
+                        "status": {
+                            "observedGeneration": -1
+                        }
+                    },
+                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
+                    "dependencies": [
+                        "urn:pulumi:dev::infra::kubernetes:core/v1:Namespace::flux2-namespace"
+                    ],
+                    "provider": "urn:pulumi:dev::infra::pulumi:providers:kubernetes::k8s-provider::ab36b933-4a0f-4716-9397-bd873b3aaf69",
+                    "propertyDependencies": {
+                        "apiVersion": null,
+                        "kind": null,
+                        "metadata": [
+                            "urn:pulumi:dev::infra::kubernetes:core/v1:Namespace::flux2-namespace"
+                        ],
+                        "spec": [
+                            "urn:pulumi:dev::infra::kubernetes:core/v1:Namespace::flux2-namespace"
+                        ]
+                    }
+                },
+                {
+                    "urn": "urn:pulumi:dev::infra::kubernetes:core/v1:Secret::git-secret-proto3rd",
+                    "custom": true,
+                    "id": "flux2/git-secret-proto3rd",
+                    "type": "kubernetes:core/v1:Secret",
+                    "inputs": {
+                        "apiVersion": "v1",
+                        "kind": "Secret",
+                        "metadata": {
+                            "name": "git-secret-proto3rd",
+                            "namespace": "flux2"
+                        },
+                        "stringData": {
+                            "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
+                            "ciphertext": "v1:uOEcuuUXWG2fybtQ:yefohUbKVUShqm5/UVg2fWwoMLjQ6A1+RJLX8nO2BxbHUPYTt4+LmAZs7J8zMdD/46zeYx5rV1UTxUjHN4IR7foYzU/1nZm5UtDtiMAIgOQJzFmDuSyVR/nL5oL4UtI="
+                        }
+                    },
+                    "outputs": {
+                        "__fieldManager": "pulumi-kubernetes-a3c66e60",
+                        "__initialApiVersion": "v1",
+                        "__inputs": {
+                            "apiVersion": "v1",
+                            "kind": "Secret",
+                            "metadata": {
+                                "name": "git-secret-proto3rd",
+                                "namespace": "flux2"
+                            },
+                            "stringData": {
+                                "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
+                                "ciphertext": "v1:iLBNIVKwsVlj818Y:BM2YikPgonDT00GHAvCEndPpnZVrxB8m3JLvZ83RUPMuMdKmgzhnODY4qAiPU2D5+4UwnOULOXOb+hM5pvZ3Za3qZlqusiNsQFu5b5Hk+lWHKrqTN/AI9uUqvSnfyO8="
+                            }
+                        },
+                        "apiVersion": "v1",
+                        "data": {
+                            "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
+                            "ciphertext": "v1:20edCYnJqHnL014L:yMIhIq9nXH/4j1gxGZ8tQ/li66wDcrMiwfQNc1MhsX8i72c4/5enALi04qVZsrKYOmMwrmCSyryMyHnX3cr9ccLuTBp6ULxtMTZIV74PqRka1EZ9BEHSRg4ur2hGj9DEy/8d36eEN0fHS9jnQ8kx4aAwpsXZ"
+                        },
+                        "kind": "Secret",
+                        "metadata": {
+                            "creationTimestamp": "2022-11-16T02:46:47Z",
+                            "managedFields": [
+                                {
+                                    "apiVersion": "v1",
+                                    "fieldsType": "FieldsV1",
+                                    "fieldsV1": {
+                                        "f:stringData": {
+                                            "f:password": {},
+                                            "f:username": {}
+                                        }
+                                    },
+                                    "manager": "pulumi-kubernetes-a3c66e60",
+                                    "operation": "Apply",
+                                    "time": "2022-11-16T02:46:47Z"
+                                }
+                            ],
+                            "name": "git-secret-proto3rd",
+                            "namespace": "flux2",
+                            "resourceVersion": "482697",
+                            "uid": "74924b9a-cb5d-46e6-b1bd-3f79b0348a72"
+                        },
+                        "type": "Opaque"
+                    },
+                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
+                    "dependencies": [
+                        "urn:pulumi:dev::infra::kubernetes:core/v1:Namespace::flux2-namespace"
+                    ],
+                    "provider": "urn:pulumi:dev::infra::pulumi:providers:kubernetes::k8s-provider::ab36b933-4a0f-4716-9397-bd873b3aaf69",
+                    "propertyDependencies": {
+                        "apiVersion": null,
+                        "kind": null,
+                        "metadata": [
+                            "urn:pulumi:dev::infra::kubernetes:core/v1:Namespace::flux2-namespace"
+                        ],
+                        "stringData": null
+                    },
+                    "additionalSecretOutputs": [
+                        "data",
+                        "stringData"
+                    ]
+                },
+                {
+                    "urn": "urn:pulumi:dev::infra::kubernetes:helm.sh/v3:Release::flux2",
+                    "custom": true,
+                    "id": "flux2/flux2-4db3506c",
+                    "type": "kubernetes:helm.sh/v3:Release",
+                    "inputs": {
+                        "atomic": false,
+                        "chart": "flux2",
+                        "cleanupOnFail": false,
+                        "createNamespace": false,
+                        "dependencyUpdate": false,
+                        "description": "",
+                        "devel": false,
+                        "disableCRDHooks": false,
+                        "disableOpenapiValidation": false,
+                        "disableWebhooks": false,
+                        "forceUpdate": false,
+                        "keyring": "",
+                        "lint": false,
+                        "name": "flux2-4db3506c",
+                        "namespace": "flux2",
+                        "postrender": "",
+                        "recreatePods": false,
+                        "renderSubchartNotes": false,
+                        "replace": false,
+                        "repositoryOpts": {
+                            "caFile": "",
+                            "certFile": "",
+                            "keyFile": "",
+                            "password": "",
+                            "repo": "https://fluxcd-community.github.io/helm-charts/",
+                            "username": ""
+                        },
+                        "resetValues": false,
+                        "resourceNames": {
+                            "ClusterRole.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
+                                "crd-controller"
+                            ],
+                            "ClusterRoleBinding.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
+                                "cluster-reconciler",
+                                "crd-controller"
+                            ],
+                            "CustomResourceDefinition.apiextensions.k8s.io/apiextensions.k8s.io/v1": [
+                                "alerts.notification.toolkit.fluxcd.io",
+                                "buckets.source.toolkit.fluxcd.io",
+                                "gitrepositories.source.toolkit.fluxcd.io",
+                                "helmcharts.source.toolkit.fluxcd.io",
+                                "helmreleases.helm.toolkit.fluxcd.io",
+                                "helmrepositories.source.toolkit.fluxcd.io",
+                                "imagepolicies.image.toolkit.fluxcd.io",
+                                "imagerepositories.image.toolkit.fluxcd.io",
+                                "imageupdateautomations.image.toolkit.fluxcd.io",
+                                "kustomizations.kustomize.toolkit.fluxcd.io",
+                                "ocirepositories.source.toolkit.fluxcd.io",
+                                "providers.notification.toolkit.fluxcd.io",
+                                "receivers.notification.toolkit.fluxcd.io"
+                            ],
+                            "Deployment.apps/apps/v1": [
+                                "helm-controller",
+                                "image-automation-controller",
+                                "image-reflector-controller",
+                                "kustomize-controller",
+                                "notification-controller",
+                                "source-controller"
+                            ],
+                            "Job.batch/batch/v1": [
+                                "flux2-4db3506c-flux-check"
+                            ],
+                            "NetworkPolicy.networking.k8s.io/networking.k8s.io/v1": [
+                                "allow-egress",
+                                "allow-scraping",
+                                "allow-webhooks"
+                            ],
+                            "Service/v1": [
+                                "notification-controller",
+                                "source-controller",
+                                "webhook-receiver"
+                            ],
+                            "ServiceAccount/v1": [
+                                "flux2-4db3506c-flux-check",
+                                "helm-controller",
+                                "image-automation-controller",
+                                "image-reflector-controller",
+                                "kustomize-controller",
+                                "notification-controller",
+                                "source-controller"
+                            ]
+                        },
+                        "reuseValues": false,
+                        "skipAwait": false,
+                        "skipCrds": false,
+                        "timeout": 300,
+                        "values": {
+                            "helmController": {
+                                "resources": {
+                                    "requests": {
+                                        "cpu": "50m",
+                                        "memory": "48Mi"
+                                    }
+                                }
+                            },
+                            "imageAutomationController": {
+                                "resources": {
+                                    "requests": {
+                                        "cpu": "50m",
+                                        "memory": "48Mi"
+                                    }
+                                }
+                            },
+                            "imageReflectionController": {
+                                "resources": {
+                                    "requests": {
+                                        "cpu": "50m",
+                                        "memory": "48Mi"
+                                    }
+                                }
+                            },
+                            "kustomizeController": {
+                                "resources": {
+                                    "requests": {
+                                        "cpu": "50m",
+                                        "memory": "48Mi"
+                                    }
+                                }
+                            },
+                            "notificationController": {
+                                "resources": {
+                                    "requests": {
+                                        "cpu": "50m",
+                                        "memory": "48Mi"
+                                    }
+                                }
+                            },
+                            "sourceController": {
+                                "resources": {
+                                    "requests": {
+                                        "cpu": "50m",
+                                        "memory": "48Mi"
+                                    }
+                                }
+                            }
+                        },
+                        "verify": false,
+                        "version": "",
+                        "waitForJobs": false
+                    },
+                    "outputs": {
+                        "__inputs": {
+                            "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
+                            "ciphertext": "v1:qRXjZdOHipWzUfaK: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"
+                        },
+                        "atomic": false,
+                        "chart": "flux2",
+                        "cleanupOnFail": false,
+                        "createNamespace": false,
+                        "dependencyUpdate": false,
+                        "description": "",
+                        "devel": false,
+                        "disableCRDHooks": false,
+                        "disableOpenapiValidation": false,
+                        "disableWebhooks": false,
+                        "forceUpdate": false,
+                        "keyring": "",
+                        "lint": false,
+                        "name": "flux2-4db3506c",
+                        "namespace": "flux2",
+                        "postrender": "",
+                        "recreatePods": false,
+                        "renderSubchartNotes": false,
+                        "replace": false,
+                        "repositoryOpts": {
+                            "caFile": "",
+                            "certFile": "",
+                            "keyFile": "",
+                            "password": "",
+                            "repo": "https://fluxcd-community.github.io/helm-charts/",
+                            "username": ""
+                        },
+                        "resetValues": false,
+                        "resourceNames": {
+                            "ClusterRole.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
+                                "crd-controller"
+                            ],
+                            "ClusterRoleBinding.rbac.authorization.k8s.io/rbac.authorization.k8s.io/v1": [
+                                "cluster-reconciler",
+                                "crd-controller"
+                            ],
+                            "CustomResourceDefinition.apiextensions.k8s.io/apiextensions.k8s.io/v1": [
+                                "alerts.notification.toolkit.fluxcd.io",
+                                "buckets.source.toolkit.fluxcd.io",
+                                "gitrepositories.source.toolkit.fluxcd.io",
+                                "helmcharts.source.toolkit.fluxcd.io",
+                                "helmreleases.helm.toolkit.fluxcd.io",
+                                "helmrepositories.source.toolkit.fluxcd.io",
+                                "imagepolicies.image.toolkit.fluxcd.io",
+                                "imagerepositories.image.toolkit.fluxcd.io",
+                                "imageupdateautomations.image.toolkit.fluxcd.io",
+                                "kustomizations.kustomize.toolkit.fluxcd.io",
+                                "ocirepositories.source.toolkit.fluxcd.io",
+                                "providers.notification.toolkit.fluxcd.io",
+                                "receivers.notification.toolkit.fluxcd.io"
+                            ],
+                            "Deployment.apps/apps/v1": [
+                                "helm-controller",
+                                "image-automation-controller",
+                                "image-reflector-controller",
+                                "kustomize-controller",
+                                "notification-controller",
+                                "source-controller"
+                            ],
+                            "NetworkPolicy.networking.k8s.io/networking.k8s.io/v1": [
+                                "allow-egress",
+                                "allow-scraping",
+                                "allow-webhooks"
+                            ],
+                            "Service/v1": [
+                                "notification-controller",
+                                "source-controller",
+                                "webhook-receiver"
+                            ],
+                            "ServiceAccount/v1": [
+                                "helm-controller",
+                                "image-automation-controller",
+                                "image-reflector-controller",
+                                "kustomize-controller",
+                                "notification-controller",
+                                "source-controller"
+                            ]
+                        },
+                        "reuseValues": false,
+                        "skipAwait": false,
+                        "skipCrds": false,
+                        "status": {
+                            "appVersion": "0.36.0",
+                            "chart": "flux2",
+                            "name": "flux2-4db3506c",
+                            "namespace": "flux2",
+                            "revision": 2,
+                            "status": "deployed",
+                            "version": "2.0.0"
+                        },
+                        "timeout": 300,
+                        "values": {
+                            "helmController": {
+                                "resources": {
+                                    "requests": {
+                                        "cpu": "50m",
+                                        "memory": "48Mi"
+                                    }
+                                }
+                            },
+                            "imageAutomationController": {
+                                "resources": {
+                                    "requests": {
+                                        "cpu": "50m",
+                                        "memory": "48Mi"
+                                    }
+                                }
+                            },
+                            "imageReflectionController": {
+                                "resources": {
+                                    "requests": {
+                                        "cpu": "50m",
+                                        "memory": "48Mi"
+                                    }
+                                }
+                            },
+                            "kustomizeController": {
+                                "resources": {
+                                    "requests": {
+                                        "cpu": "50m",
+                                        "memory": "48Mi"
+                                    }
+                                }
+                            },
+                            "notificationController": {
+                                "resources": {
+                                    "requests": {
+                                        "cpu": "50m",
+                                        "memory": "48Mi"
+                                    }
+                                }
+                            },
+                            "sourceController": {
+                                "resources": {
+                                    "requests": {
+                                        "cpu": "50m",
+                                        "memory": "48Mi"
+                                    }
+                                }
+                            }
+                        },
+                        "verify": false,
+                        "version": "2.0.0",
+                        "waitForJobs": false
+                    },
+                    "parent": "urn:pulumi:dev::infra::pulumi:pulumi:Stack::infra-dev",
+                    "dependencies": [
+                        "urn:pulumi:dev::infra::kubernetes:core/v1:Namespace::flux2-namespace"
+                    ],
+                    "provider": "urn:pulumi:dev::infra::pulumi:providers:kubernetes::k8s-provider::ab36b933-4a0f-4716-9397-bd873b3aaf69",
+                    "propertyDependencies": {
+                        "chart": null,
+                        "compat": null,
+                        "namespace": [
+                            "urn:pulumi:dev::infra::kubernetes:core/v1:Namespace::flux2-namespace"
+                        ],
+                        "repositoryOpts": null,
+                        "values": null
                     }
                 }
             ]

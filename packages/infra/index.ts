@@ -329,7 +329,7 @@ const arAdminWIPGithubProvider = new gcp.iam.WorkloadIdentityPoolProvider(
   },
 )
 
-gitOpsConfigs.map((x) => {
+const registories = gitOpsConfigs.map((x) => {
   const repositoryPath = new URL(x.repository.url).pathname.slice(0, -1)
   const arAdminSAWorkloadIdentityIAMBinding = new gcp.projects.IAMMember(
     `ar-admin-wi-iam-binding-${x.name}`,
@@ -427,6 +427,8 @@ gitOpsConfigs.map((x) => {
       { provider: k8sProvider },
     )
   })
+
+  return artifactRegistry
 })
 
 const caddyIp = new gcp.compute.Address('caddy-ip')
@@ -548,4 +550,12 @@ const caddy = new gcp.compute.Instance(
   {
     deleteBeforeReplace: true,
   },
+)
+
+export const projectId = project
+export const artifactRegistryAdminWorkloadIdentityPoolId = arAdminWIP.id
+export const artifactRegistryAdminServiceAccountEmail = arAdminSA.email
+export const artifactRegistryDomain = `${region}-docker.pkg.dev`
+export const artifactResistryTagPrefixs = registories.map(
+  (x) => pulumi.interpolate`${region}-docker.pkg.dev/${project}/${x.name}`,
 )
