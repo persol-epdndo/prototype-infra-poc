@@ -23,7 +23,7 @@ const gitOpsConfigs = [
       branch: 'main',
       targets: [
         {
-          namespaceSuffix: 'production',
+          namespaceSuffix: 'staging',
           path: './delivery/gitops/staging',
           step: {
             pre: {
@@ -429,6 +429,7 @@ const registories = gitOpsConfigs.map((x) => {
           spec: {
             interval: '60m',
             timeout: '3m',
+            retryInterval: '1m',
             force: true,
             wait: true,
             prune: true,
@@ -461,6 +462,7 @@ const registories = gitOpsConfigs.map((x) => {
           ],
           interval: '60m',
           timeout: '3m',
+          retryInterval: '1m',
           wait: true,
           prune: true,
           path: t.path,
@@ -492,6 +494,7 @@ const registories = gitOpsConfigs.map((x) => {
             ],
             interval: '60m',
             timeout: '3m',
+            retryInterval: '1m',
             force: true,
             wait: true,
             prune: true,
