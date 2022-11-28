@@ -24,7 +24,15 @@ const gitOpsConfigs = [
       targets: [
         {
           namespaceSuffix: 'production',
-          path: './deploy',
+          path: './delivery/gitops/staging',
+          step: {
+            pre: {
+              enable: true,
+            },
+            post: {
+              enable: true,
+            },
+          },
         },
       ],
     },
@@ -113,6 +121,10 @@ const nodepoolSARoles = [
   {
     name: 'node-service-account',
     role: 'roles/container.nodeServiceAccount',
+  },
+  {
+    name: 'artifactregistry-reader',
+    role: 'roles/artifactregistry.reader',
   },
 ]
 nodepoolSARoles.map((x) => {
@@ -388,7 +400,11 @@ const registories = gitOpsConfigs.map((x) => {
   )
 
   x.repository.targets.map((t) => {
-    const gitOpsName = `git-ops-${x.name}`
+    const gitopsName = `gitops-${x.name}`
+    const preGitopsName = `${gitopsName}-pre`
+    const preGitopsPath = `${t.path}/pre`
+    const postGitopsName = `${gitopsName}-post`
+    const postGitopsPath = `${t.path}/post`
     const targetNamespace = `${x.name}-${t.namespaceSuffix}`
     new k8s.core.v1.Namespace(
       `${targetNamespace}-namespace`,
@@ -399,33 +415,98 @@ const registories = gitOpsConfigs.map((x) => {
       },
       { provider: k8sProvider },
     )
+
+    if (t.step.pre.enable) {
+      new k8s.apiextensions.CustomResource(
+        preGitopsName,
+        {
+          apiVersion: 'kustomize.toolkit.fluxcd.io/v1beta2',
+          kind: 'Kustomization',
+          metadata: {
+            name: preGitopsName,
+            namespace: flux2Namespace.metadata.name,
+          },
+          spec: {
+            interval: '60m',
+            timeout: '3m',
+            force: true,
+            wait: true,
+            prune: true,
+            path: preGitopsPath,
+            targetNamespace,
+            sourceRef: {
+              kind: 'GitRepository',
+              name: repositoryName,
+              namespace: flux2Namespace.metadata.name,
+            },
+          },
+        },
+        { provider: k8sProvider },
+      )
+    }
     new k8s.apiextensions.CustomResource(
-      gitOpsName,
+      gitopsName,
       {
         apiVersion: 'kustomize.toolkit.fluxcd.io/v1beta2',
         kind: 'Kustomization',
         metadata: {
-          name: gitOpsName,
+          name: gitopsName,
           namespace: flux2Namespace.metadata.name,
         },
         spec: {
-          interval: '60m0s', // detect drift and undo kubectl edits every hour
-          wait: true, // wait for all applied resources to become ready
-          timeout: '3m0s', // give up waiting after three minutes
-          retryInterval: '2m0s', // retry every two minutes on apply or waiting failures
-          prune: true, // remove stale resources from cluster
-          force: false, // enable this to recreate resources on immutable fields changes
-          targetNamespace, // set the namespace for all resources
+          dependsOn: [
+            {
+              name: preGitopsName,
+            },
+          ],
+          interval: '60m',
+          timeout: '3m',
+          wait: true,
+          prune: true,
+          path: t.path,
+          targetNamespace,
           sourceRef: {
             kind: 'GitRepository',
             name: repositoryName,
             namespace: flux2Namespace.metadata.name,
           },
-          path: t.path,
         },
       },
       { provider: k8sProvider },
     )
+    if (t.step.post.enable) {
+      new k8s.apiextensions.CustomResource(
+        postGitopsName,
+        {
+          apiVersion: 'kustomize.toolkit.fluxcd.io/v1beta2',
+          kind: 'Kustomization',
+          metadata: {
+            name: postGitopsName,
+            namespace: flux2Namespace.metadata.name,
+          },
+          spec: {
+            dependsOn: [
+              {
+                name: gitopsName,
+              },
+            ],
+            interval: '60m',
+            timeout: '3m',
+            force: true,
+            wait: true,
+            prune: true,
+            path: postGitopsPath,
+            targetNamespace,
+            sourceRef: {
+              kind: 'GitRepository',
+              name: repositoryName,
+              namespace: flux2Namespace.metadata.name,
+            },
+          },
+        },
+        { provider: k8sProvider },
+      )
+    }
   })
 
   return artifactRegistry
