@@ -24,7 +24,7 @@ const gitOpsConfigs = [
       targets: [
         {
           namespaceSuffix: 'staging',
-          path: './delivery/gitops/staging',
+          path: './ops/gitops/staging',
           step: {
             pre: {
               enable: true,
