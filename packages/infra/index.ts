@@ -23,8 +23,20 @@ const gitOpsConfigs = [
       branch: 'main',
       targets: [
         {
-          namespaceSuffix: 'staging',
+          name: 'staging',
           path: './ops/gitops/staging',
+          step: {
+            pre: {
+              enable: true,
+            },
+            post: {
+              enable: true,
+            },
+          },
+        },
+        {
+          name: 'production',
+          path: './ops/gitops/production',
           step: {
             pre: {
               enable: true,
@@ -400,12 +412,12 @@ const registories = gitOpsConfigs.map((x) => {
   )
 
   x.repository.targets.map((t) => {
-    const gitopsName = `gitops-${x.name}`
+    const gitopsName = `gitops-${x.name}-${t.name}`
     const preGitopsName = `${gitopsName}-pre`
     const preGitopsPath = `${t.path}/pre`
     const postGitopsName = `${gitopsName}-post`
     const postGitopsPath = `${t.path}/post`
-    const targetNamespace = `${x.name}-${t.namespaceSuffix}`
+    const targetNamespace = `${x.name}-${t.name}`
     new k8s.core.v1.Namespace(
       `${targetNamespace}-namespace`,
       {
