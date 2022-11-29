@@ -69,6 +69,7 @@ const nat = new gcp.compute.RouterNat('nat', {
   router: natRouter.name,
   natIpAllocateOption: 'AUTO_ONLY',
   sourceSubnetworkIpRangesToNat: 'ALL_SUBNETWORKS_ALL_IP_RANGES',
+  enableEndpointIndependentMapping: false,
   logConfig: {
     enable: true,
     filter: 'ALL',
