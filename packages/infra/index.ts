@@ -605,6 +605,7 @@ const caddy = new gcp.compute.Instance(
   {
     machineType: 'e2-small',
     zone: zones.then((x) => x.names[0]),
+    // canIpForward: true,
     networkInterfaces: [
       {
         network: network.id,
@@ -622,7 +623,7 @@ const caddy = new gcp.compute.Instance(
     metadata: {
       'gce-container-declaration': `spec:
   containers:
-  - image: ghcr.io/persol-epdndo/prototype-infra-poc/caddy:8
+  - image: ghcr.io/persol-epdndo/prototype-infra-poc/caddy:latest
     name: caddy
     env:
     - name: DOMAIN_NAMES

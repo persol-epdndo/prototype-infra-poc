@@ -5,3 +5,11 @@
     }
   }
 }
+
+:80, :443 {
+  @private remote_ip private_ranges
+  route {
+    forward_proxy @private
+    abort
+  }
+}
