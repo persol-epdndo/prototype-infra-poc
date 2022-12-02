@@ -61,21 +61,6 @@ const subnet = new gcp.compute.Subnetwork('subnet', {
   privateIpGoogleAccess: true,
 })
 
-const natRouter = new gcp.compute.Router('nat-router', {
-  network: network.id,
-})
-
-const nat = new gcp.compute.RouterNat('nat', {
-  router: natRouter.name,
-  natIpAllocateOption: 'AUTO_ONLY',
-  sourceSubnetworkIpRangesToNat: 'ALL_SUBNETWORKS_ALL_IP_RANGES',
-  enableEndpointIndependentMapping: false,
-  logConfig: {
-    enable: true,
-    filter: 'ALL',
-  },
-})
-
 const cluster = new gcp.container.Cluster('cluster', {
   addonsConfig: {
     dnsCacheConfig: {
@@ -148,6 +133,8 @@ nodepoolSARoles.map((x) => {
   })
 })
 
+const clusterNodeTag = pulumi.interpolate`${cluster.name}-node`
+
 const nodeAllowMasterTcp8443Firewall = new gcp.compute.Firewall(
   'node-allow-master-tcp8443-firewall',
   {
@@ -160,7 +147,7 @@ const nodeAllowMasterTcp8443Firewall = new gcp.compute.Firewall(
       },
     ],
     sourceRanges: ['10.100.0.0/28'],
-    targetTags: ['allow-master-tcp-8334'],
+    targetTags: [clusterNodeTag],
   },
 )
 
@@ -174,7 +161,7 @@ const nodepool = new gcp.container.NodePool('nodepool', {
     diskType: 'pd-standard',
     oauthScopes: ['https://www.googleapis.com/auth/cloud-platform'],
     serviceAccount: nodepoolSA.email,
-    tags: ['allow-master-tcp-8334'],
+    tags: [clusterNodeTag],
   },
 })
 
@@ -605,7 +592,7 @@ const caddy = new gcp.compute.Instance(
   {
     machineType: 'e2-small',
     zone: zones.then((x) => x.names[0]),
-    // canIpForward: true,
+    canIpForward: true,
     networkInterfaces: [
       {
         network: network.id,
@@ -644,11 +631,21 @@ const caddy = new gcp.compute.Instance(
       email: caddySA.email,
       scopes: ['cloud-platform'],
     },
+    metadataStartupScript:
+      'sudo iptables -t nat -A POSTROUTING -o eth0 -s 10.0.0.0/8 -j MASQUERADE',
   },
   {
     deleteBeforeReplace: true,
   },
 )
+
+const natRoute = new gcp.compute.Route('nat-route', {
+  network: network.name,
+  destRange: '0.0.0.0/0',
+  priority: 500,
+  tags: [clusterNodeTag],
+  nextHopInstance: caddy.selfLink,
+})
 
 export const projectId = project
 export const artifactRegistryAdminWorkloadIdentityPoolGithubProvierName =
