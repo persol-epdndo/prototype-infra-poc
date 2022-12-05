@@ -2,6 +2,7 @@ package upstreams
 
 import (
 	"context"
+	"fmt"
 	"net"
 	"net/http"
 	"sync"
@@ -23,7 +24,7 @@ func init() {
 }
 
 type K8sNodeUpstreams struct {
-	FilterLabel string `json:"filter_label,omitempty"`
+	NodeNamePrefix string `json:"node_name_prefix"`
 
 	logger *zap.Logger
 }
@@ -57,7 +58,7 @@ func (u K8sNodeUpstreams) GetUpstreams(r *http.Request) ([]*reverseproxy.Upstrea
 // UnmarshalCaddyfile implements caddyfile.Unmarshaler. Syntax:
 //
 //	dynamic k8s_node {
-//		filter_label	<filter_label>
+//		node_name_prefix <node_name_prefix>
 //	}
 func (u *K8sNodeUpstreams) UnmarshalCaddyfile(d *caddyfile.Dispenser) error {
 	for d.Next() {
@@ -69,14 +70,14 @@ func (u *K8sNodeUpstreams) UnmarshalCaddyfile(d *caddyfile.Dispenser) error {
 
 		for d.NextBlock(0) {
 			switch d.Val() {
-			case "filter_label":
+			case "node_name_prefix":
 				if !d.NextArg() {
 					return d.ArgErr()
 				}
-				if u.FilterLabel != "" {
-					return d.Errf("k8s_node filter label has already been specified")
+				if u.NodeNamePrefix != "" {
+					return d.Errf("k8s_node node name prefix has already been specified")
 				}
-				u.FilterLabel = d.Val()
+				u.NodeNamePrefix = d.Val()
 			default:
 				return d.Errf("unrecognized k8s_node option '%s'", d.Val())
 			}
@@ -146,8 +147,7 @@ func (l *k8sNodeLookup) listInstanceIps() ([]string, error) {
 	}
 	defer client.Close()
 
-	// TODO: We need to set a better filter to support multi GKE clusters.
-	filter := "labels.goog-gke-node:*"
+	filter := fmt.Sprintf("name = %s*", l.k8sNodeUpstream.NodeNamePrefix)
 	req := &computepb.AggregatedListInstancesRequest{
 		Project: credentials.ProjectID,
 		Filter:  &filter,

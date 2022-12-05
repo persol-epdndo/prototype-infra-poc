@@ -608,13 +608,15 @@ const caddy = new gcp.compute.Instance(
       },
     },
     metadata: {
-      'gce-container-declaration': `spec:
+      'gce-container-declaration': pulumi.interpolate`spec:
   containers:
   - image: ghcr.io/persol-epdndo/prototype-infra-poc/caddy:latest
     name: caddy
     env:
     - name: DOMAIN_NAMES
       value: ${domainNames.join(', ')}
+    - name: NODE_NAME_PREFIX
+      value: gke-${cluster.name}
     securityContext:
       privileged: false
     stdin: false

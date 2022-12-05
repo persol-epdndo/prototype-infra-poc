@@ -3,8 +3,7 @@ FROM caddy:builder AS builder
 COPY go.mod go.sum upstreams.go /tmp/caddy/
 
 RUN xcaddy build \
-    --with prototype-infra.io/caddy=/tmp/caddy/ \
-    --with github.com/caddyserver/forwardproxy@caddy2
+    --with prototype-infra.io/caddy=/tmp/caddy/
 
 FROM caddy:latest
 

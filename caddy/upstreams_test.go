@@ -24,7 +24,11 @@ func Test_k8sNodeLookup_listInstanceIps(t *testing.T) {
 	}{
 		{
 			name: "Returns GKE Node intances's internal IPs",
-			// TODO: We have to Mock GCP Responses.
+			fields: fields{
+				k8sNodeUpstream: &K8sNodeUpstreams{
+					NodeNamePrefix: "gke-cluster-c5fe837",
+				},
+			},
 			want: []string{"10.128.0.3", "10.128.0.5"},
 		},
 	}
@@ -63,6 +67,9 @@ func Test_k8sNodeLookup_updateUpstreams(t *testing.T) {
 		{
 			name: "Fetchs IPs & Updates upstreams",
 			fields: fields{
+				k8sNodeUpstream: &K8sNodeUpstreams{
+					NodeNamePrefix: "",
+				},
 				updateing: false,
 			},
 			want: []*reverseproxy.Upstream{
@@ -77,6 +84,9 @@ func Test_k8sNodeLookup_updateUpstreams(t *testing.T) {
 		{
 			name: "Returns fresh exist upstreams",
 			fields: fields{
+				k8sNodeUpstream: &K8sNodeUpstreams{
+					NodeNamePrefix: "",
+				},
 				updateing: false,
 				freshness: time.Now(),
 				upstreams: []*reverseproxy.Upstream{
@@ -94,6 +104,9 @@ func Test_k8sNodeLookup_updateUpstreams(t *testing.T) {
 		{
 			name: "Returns non-fresh exist upstreams since upstreams are updating",
 			fields: fields{
+				k8sNodeUpstream: &K8sNodeUpstreams{
+					NodeNamePrefix: "",
+				},
 				updateing: true,
 				freshness: time.Now().Add(-2 * time.Minute),
 				upstreams: []*reverseproxy.Upstream{
