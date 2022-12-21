@@ -4,13 +4,28 @@ import * as k8s from '@pulumi/kubernetes'
 
 const providerCfg = new pulumi.Config('gcp')
 const project = providerCfg.require('project')
-const region = providerCfg.get('region')
+const region = providerCfg.require('region')
 const cfg = new pulumi.Config()
 const nodesPerZone = cfg.requireNumber('nodesPerZone')
 const githubToken = cfg.requireSecret('githubToken')
 const zones = gcp.compute.getZones()
 
 const domainNames = ['v3.poc.epdndo.com', 'v4.poc.epdndo.com']
+const pgoConfig = {
+  users: [
+    {
+      name: 'postgres',
+    },
+    {
+      name: 'proto3rd',
+      databases: ['proto3rd-production', 'proto3rd-staging'],
+    },
+  ],
+  backupSchedules: {
+    full: '*/10 * * * *',
+    // incremental: '*/10 * * * *',
+  },
+}
 const gitOpsConfigs = [
   {
     name: 'proto3rd',
@@ -299,6 +314,120 @@ const flux2 = new k8s.helm.v3.Release(
     provider: k8sProvider,
   },
 )
+
+const pgoBackupSA = new gcp.serviceaccount.Account('pgo-backup-sa', {
+  accountId: pulumi.interpolate`${cluster.name}-pgo-backup-sa`,
+  displayName: 'PGO Backup SA',
+})
+
+const pgoBackupSARoles = [
+  {
+    name: 'storage-object-admin',
+    role: 'roles/storage.objectAdmin',
+  },
+]
+
+pgoBackupSARoles.map((x) => {
+  new gcp.projects.IAMMember(`pgo-backup-sa-${x.name}-iam-binding`, {
+    project: project,
+    role: x.role,
+    member: pulumi.interpolate`serviceAccount:${pgoBackupSA.email}`,
+  })
+})
+
+const pgoBackupBucket = new gcp.storage.Bucket('pgo-backup-bucket', {
+  name: pulumi.interpolate`${cluster.name}-db-backup`,
+  location: region,
+})
+
+const pgoNamespace = new k8s.core.v1.Namespace(
+  'pgo-namespace',
+  {
+    metadata: {
+      name: 'postgres-operator',
+    },
+  },
+  {
+    provider: k8sProvider,
+  },
+)
+
+const pgo = new k8s.kustomize.Directory(
+  'pgo',
+  {
+    directory:
+      'https://github.com/CrunchyData/postgres-operator-examples/tree/main/kustomize/install/default',
+  },
+  { provider: k8sProvider, dependsOn: [pgoNamespace] },
+)
+
+const pgoCluster = new k8s.apiextensions.CustomResource(
+  'pgo-cluster',
+  {
+    apiVersion: 'postgres-operator.crunchydata.com/v1beta1',
+    kind: 'PostgresCluster',
+    metadata: {
+      name: 'pgo-cluster',
+      namespace: pgoNamespace.metadata.name,
+    },
+    spec: {
+      image:
+        'registry.developers.crunchydata.com/crunchydata/crunchy-postgres:ubi8-14.6-0',
+      postgresVersion: 14,
+      instances: [
+        {
+          name: 'pgo-instance',
+          dataVolumeClaimSpec: {
+            accessModes: ['ReadWriteOnce'],
+            resources: {
+              requests: {
+                storage: '1Gi',
+              },
+            },
+          },
+        },
+      ],
+      metadata: {
+        annotations: {
+          'iam.gke.io/gcp-service-account': pgoBackupSA.email,
+        },
+      },
+      backups: {
+        pgbackrest: {
+          image:
+            'registry.developers.crunchydata.com/crunchydata/crunchy-pgbackrest:ubi8-2.41-0',
+          global: {
+            'repo1-path': '/',
+            'repo1-gcs-key-type': 'auto',
+            'repo1-retention-full': '14',
+            'repo1-retention-full-type': 'time',
+          },
+          repos: [
+            {
+              name: 'repo1',
+              schedules: pgoConfig.backupSchedules,
+              gcs: {
+                bucket: pgoBackupBucket.name,
+              },
+            },
+          ],
+        },
+      },
+      users: pgoConfig.users,
+    },
+  },
+  { provider: k8sProvider, dependsOn: [pgoNamespace, pgo] },
+)
+
+const pgoKSASuffix = ['instance', 'pgbackrest']
+
+pgoKSASuffix.map((x) => {
+  new gcp.serviceaccount.IAMMember(`pgo-backup-sa-wi-iam-binding-${x}`, {
+    serviceAccountId: pgoBackupSA.name,
+    role: 'roles/iam.workloadIdentityUser',
+    member: pulumi.interpolate`serviceAccount:${project}.svc.id.goog[${pgoNamespace.metadata.name}/${pgoCluster.metadata.name}-${x}]`,
+  })
+})
 
 const arAdminSA = new gcp.serviceaccount.Account('artifact-resistry-admin-sa', {
   accountId: pulumi.interpolate`${cluster.name}-ar-admin-sa`,
